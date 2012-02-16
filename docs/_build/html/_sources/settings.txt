@@ -19,8 +19,8 @@ Default ``False``. If set to ``True``, answered questions are automatically publ
 If ``False``, staff must manually publish questions after answering.
 
 
-DESK_FREE_COMMENTING
+DESK_FREE_RESPONSE
 --------------------
 
 Default ``False``. If set to ``True``, any user (respecting DESK_ALLOW_ANONYMOUS_QUESTIONS)
-can respond to any question. If ``False``, only staff or original poster may comment.
+can respond to any question. If ``False``, only staff or original poster may respond.

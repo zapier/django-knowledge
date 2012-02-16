@@ -23,13 +23,13 @@ The goals of ``django-desk`` are simple and straightforward:
 How django-desk works
 ---------------------
 
-At its core, there are only a few moving parts, which keeps Django Desk light and extensible.
+At its core, there are only a few moving parts, which keeps django-desk light and extensible.
 
 
 Models
 ~~~~~~
 
-There are only two data models in Django Desk: **Question** and **Response**. As you can 
+There are only two data models in django-desk: **Question** and **Response**. As you can 
 imagine, **Question** is the base model which can have an arbitrary number or **Response**'s.
 While **Response** is more or less a series of comments on a **Question**.
 
