@@ -47,7 +47,7 @@ Open up *docs/_build/html/index.html* in your browser to take a looksy.
 
 Editing the files is equally simple, just adhere to the reStructuredText format. I recommend
 using something like `watch <http://en.wikipedia.org/wiki/Watch_(Unix)>`_ and ``watch make html``
-while doing doc works to auto build everything while you work.
+while doing documentation to auto build everything while you work.
 
 
 Tests
