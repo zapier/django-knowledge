@@ -53,6 +53,45 @@
             
   <div class="section" id="install">
 <h1>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="#installation-pip"><em>Using pip or easy_install</em></a>, which is most common for stable releases.</li>
+<li><a class="reference internal" href="#installation-git"><em>Using a Git checkout</em></a>, recommended if you want cutting-edge features.</li>
+<li><a class="reference internal" href="#installation-archives"><em>Using downloadable archives</em></a>, useful if you don&#8217;t have pip or git.</li>
+</ul>
+</div></blockquote>
+<div class="section" id="using-pip-or-easy-install">
+<span id="installation-pip"></span><h2>Using pip or easy_install<a class="headerlink" href="#using-pip-or-easy-install" title="Permalink to this headline">¶</a></h2>
+<p>We highly recommend using pip to install <em>django-desk</em>, the packages are regularly updated
+with stable releases:</p>
+<div class="highlight-bash"><div class="highlight"><pre>pip install django-desk
+</pre></div>
+</div>
+<p>Or, alternatively:</p>
+<div class="highlight-bash"><div class="highlight"><pre>easy_install django-desk
+</pre></div>
+</div>
+<p>But really, you shouldn&#8217;t do that.</p>
+</div>
+<div class="section" id="using-git-repositories">
+<span id="installation-git"></span><h2>Using git repositories<a class="headerlink" href="#using-git-repositories" title="Permalink to this headline">¶</a></h2>
+<p>Regular development happens at <a class="reference external" href="https://github.com/zapier/django-desk">github repo</a>, so gabbing the
+cutting edge version might give you some extra features or fix some newly discovered bugs. We recommend
+not installing from the git repo unless you are actively developing <em>django-desk</em>. Please don&#8217;t
+use it in production (and if you do, report back what broked)!</p>
+<div class="highlight-bash"><div class="highlight"><pre>git clone git@github.com:zapier/django-desk.git django-desk
+</pre></div>
+</div>
+<p>You can add the <strong>desk</strong> folder inside the resulting <strong>django-desk</strong> to your PYTHONPATH or
+simply run <tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt> to add it to your <strong>site-packages</strong>.</p>
+</div>
+<div class="section" id="using-archives-tarball-or-zip">
+<span id="installation-archives"></span><h2>Using archives (tarball or zip)<a class="headerlink" href="#using-archives-tarball-or-zip" title="Permalink to this headline">¶</a></h2>
+<p>Visit our <a class="reference external" href="https://github.com/zapier/django-desk/tags">tags page</a> to grab the archives of
+both current and previous stable releases. After unzipping or untarring, you can add the <strong>desk</strong>
+folder inside the resulting <strong>django-desk</strong> to your PYTHONPATH or simply run <tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt>
+to add it to your <strong>site-packages</strong>.</p>
+</div>
 </div>
 
 
@@ -61,6 +100,16 @@
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Install</a><ul>
+<li><a class="reference internal" href="#using-pip-or-easy-install">Using pip or easy_install</a></li>
+<li><a class="reference internal" href="#using-git-repositories">Using git repositories</a></li>
+<li><a class="reference internal" href="#using-archives-tarball-or-zip">Using archives (tarball or zip)</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="about.html"
                         title="previous chapter">About</a></p>
