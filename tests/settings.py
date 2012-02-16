@@ -20,5 +20,3 @@ INSTALLED_APPS = (
     'django_coverage',
     'example',
 )
-
-COVERAGE_REPORT_HTML_OUTPUT_DIR = os.path.join(DIRNAME, 'coverage').replace('\\','/')
