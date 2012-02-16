@@ -10,7 +10,7 @@ be able to customize the looks and feel of the app.
 Development
 -----------
 
-Right now `django-desk` is still under heavy development. We're approaching the 
+Right now *django-desk* is still under heavy development. We're approaching the 
 full development of this product in this manner:
 
 1. Documentation first!
@@ -36,8 +36,8 @@ Development Guide
 Documentation
 ~~~~~~~~~~~~~
 
-We're using Sphinx, so make sure you have `pip install sphinx`, browse on into the
-*docs* folder and run `make html`. Inside *docs/_build* should be the rendered html.
+We're using Sphinx, so make sure you have ``pip install sphinx``, browse on into the
+*docs* folder and run ``make html``. Inside *docs/_build* should be the rendered html.
 
 Editing the files is equally simple, just adhere to the reStructuredText format.
 
@@ -46,7 +46,7 @@ Tests
 ~~~~~
 
 Inside the *tests* directory is a bash script that runs a localized Django project
-that tests our application in a project context. A quick command `tests/runtests.sh`
+that tests our application in a project context. A quick command ``tests/runtests.sh``
 should suffice.
 
 Right now we're not bundling tests inside the installed package, they are part of
@@ -56,5 +56,5 @@ their own example application.
 Code
 ~~~~
 
-Do your coding, but remember to run `pep8 desk` and pylint `pylint desk` and fix any
+Do your coding, but remember to run ``pep8 desk`` and pylint ``pylint desk`` and fix any
 errors you see, or explan why you won't in your commit message.
