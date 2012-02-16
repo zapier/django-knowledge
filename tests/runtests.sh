@@ -1,5 +1,7 @@
 #!/bin/sh
 export PYTHONPATH="./"
-export DJANGO_SETTINGS_MODULE='settings'
 
-django-admin test_coverage --pythonpath="../"
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+TARGET=$DIR"/manage.py"
+
+python $TARGET test_coverage --pythonpath="../"
