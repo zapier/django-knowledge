@@ -5,13 +5,17 @@ Django Desk makes it easy to add an integrated help desk to your Django project
 with only a few lines of boilerplate code. However, you should just as easily
 be able to customize the looks and feel of the app.
 
-
-
-Development
------------
+*Note: What follows is directly copied from the development docs. Any changes you make 
+here, be sure to update there.*
 
 Right now *django-desk* is still under heavy development. We're approaching the 
-full development of this product in this manner:
+full development of this product in the manner described below.
+
+
+.. _development-overview:
+
+Development Overview
+-----------
 
 1. Documentation first!
    
@@ -29,6 +33,7 @@ full development of this product in this manner:
    And let's make it good code as well. PEP8, pylint and all that jazz.
 
 
+.. _development-guide:
 
 Development Guide
 -----------------

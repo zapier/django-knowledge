@@ -32,7 +32,7 @@ But really, you shouldn't do that.
 Using git repositories
 ----------------------
 
-Regular development happens at `github repo <https://github.com/zapier/django-desk>`_, so gabbing the 
+Regular development happens at our`github repo <https://github.com/zapier/django-desk>`_. Grabbing the 
 cutting edge version might give you some extra features or fix some newly discovered bugs. We recommend
 not installing from the git repo unless you are actively developing *django-desk*. Please don't
 use it in production (and if you do, report back what broked)!
