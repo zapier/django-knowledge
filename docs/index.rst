@@ -30,3 +30,4 @@ Contents:
    install
    customize
    settings
+   development
