@@ -39,9 +39,10 @@ While **Response** is more or less a series of comments on a **Question**.
 Views
 ~~~~~
 
-In the same spirit, there are only 3 user facing views: **question_index**, **question_list**, 
-and **question_thread**. 
+In the same spirit, there are only 4 user facing views: **question_index**, **question_list**, 
+**question_thread**, and **question_ask**. 
 
 - **question_index** will have a general listing of of popular questions
 - **question_list** will handle the listing of a specific subset of questions (like by categories or search term)
-- **question_thread** will show the response thread
+- **question_thread** will show the response thread for a specific question
+- **question_ask** will show the form for asking a question
