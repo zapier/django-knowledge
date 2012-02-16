@@ -12,9 +12,9 @@ Right now *django-desk* is still under heavy development. We're approaching the
 full development of this product in the manner described below.
 
 
-.. _development-overview:
+.. _development-pattern:
 
-Development Overview
+Development pattern
 -----------
 
 1. Documentation first!
@@ -35,7 +35,7 @@ Development Overview
 
 .. _development-guide:
 
-Development Guide
+Development guide
 -----------------
 
 Documentation

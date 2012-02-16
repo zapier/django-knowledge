@@ -7,17 +7,20 @@
 Welcome to Django Desk's documentation!
 =======================================
 
-Django Desk makes it easy to add an integrated help desk to your Django project
-with only a few lines of boilerplate code. However, you should just as easily
-be able to customize the looks and feel of the app.
+Django Desk makes it easy to add an integrated support desk to your Django project
+with only a few lines of boilerplate code. It comes with a knowledge base, admin
+interface tie-in, and question form.
+
+While we give you a generic design for free, you should just as easily be able 
+to customize the look and feel of the app if you like.
 
 
 At a glance:
---------------
+------------
 
-- Turn common questions or support requests into a knowledge base.
-- Use the familiar Django admin to handle support requests.
-- Included base templates with prebundled CSS and HTML.
+- Turn common questions or support requests into a **knowledge base**.
+- Use the familiar **Django admin** to handle support requests.
+- Included base **templates and design** with prebundled JS, CSS and HTML.
 
 
 Contents:
@@ -26,8 +29,8 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-   about
+   overview
    install
+   development
    customize
    settings
-   development

@@ -24,7 +24,6 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="author" title="About these documents" href="about.html" />
     <link rel="top" title="Django Desk 0.0.1 documentation" href="index.html" />
     <link rel="prev" title="Customize" href="customize.html" /> 
   </head>
@@ -49,6 +48,23 @@
             
   <div class="section" id="settings">
 <h1>Settings<a class="headerlink" href="#settings" title="Permalink to this headline">¶</a></h1>
+<p>Django Desk has its own series of custom settings you can use to tweak its operation.
+As with normal Django settings, these go in <tt class="docutils literal"><span class="pre">settings.py</span></tt>, or a variant thereof.</p>
+<div class="section" id="desk-allow-anonymous">
+<h2>DESK_ALLOW_ANONYMOUS<a class="headerlink" href="#desk-allow-anonymous" title="Permalink to this headline">¶</a></h2>
+<p>Default <tt class="docutils literal"><span class="pre">False</span></tt>. If set to <tt class="docutils literal"><span class="pre">True</span></tt>, users who are not logged in can ask questions.
+If <tt class="docutils literal"><span class="pre">False</span></tt> only registered and logged in users can ask questions.</p>
+</div>
+<div class="section" id="desk-auto-publicize">
+<h2>DESK_AUTO_PUBLICIZE<a class="headerlink" href="#desk-auto-publicize" title="Permalink to this headline">¶</a></h2>
+<p>Default <tt class="docutils literal"><span class="pre">False</span></tt>. If set to <tt class="docutils literal"><span class="pre">True</span></tt>, answered questions are automatically published.
+If <tt class="docutils literal"><span class="pre">False</span></tt>, staff must manually publish questions after answering.</p>
+</div>
+<div class="section" id="desk-free-commenting">
+<h2>DESK_FREE_COMMENTING<a class="headerlink" href="#desk-free-commenting" title="Permalink to this headline">¶</a></h2>
+<p>Default <tt class="docutils literal"><span class="pre">False</span></tt>. If set to <tt class="docutils literal"><span class="pre">True</span></tt>, any user (respecting DESK_ALLOW_ANONYMOUS_QUESTIONS)
+can respond to any question. If <tt class="docutils literal"><span class="pre">False</span></tt>, only staff or original poster may comment.</p>
+</div>
 </div>
 
 
@@ -57,6 +73,16 @@
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Settings</a><ul>
+<li><a class="reference internal" href="#desk-allow-anonymous">DESK_ALLOW_ANONYMOUS</a></li>
+<li><a class="reference internal" href="#desk-auto-publicize">DESK_AUTO_PUBLICIZE</a></li>
+<li><a class="reference internal" href="#desk-free-commenting">DESK_FREE_COMMENTING</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="customize.html"
                         title="previous chapter">Customize</a></p>

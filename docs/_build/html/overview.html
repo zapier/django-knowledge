@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>About &mdash; Django Desk 0.0.1 documentation</title>
+    <title>Overview &mdash; Django Desk 0.0.1 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -24,7 +24,6 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="author" title="About these documents" href="#" />
     <link rel="top" title="Django Desk 0.0.1 documentation" href="index.html" />
     <link rel="next" title="Install" href="install.html" />
     <link rel="prev" title="Welcome to Django Desk’s documentation!" href="index.html" /> 
@@ -51,8 +50,41 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="about">
-<h1>About<a class="headerlink" href="#about" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="overview">
+<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
+<p>Django Desk is aiming to be a very simple knowledge base and question support engine,
+not entirely dissimilar to ZenDesk, Assistly, or HelpJuice, and to some degree
+StackOverflow or even UserVoice or GetSatisfaction.</p>
+<div class="section" id="goals-of-django-desk">
+<span id="about-goals"></span><h2>Goals of django-desk<a class="headerlink" href="#goals-of-django-desk" title="Permalink to this headline">¶</a></h2>
+<p>The goals of <tt class="docutils literal"><span class="pre">django-desk</span></tt> are simple and straightforward:</p>
+<ol class="arabic simple">
+<li>Searchable knowledge base.</li>
+<li>A form to ask a missing question.</li>
+<li>Staff can answer via Django&#8217;s admin interface.</li>
+</ol>
+</div>
+<div class="section" id="how-django-desk-works">
+<span id="about-how-it-works"></span><h2>How django-desk works<a class="headerlink" href="#how-django-desk-works" title="Permalink to this headline">¶</a></h2>
+<p>At its core, there are only a few moving parts, which keeps Django Desk light and extensible.</p>
+<div class="section" id="models">
+<h3>Models<a class="headerlink" href="#models" title="Permalink to this headline">¶</a></h3>
+<p>There are only two data models in Django Desk: <strong>Question</strong> and <strong>Response</strong>. As you can
+imagine, <strong>Question</strong> is the base model which can have an arbitrary number or <strong>Response</strong>&#8216;s.
+While <strong>Response</strong> is more or less a series of comments on a <strong>Question</strong>.</p>
+<p><strong>Question</strong>&#8216;s and <strong>Response</strong>&#8216;s can each be either public or private (or inheret for <strong>Response</strong>).</p>
+</div>
+<div class="section" id="views">
+<h3>Views<a class="headerlink" href="#views" title="Permalink to this headline">¶</a></h3>
+<p>In the same spirit, there are only 3 user facing views: <strong>question_index</strong>, <strong>question_list</strong>,
+and <strong>question_thread</strong>.</p>
+<ul class="simple">
+<li><strong>question_index</strong> will have a general listing of of popular questions</li>
+<li><strong>question_list</strong> will handle the listing of a specific subset of questions (like by categories or search term)</li>
+<li><strong>question_thread</strong> will show the response thread</li>
+</ul>
+</div>
+</div>
 </div>
 
 
@@ -61,6 +93,19 @@
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Overview</a><ul>
+<li><a class="reference internal" href="#goals-of-django-desk">Goals of django-desk</a></li>
+<li><a class="reference internal" href="#how-django-desk-works">How django-desk works</a><ul>
+<li><a class="reference internal" href="#models">Models</a></li>
+<li><a class="reference internal" href="#views">Views</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="index.html"
                         title="previous chapter">Welcome to Django Desk&#8217;s documentation!</a></p>
@@ -69,7 +114,7 @@
                         title="next chapter">Install</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="_sources/about.txt"
+    <li><a href="_sources/overview.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">

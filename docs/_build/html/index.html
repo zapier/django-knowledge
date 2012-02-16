@@ -24,9 +24,8 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="author" title="About these documents" href="about.html" />
     <link rel="top" title="Django Desk 0.0.1 documentation" href="#" />
-    <link rel="next" title="About" href="about.html" /> 
+    <link rel="next" title="Overview" href="overview.html" /> 
   </head>
   <body>
     <div class="related">
@@ -36,7 +35,7 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="about.html" title="About"
+          <a href="overview.html" title="Overview"
              accesskey="N">next</a> |</li>
         <li><a href="#">Django Desk 0.0.1 documentation</a> &raquo;</li> 
       </ul>
@@ -49,33 +48,44 @@
             
   <div class="section" id="welcome-to-django-desk-s-documentation">
 <h1>Welcome to Django Desk&#8217;s documentation!<a class="headerlink" href="#welcome-to-django-desk-s-documentation" title="Permalink to this headline">¶</a></h1>
-<p>Django Desk makes it easy to add an integrated help desk to your Django project
-with only a few lines of boilerplate code. However, you should just as easily
-be able to customize the looks and feel of the app.</p>
+<p>Django Desk makes it easy to add an integrated support desk to your Django project
+with only a few lines of boilerplate code. It comes with a knowledge base, admin
+interface tie-in, and question form.</p>
+<p>While we give you a generic design for free, you should just as easily be able
+to customize the look and feel of the app if you like.</p>
 <div class="section" id="at-a-glance">
 <h2>At a glance:<a class="headerlink" href="#at-a-glance" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Turn common questions or support requests into a knowledge base.</li>
-<li>Use the familiar Django admin to handle support requests.</li>
-<li>Included base templates with prebundled CSS and HTML.</li>
+<li>Turn common questions or support requests into a <strong>knowledge base</strong>.</li>
+<li>Use the familiar <strong>Django admin</strong> to handle support requests.</li>
+<li>Included base <strong>templates and design</strong> with prebundled JS, CSS and HTML.</li>
 </ul>
 </div>
 <div class="section" id="contents">
 <h2>Contents:<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#goals-of-django-desk">Goals of django-desk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#how-django-desk-works">How django-desk works</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Install</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="install.html#using-pip-or-easy-install">Using pip or easy_install</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install.html#using-git-repositories">Using git repositories</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install.html#using-archives-tarball-or-zip">Using archives (tarball or zip)</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="customize.html">Customize</a></li>
-<li class="toctree-l1"><a class="reference internal" href="settings.html">Settings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="development.html">Development</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="development.html#development-overview">Development Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="development.html#development-guide">Development Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development.html#development-pattern">Development pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development.html#development-guide">Development guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="customize.html">Customize</a></li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">Settings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="settings.html#desk-allow-anonymous">DESK_ALLOW_ANONYMOUS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html#desk-auto-publicize">DESK_AUTO_PUBLICIZE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html#desk-free-commenting">DESK_FREE_COMMENTING</a></li>
 </ul>
 </li>
 </ul>
@@ -101,8 +111,8 @@ be able to customize the looks and feel of the app.</p>
 </ul>
 
   <h4>Next topic</h4>
-  <p class="topless"><a href="about.html"
-                        title="next chapter">About</a></p>
+  <p class="topless"><a href="overview.html"
+                        title="next chapter">Overview</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/index.txt"
@@ -132,7 +142,7 @@ be able to customize the looks and feel of the app.</p>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="about.html" title="About"
+          <a href="overview.html" title="Overview"
              >next</a> |</li>
         <li><a href="#">Django Desk 0.0.1 documentation</a> &raquo;</li> 
       </ul>
