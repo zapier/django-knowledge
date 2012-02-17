@@ -10,18 +10,19 @@ STATUSES = (
     ('internal', 'Internal'),
 )
 
+
 class DeskBase(models.Model):
     """
-    The base class for Desk models. 
+    The base class for Desk models.
     """
     added = models.DateTimeField(auto_now_add=True)
     lastchanged = models.DateTimeField(auto_now=True)
 
     user = models.ForeignKey('auth.User')
 
-    status = models.CharField(max_length=32, choices=STATUSES, default='private')
+    status = models.CharField(max_length=32, choices=STATUSES,
+                                                        default='private')
     body = models.TextField(blank=True, null=True)
-
 
     ########################
     #### STATUS METHODS ####
@@ -45,7 +46,6 @@ class DeskBase(models.Model):
 
     def internal(self):
         self.switch('internal')
-
 
     class Meta:
         abstract = True
@@ -72,7 +72,7 @@ class Question(DeskBase):
             if response.accepted:
                 return True
         return False
-    
+
     def accept(self, response):
         if response.question == self:
             self.get_responses().update(accepted=False)
