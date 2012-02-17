@@ -2,7 +2,7 @@ import settings
 
 from django.db import models
 
-from knowledge.managers import KnowledgeBaseManager
+from knowledge.managers import QuestionManager, ResponseManager
 
 
 STATUSES = (
@@ -30,7 +30,7 @@ class KnowledgeBase(models.Model):
     user = models.ForeignKey('auth.User')
     body = models.TextField(blank=True, null=True)
 
-    objects = KnowledgeBaseManager()
+    points = models.PositiveIntegerField(default=0)
 
     ########################
     #### STATUS METHODS ####
@@ -87,6 +87,8 @@ class Question(KnowledgeBase):
     status = models.CharField(
         max_length=32, choices=STATUSES, default='private')
 
+    objects = QuestionManager()
+
     def inherit(self):
         pass
 
@@ -94,14 +96,16 @@ class Question(KnowledgeBase):
     #### RESPONSES ####
     ###################
 
-    def get_responses(self):
-        return self.responses.all()
+    def get_responses(self, user=None):
+        responses = self.responses.all()
+        if user:
+            return [r for r in responses if r.can_view(user)]
+        return responses
 
     def answered(self):
         """
         Returns a boolean indictating whether there any questions.
         """
-
         return bool(self.get_responses())
 
     def accepted(self):
@@ -109,7 +113,6 @@ class Question(KnowledgeBase):
         Returns a boolean indictating whether there is a accepted answer
         or not.
         """
-
         for response in self.get_responses():
             if response.accepted:
                 return True
@@ -120,14 +123,13 @@ class Question(KnowledgeBase):
         Given a response, make that the one and only accepted answer.
         Similar to StackOverflow.
         """
-
         if response and response.question == self:
             self.get_responses().update(accepted=False)
             response.accepted = True
             response.save()
             return True
-
-        return False
+        else:
+            return False
 
 
 class Response(KnowledgeBase):
@@ -139,4 +141,4 @@ class Response(KnowledgeBase):
         max_length=32, choices=STATUSES_EXTENDED, default='inherit')
     accepted = models.BooleanField(default=False)
 
-    points = models.PositiveIntegerField(default=0)
+    objects = ResponseManager()
