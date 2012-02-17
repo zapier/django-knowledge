@@ -2,6 +2,8 @@ import settings
 
 from django.db import models
 
+from knowledge.managers import KnowledgeBaseManager
+
 
 STATUSES = (
     ('public', 'Public'),
@@ -27,6 +29,8 @@ class KnowledgeBase(models.Model):
 
     user = models.ForeignKey('auth.User')
     body = models.TextField(blank=True, null=True)
+
+    objects = KnowledgeBaseManager()
 
     ########################
     #### STATUS METHODS ####

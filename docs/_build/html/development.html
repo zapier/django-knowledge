@@ -86,14 +86,15 @@ while doing documentation to auto build everything while you work.</p>
 <h3>Tests<a class="headerlink" href="#tests" title="Permalink to this headline">¶</a></h3>
 <p>Inside the <em>tests</em> directory is a bash script that runs a localized Django project
 that tests our application in a project context. A quick command <tt class="docutils literal"><span class="pre">tests/runtests.sh</span></tt>
-should suffice.</p>
+should suffice for most basic needs.</p>
 <p>Right now we&#8217;re not bundling tests inside the installed package, they are part of
-their own example application.</p>
+their own example application. All tests are found in <em>tests/example/tests/</em> under split
+out files reflecting their location in the package.</p>
 </div>
 <div class="section" id="code">
 <h3>Code<a class="headerlink" href="#code" title="Permalink to this headline">¶</a></h3>
-<p>Do your coding, but remember to run <tt class="docutils literal"><span class="pre">pep8</span> <span class="pre">knowledge</span></tt> and pylint <tt class="docutils literal"><span class="pre">pylint</span> <span class="pre">knowledge</span></tt> and fix any
-errors you see, or explan why you won&#8217;t in your commit message.</p>
+<p>Do your coding, but remember to run <tt class="docutils literal"><span class="pre">pep8</span> <span class="pre">knowledge</span></tt> and pylint <tt class="docutils literal"><span class="pre">pylint</span> <span class="pre">knowledge</span></tt> and
+fix any errors you see, or explan why you won&#8217;t in your commit message.</p>
 </div>
 </div>
 </div>
