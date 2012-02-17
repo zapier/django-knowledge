@@ -26,6 +26,8 @@ class BasicModelTest(TestCase):
         self.assertFalse(question.answered())
         self.assertFalse(question.accepted())
 
+        # passes quietly
+        question.accept()
 
         ## admin responds ##
         response = Response.objects.create(
@@ -34,16 +36,12 @@ class BasicModelTest(TestCase):
             body = 'The little hand at 3 means 3 pm or am, the big hand at 7 means 3:35 am or pm.'
         )
 
-        question = Question.objects.get(id=question.id) # refresh model
-
         self.assertTrue(question.answered())
         self.assertFalse(question.accepted())
 
 
         ## joe accepts the answer ##
         question.accept(response)
-
-        question = Question.objects.get(id=question.id) # refresh model
 
         self.assertTrue(question.answered())
         self.assertTrue(question.accepted())
@@ -55,7 +53,6 @@ class BasicModelTest(TestCase):
             title = 'What time is it?',
             body = 'Whenever I look at my watch I see the little hand at 3 and the big hand at 7.'
         )
-
         self.assertEquals(question.status, 'private')
 
         question.public()
@@ -65,6 +62,10 @@ class BasicModelTest(TestCase):
         self.assertEquals(question.status, 'internal')
 
         question.private()
+        self.assertEquals(question.status, 'private')
+
+        # no change
+        question.inherit()
         self.assertEquals(question.status, 'private')
 
 
@@ -94,8 +95,6 @@ class BasicModelTest(TestCase):
 
         ## someone comes along and publicizes this question ##
         question.public()
-
-        question = Question.objects.get(id=question.id) # refresh model
         self.assertEquals(question.status, 'public')
 
         # everyone can see
@@ -108,8 +107,6 @@ class BasicModelTest(TestCase):
 
         ## someone comes along and internalizes this question ##
         question.internal()
-
-        question = Question.objects.get(id=question.id) # refresh model
         self.assertEquals(question.status, 'internal')
 
         # only admin can see
@@ -122,8 +119,6 @@ class BasicModelTest(TestCase):
 
         ## someone comes along and privatizes this question ##
         question.private()
-
-        question = Question.objects.get(id=question.id) # refresh model
         self.assertEquals(question.status, 'private')
         
         self.assertFalse(question.can_view(self.anon))
@@ -140,6 +135,8 @@ class BasicModelTest(TestCase):
             body = 'The little hand at 3 means 3 pm or am, the big hand at 7 means 3:35 am or pm.'
         )
         self.assertEquals(response.status, 'inherit')
+        response.inherit()
+        self.assertEquals(response.status, 'inherit')
 
         self.assertFalse(response.can_view(self.anon))
         self.assertFalse(response.can_view(self.bob))
@@ -150,10 +147,7 @@ class BasicModelTest(TestCase):
 
         ## someone comes along and publicizes the parent question ##
         question.public()
-
-        question = Question.objects.get(id=question.id) # refresh model
-        response = Response.objects.get(id=response.id) # refresh model
-        self.assertEquals(response.status, 'inherit')
+        self.assertEquals(question.status, 'public')
 
         self.assertTrue(response.can_view(self.anon))
         self.assertTrue(response.can_view(self.bob))
@@ -163,9 +157,6 @@ class BasicModelTest(TestCase):
 
         ## someone privatizes the response ##
         response.private()
-
-        question = Question.objects.get(id=question.id) # refresh model
-        response = Response.objects.get(id=response.id) # refresh model
         self.assertEquals(question.status, 'public')
         self.assertEquals(response.status, 'private')
 
@@ -185,9 +176,6 @@ class BasicModelTest(TestCase):
 
         ## someone internalizes the response ##
         response.internal()
-
-        question = Question.objects.get(id=question.id) # refresh model
-        response = Response.objects.get(id=response.id) # refresh model
         self.assertEquals(question.status, 'public')
         self.assertEquals(response.status, 'internal')
 

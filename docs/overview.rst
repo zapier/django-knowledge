@@ -33,7 +33,7 @@ There are only two data models in django-desk: **Question** and **Response**. As
 imagine, **Question** is the base model which can have an arbitrary number or **Response**'s.
 While **Response** is more or less a series of comments on a **Question**.
 
-**Question**'s and **Response**'s can each be either public, private or internal (or inheret for **Response**).
+**Question**'s and **Response**'s can each be either *public*, *private* or *internal* (or *inheret* for **Response**).
 
 
 Views
