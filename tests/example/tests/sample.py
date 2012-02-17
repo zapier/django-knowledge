@@ -1,4 +1,4 @@
-from django.test import TestCase
+from example.tests.base import TestCase
 
 
 class SimpleTest(TestCase):

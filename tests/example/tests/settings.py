@@ -1,6 +1,6 @@
 from knowledge import settings
 
-from django.test import TestCase
+from example.tests.base import TestCase
 from django.contrib.auth.models import User
 
 from knowledge.models import Question, Response

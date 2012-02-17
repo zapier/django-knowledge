@@ -55,14 +55,15 @@ Tests
 
 Inside the *tests* directory is a bash script that runs a localized Django project
 that tests our application in a project context. A quick command ``tests/runtests.sh``
-should suffice.
+should suffice for most basic needs.
 
 Right now we're not bundling tests inside the installed package, they are part of
-their own example application.
+their own example application. All tests are found in *tests/example/tests/* under split
+out files reflecting their location in the package.
 
 
 Code
 ~~~~
 
-Do your coding, but remember to run ``pep8 knowledge`` and pylint ``pylint knowledge`` and fix any
-errors you see, or explan why you won't in your commit message.
+Do your coding, but remember to run ``pep8 knowledge`` and pylint ``pylint knowledge`` and 
+fix any errors you see, or explan why you won't in your commit message.
