@@ -40,7 +40,7 @@ class BasicMangerTest(TestCase):
 
         ## someone comes along and privatizes this question ##
         self.question.private()
-        
+
         self.assertEquals(0, Q.can_view(self.anon).count())
         self.assertEquals(0, Q.can_view(self.bob).count())
 

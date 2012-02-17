@@ -7,9 +7,10 @@
 Welcome to Django Knowledge's documentation!
 =======================================
 
-Django Knowledge makes it easy to add an integrated support knowledge to your Django project
-with only a few lines of boilerplate code. It comes with a knowledge base, admin
-interface tie-in, and question form.
+Django Knowledge makes it easy to add an integrated support desk, help desk or 
+knowledge base to your Django project with only a few lines of boilerplate code. 
+It comes with a searchable knowledge base, admin interface tie-in, and question 
+form.
 
 While we give you a generic design for free, you should just as easily be able 
 to customize the look and feel of the app if you like.

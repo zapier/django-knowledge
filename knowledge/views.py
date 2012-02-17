@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 
 from knowledge.models import Question, Response
 
@@ -28,6 +28,9 @@ def knowledge_thread(request,
     question = get_object_or_404(
       Question.objects.can_view(request.user), 
       id=question_id)
+
+    if request.path != question.get_absolute_url():
+        return redirect(question.get_absolute_url(), permanent=True)
 
     return render(request, template, {'question': question})
 
