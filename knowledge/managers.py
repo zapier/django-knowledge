@@ -28,10 +28,10 @@ class ResponseManager(models.Manager):
         if user.is_anonymous():
             return qs.filter(status='public')
         else:
-            # ooooh boy this is nasty!
-            qs = qs.filter(
+            # ooooh boy this is crazy!
+            return qs.filter(
                 Q(status='public') |
-                Q(  # respect private parent user
+                Q(  # respect private parent user/status
                     Q(status='private') &
                     Q(
                         Q(user=user) |
@@ -46,4 +46,3 @@ class ResponseManager(models.Manager):
                     )
                 )
             )
-            return qs

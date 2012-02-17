@@ -4,6 +4,7 @@ from django.test.client import Client
 from django.contrib.auth.models import User, AnonymousUser
 
 from django.core.urlresolvers import reverse
+from django.template.defaultfilters import slugify
 
 from knowledge.models import Question, Response
 
@@ -29,6 +30,14 @@ class BasicViewTest(TestCase):
 
         r = c.get(reverse('knowledge_thread', args=[self.question.id, 'a-big-long-slug']))
         self.assertEquals(r.status_code, 404)
+
+        c.login(username='joe', password='secret')
+
+        r = c.get(reverse('knowledge_thread', args=[self.question.id, 'a-big-long-slug']))
+        self.assertEquals(r.status_code, 301)
+
+        r = c.get(reverse('knowledge_thread', args=[self.question.id, slugify(self.question.title)]))
+        self.assertEquals(r.status_code, 200)
 
     def test_ask(self):
         c = Client()

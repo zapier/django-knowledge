@@ -1,4 +1,6 @@
 from django.contrib.auth.models import User, AnonymousUser
+from django.core.urlresolvers import reverse
+from django.template.defaultfilters import slugify
 
 from example.tests.base import TestCase
 from knowledge.models import Question, Response
@@ -181,6 +183,14 @@ class BasicModelTest(TestCase):
 
         self.assertTrue(response.can_view(self.admin))
 
+    
+    def test_url(self):
+        self.assertEquals(
+            '/knowledge/questions/{0}/{1}/'.format(
+                self.question.id,
+                slugify(self.question.title)),
+            self.question.get_absolute_url()
+        )
 
 
 

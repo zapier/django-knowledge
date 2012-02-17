@@ -114,10 +114,7 @@ class Question(KnowledgeBase):
         Returns a boolean indictating whether there is a accepted answer
         or not.
         """
-        for response in self.get_responses():
-            if response.accepted:
-                return True
-        return False
+        return any([r.accepted for r in self.get_responses()])
 
     def accept(self, response=None):
         """
@@ -131,6 +128,11 @@ class Question(KnowledgeBase):
             return True
         else:
             return False
+    
+    @models.permalink
+    def get_absolute_url(self):
+        from django.template.defaultfilters import slugify
+        return ('knowledge_thread', [self.id, slugify(self.title)])
 
 
 class Response(KnowledgeBase):
