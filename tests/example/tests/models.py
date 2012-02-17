@@ -11,6 +11,21 @@ class BasicModelTest(TestCase):
         self.bob = User.objects.create_user('bob', 'bob@example.com', 'secret')
         self.anon = AnonymousUser()
 
+        ## joe asks a question ##
+        self.question = Question.objects.create(
+            user = self.joe,
+            title = 'What time is it?',
+            body = 'Whenever I look at my watch I see the little hand at 3 and the big hand at 7.'
+        )
+
+        ## admin responds ##
+        self.response = Response.objects.create(
+            question = self.question,
+            user = self.admin,
+            body = 'The little hand at 3 means 3 pm or am, the big hand at 7 means 3:35 am or pm.'
+        )
+
+
     def test_basic_question_answering(self):
         """
         Given a question asked by a real user, track answering and accepted states.
@@ -48,11 +63,8 @@ class BasicModelTest(TestCase):
 
 
     def test_switching(self):
-        question = Question.objects.create(
-            user = self.joe,
-            title = 'What time is it?',
-            body = 'Whenever I look at my watch I see the little hand at 3 and the big hand at 7.'
-        )
+        ## joe asks a question ##
+        question = self.question
         self.assertEquals(question.status, 'private')
 
         question.public()
@@ -78,11 +90,7 @@ class BasicModelTest(TestCase):
         """
 
         ## joe asks a question ##
-        question = Question.objects.create(
-            user = self.joe,
-            title = 'What time is it?',
-            body = 'Whenever I look at my watch I see the little hand at 3 and the big hand at 7.'
-        )
+        question = self.question
 
         self.assertEquals(question.status, 'private')
 
@@ -129,11 +137,8 @@ class BasicModelTest(TestCase):
 
 
         ## admin responds ##
-        response = Response.objects.create(
-            question = question,
-            user = self.admin,
-            body = 'The little hand at 3 means 3 pm or am, the big hand at 7 means 3:35 am or pm.'
-        )
+        response = self.response
+
         self.assertEquals(response.status, 'inherit')
         response.inherit()
         self.assertEquals(response.status, 'inherit')

@@ -33,19 +33,20 @@ There are only two data models in django-desk: **Question** and **Response**. As
 imagine, **Question** is the base model which can have an arbitrary number or **Response**'s.
 While **Response** is more or less a series of comments on a **Question**.
 
-**Question**'s and **Response**'s can each be either *public*, *private* or *internal* (or *inheret* for **Response**).
+**Question**'s and **Response**'s can each be either *public*, *private* or *internal* (or 
+*inheret* for **Response**).
 
 
 Views
 ~~~~~
 
-In the same spirit, there are only 4 user facing views: **question_index**, **question_list**, 
-**question_thread**, and **question_ask**. 
+In the same spirit, there are only 4 user facing views: **desk_index**, **desk_list**, 
+**desk_thread**, and **desk_ask**.
 
-- **question_index** a general listing of of popular questions plus search box
-- **question_list** listing of a specific subset of questions (by tags or search term)
-- **question_thread** response thread for a specific question
-- **question_ask** form for asking a question
+- **desk_index** a general listing of of popular questions plus search box
+- **desk_list** listing of a specific subset of questions (by tags or search term)
+- **desk_thread** response thread for a specific question
+- **desk_ask** form for asking a question
 
 
 Templates

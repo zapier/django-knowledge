@@ -23,3 +23,11 @@ INSTALLED_APPS = (
     'django_coverage',
     'example',
 )
+
+ROOT_URLCONF = 'tests.urls'
+
+
+
+TEMPLATE_DIRS = (
+    os.path.join(DIRNAME, 'templates').replace('\\','/')
+)
