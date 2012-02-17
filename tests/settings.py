@@ -16,6 +16,9 @@ DATABASES = {
 }
 
 INSTALLED_APPS = (
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+
     'desk',
     'django_coverage',
     'example',

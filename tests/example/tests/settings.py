@@ -1,4 +1,4 @@
-import settings
+from desk import settings
 
 from django.test import TestCase
 from django.contrib.auth.models import User
