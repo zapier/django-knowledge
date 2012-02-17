@@ -133,7 +133,8 @@ class Question(KnowledgeBase):
 class Response(KnowledgeBase):
     is_response = True
 
-    question = models.ForeignKey('knowledge.Question', related_name='responses')
+    question = models.ForeignKey('knowledge.Question',
+        related_name='responses')
     status = models.CharField(
         max_length=32, choices=STATUSES_EXTENDED, default='inherit')
     accepted = models.BooleanField(default=False)

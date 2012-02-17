@@ -41,7 +41,7 @@ class BasicModelTest(TestCase):
         self.assertTrue(question.accepted())
 
 
-    def test_switching(self):
+    def test_switching_question(self):
         ## joe asks a question ##
         question = self.question
         self.assertEquals(question.status, 'private')
@@ -60,6 +60,24 @@ class BasicModelTest(TestCase):
         self.assertEquals(question.status, 'private')
 
 
+    def test_switching_response(self):
+        ## joe asks a question ##
+        response = self.response
+        self.assertEquals(response.status, 'inherit')
+
+        response.public()
+        self.assertEquals(response.status, 'public')
+
+        response.internal()
+        self.assertEquals(response.status, 'internal')
+
+        response.private()
+        self.assertEquals(response.status, 'private')
+
+        response.inherit()
+        self.assertEquals(response.status, 'inherit')
+
+
     def test_private_states(self):
         """
         Walk through the public, private and internal states for Question, and public, private,
@@ -71,8 +89,6 @@ class BasicModelTest(TestCase):
         ## joe asks a question ##
         question = self.question
 
-        self.assertEquals(question.status, 'private')
-
         self.assertFalse(question.can_view(self.anon))
         self.assertFalse(question.can_view(self.bob))
 
@@ -82,7 +98,6 @@ class BasicModelTest(TestCase):
 
         ## someone comes along and publicizes this question ##
         question.public()
-        self.assertEquals(question.status, 'public')
 
         # everyone can see
         self.assertTrue(question.can_view(self.anon))
@@ -94,7 +109,6 @@ class BasicModelTest(TestCase):
 
         ## someone comes along and internalizes this question ##
         question.internal()
-        self.assertEquals(question.status, 'internal')
 
         # only admin can see
         self.assertFalse(question.can_view(self.anon))
@@ -106,7 +120,6 @@ class BasicModelTest(TestCase):
 
         ## someone comes along and privatizes this question ##
         question.private()
-        self.assertEquals(question.status, 'private')
         
         self.assertFalse(question.can_view(self.anon))
         self.assertFalse(question.can_view(self.bob))
@@ -117,10 +130,7 @@ class BasicModelTest(TestCase):
 
         ## admin responds ##
         response = self.response
-
-        self.assertEquals(response.status, 'inherit')
         response.inherit()
-        self.assertEquals(response.status, 'inherit')
 
         self.assertFalse(response.can_view(self.anon))
         self.assertFalse(response.can_view(self.bob))
@@ -131,7 +141,6 @@ class BasicModelTest(TestCase):
 
         ## someone comes along and publicizes the parent question ##
         question.public()
-        self.assertEquals(question.status, 'public')
 
         self.assertTrue(response.can_view(self.anon))
         self.assertTrue(response.can_view(self.bob))
@@ -141,8 +150,6 @@ class BasicModelTest(TestCase):
 
         ## someone privatizes the response ##
         response.private()
-        self.assertEquals(question.status, 'public')
-        self.assertEquals(response.status, 'private')
 
         # everyone can see question still
         self.assertTrue(question.can_view(self.anon))
@@ -160,8 +167,6 @@ class BasicModelTest(TestCase):
 
         ## someone internalizes the response ##
         response.internal()
-        self.assertEquals(question.status, 'public')
-        self.assertEquals(response.status, 'internal')
 
         # everyone can see question still
         self.assertTrue(question.can_view(self.anon))
