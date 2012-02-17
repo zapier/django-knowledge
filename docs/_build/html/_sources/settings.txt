@@ -39,3 +39,10 @@ DESK_SLUG_URLS
 Default ``True``. If ``True``, the URL for a question will have the slug from its
 title appended to the end and incorrect or missing slugs will result in a 301 redirect. 
 If ``False``, the slug is ommitted.
+
+
+DESK_LOAD_JQUERY
+----------------
+
+Default ``True``. If ``True``, we'll load our local static jQuery. If ``False``, we don't
+and you will need to.

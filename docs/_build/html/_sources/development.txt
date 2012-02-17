@@ -10,18 +10,18 @@ full development of this product in the manner described below.
 Development pattern
 -----------
 
-1. Documentation first!
+1. **Documentation first!**
    
    This is vitally important as we pusposefully want to create something that 
    is a **best in class** application. We want django-desk be the *south* of help
    desk software for Django. 
 
-2. Tests next!
+2. **Tests next!**
    
    Again, we want people to trust this application, so tests are an absolute must.
    TDD is the name of the game here. 100% coverage is the goal.
 
-3. Code final!
+3. **Code final!**
 
    And let's make it good code as well. PEP8, pylint and all that jazz.
 
@@ -51,7 +51,7 @@ that tests our application in a project context. A quick command ``tests/runtest
 should suffice.
 
 Right now we're not bundling tests inside the installed package, they are part of
-their own example application. 
+their own example application.
 
 
 Code

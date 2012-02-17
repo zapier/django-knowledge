@@ -46,3 +46,15 @@ In the same spirit, there are only 4 user facing views: **question_index**, **qu
 - **question_list** listing of a specific subset of questions (by tags or search term)
 - **question_thread** response thread for a specific question
 - **question_ask** form for asking a question
+
+
+Templates
+~~~~~~~~~
+
+Templates are cool.
+
+
+Javascript and CSS (CoffeeScript and SASS)
+~~~~~~~~~~~~~~~~~~
+
+We've included some generic styles and 
