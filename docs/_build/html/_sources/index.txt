@@ -33,4 +33,5 @@ Contents:
    install
    development
    customize
+   performance
    settings

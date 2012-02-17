@@ -27,7 +27,7 @@ class KnowledgeBase(models.Model):
     added = models.DateTimeField(auto_now_add=True)
     lastchanged = models.DateTimeField(auto_now=True)
 
-    user = models.ForeignKey('auth.User')
+    user = models.ForeignKey('auth.User', db_index=True)
     body = models.TextField(blank=True, null=True)
 
     points = models.PositiveIntegerField(default=0)
@@ -85,7 +85,8 @@ class Question(KnowledgeBase):
 
     title = models.CharField(max_length=255)
     status = models.CharField(
-        max_length=32, choices=STATUSES, default='private')
+        max_length=32, choices=STATUSES,
+        default='private', db_index=True)
 
     objects = QuestionManager()
 
@@ -98,8 +99,8 @@ class Question(KnowledgeBase):
 
     def get_responses(self, user=None):
         responses = self.responses.all()
-        if user:
-            return [r for r in responses if r.can_view(user)]
+        #if user:
+        #    return [r for r in responses if r.can_view(user)]
         return responses
 
     def answered(self):
@@ -138,7 +139,8 @@ class Response(KnowledgeBase):
     question = models.ForeignKey('knowledge.Question',
         related_name='responses')
     status = models.CharField(
-        max_length=32, choices=STATUSES_EXTENDED, default='inherit')
+        max_length=32, choices=STATUSES_EXTENDED,
+        default='inherit', db_index=True)
     accepted = models.BooleanField(default=False)
 
     objects = ResponseManager()

@@ -28,12 +28,22 @@ class ResponseManager(models.Manager):
         if user.is_anonymous():
             return qs.filter(status='public')
         else:
-            return qs.filter(
-                Q(status='public') | Q(status='private', user=user) |
-                Q(
+            # ooooh boy this is nasty!
+            qs = qs.filter(
+                Q(status='public') |
+                Q(  # respect private parent user
+                    Q(status='private') &
+                    Q(
+                        Q(user=user) |
+                        Q(question__user=user)
+                    )
+                ) |
+                Q(  # follow inherited status/users
                     Q(status='inherit') &
                     Q(
-                        Q(question__status__in=['public'])
+                        Q(question__status='public') |
+                        Q(question__status='private', question__user=user)
                     )
                 )
             )
+            return qs
