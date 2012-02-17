@@ -1,13 +1,13 @@
-.. Django Desk documentation master file, created by
+.. Django Knowledge documentation master file, created by
    sphinx-quickstart on Thu Feb 16 12:54:45 2012.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
 
-Welcome to Django Desk's documentation!
+Welcome to Django Knowledge's documentation!
 =======================================
 
-Django Desk makes it easy to add an integrated support desk to your Django project
+Django Knowledge makes it easy to add an integrated support knowledge to your Django project
 with only a few lines of boilerplate code. It comes with a knowledge base, admin
 interface tie-in, and question form.
 

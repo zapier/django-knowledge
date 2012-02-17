@@ -1,4 +1,4 @@
-Django Desk is written and maintained by Zapier and
+Django Knowledge is written and maintained by Zapier and
 various contributors:
 
 

@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Settings &mdash; Django Desk 0.0.1 documentation</title>
+    <title>Settings &mdash; Django Knowledge 0.0.1 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Django Desk 0.0.1 documentation" href="index.html" />
+    <link rel="top" title="Django Knowledge 0.0.1 documentation" href="index.html" />
     <link rel="prev" title="Customize" href="customize.html" /> 
   </head>
   <body>
@@ -37,7 +37,7 @@
         <li class="right" >
           <a href="customize.html" title="Customize"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Django Desk 0.0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Django Knowledge 0.0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -48,36 +48,36 @@
             
   <div class="section" id="settings">
 <h1>Settings<a class="headerlink" href="#settings" title="Permalink to this headline">¶</a></h1>
-<p>Django Desk has its own series of custom settings you can use to tweak its operation.
+<p>Django Knowledge has its own series of custom settings you can use to tweak its operation.
 As with normal Django settings, these go in <tt class="docutils literal"><span class="pre">settings.py</span></tt>, or a variant thereof.</p>
-<div class="section" id="desk-allow-anonymous">
-<h2>DESK_ALLOW_ANONYMOUS<a class="headerlink" href="#desk-allow-anonymous" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="knowledge-allow-anonymous">
+<h2>KNOWLEDGE_ALLOW_ANONYMOUS<a class="headerlink" href="#knowledge-allow-anonymous" title="Permalink to this headline">¶</a></h2>
 <p>Default <tt class="docutils literal"><span class="pre">False</span></tt>. If <tt class="docutils literal"><span class="pre">True</span></tt>, users who are not logged in can ask questions.
 If <tt class="docutils literal"><span class="pre">False</span></tt> only registered and logged in users can ask questions.</p>
 </div>
-<div class="section" id="desk-auto-publicize">
-<h2>DESK_AUTO_PUBLICIZE<a class="headerlink" href="#desk-auto-publicize" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="knowledge-auto-publicize">
+<h2>KNOWLEDGE_AUTO_PUBLICIZE<a class="headerlink" href="#knowledge-auto-publicize" title="Permalink to this headline">¶</a></h2>
 <p>Default <tt class="docutils literal"><span class="pre">False</span></tt>. If <tt class="docutils literal"><span class="pre">True</span></tt>, answered questions are automatically published.
 If <tt class="docutils literal"><span class="pre">False</span></tt>, staff must manually publish questions after answering.</p>
 </div>
-<div class="section" id="desk-free-response">
-<h2>DESK_FREE_RESPONSE<a class="headerlink" href="#desk-free-response" title="Permalink to this headline">¶</a></h2>
-<p>Default <tt class="docutils literal"><span class="pre">False</span></tt>. If <tt class="docutils literal"><span class="pre">True</span></tt>, any user (respecting DESK_ALLOW_ANONYMOUS) can
+<div class="section" id="knowledge-free-response">
+<h2>KNOWLEDGE_FREE_RESPONSE<a class="headerlink" href="#knowledge-free-response" title="Permalink to this headline">¶</a></h2>
+<p>Default <tt class="docutils literal"><span class="pre">False</span></tt>. If <tt class="docutils literal"><span class="pre">True</span></tt>, any user (respecting KNOWLEDGE_ALLOW_ANONYMOUS) can
 respond to any question. If <tt class="docutils literal"><span class="pre">False</span></tt>, only staff or original poster may respond.</p>
 </div>
-<div class="section" id="desk-allow-rating">
-<h2>DESK_ALLOW_RATING<a class="headerlink" href="#desk-allow-rating" title="Permalink to this headline">¶</a></h2>
-<p>Default <tt class="docutils literal"><span class="pre">True</span></tt>. If <tt class="docutils literal"><span class="pre">True</span></tt>, any user (respecting DESK_ALLOW_ANONYMOUS) can
+<div class="section" id="knowledge-allow-rating">
+<h2>KNOWLEDGE_ALLOW_RATING<a class="headerlink" href="#knowledge-allow-rating" title="Permalink to this headline">¶</a></h2>
+<p>Default <tt class="docutils literal"><span class="pre">True</span></tt>. If <tt class="docutils literal"><span class="pre">True</span></tt>, any user (respecting KNOWLEDGE_ALLOW_ANONYMOUS) can
 rate any response. If <tt class="docutils literal"><span class="pre">False</span></tt>, ratings are disabled.</p>
 </div>
-<div class="section" id="desk-slug-urls">
-<h2>DESK_SLUG_URLS<a class="headerlink" href="#desk-slug-urls" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="knowledge-slug-urls">
+<h2>KNOWLEDGE_SLUG_URLS<a class="headerlink" href="#knowledge-slug-urls" title="Permalink to this headline">¶</a></h2>
 <p>Default <tt class="docutils literal"><span class="pre">True</span></tt>. If <tt class="docutils literal"><span class="pre">True</span></tt>, the URL for a question will have the slug from its
 title appended to the end and incorrect or missing slugs will result in a 301 redirect.
 If <tt class="docutils literal"><span class="pre">False</span></tt>, the slug is ommitted.</p>
 </div>
-<div class="section" id="desk-load-jquery">
-<h2>DESK_LOAD_JQUERY<a class="headerlink" href="#desk-load-jquery" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="knowledge-load-jquery">
+<h2>KNOWLEDGE_LOAD_JQUERY<a class="headerlink" href="#knowledge-load-jquery" title="Permalink to this headline">¶</a></h2>
 <p>Default <tt class="docutils literal"><span class="pre">True</span></tt>. If <tt class="docutils literal"><span class="pre">True</span></tt>, we&#8217;ll load our local static jQuery. If <tt class="docutils literal"><span class="pre">False</span></tt>, we don&#8217;t
 and you will need to.</p>
 </div>
@@ -92,12 +92,12 @@ and you will need to.</p>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Settings</a><ul>
-<li><a class="reference internal" href="#desk-allow-anonymous">DESK_ALLOW_ANONYMOUS</a></li>
-<li><a class="reference internal" href="#desk-auto-publicize">DESK_AUTO_PUBLICIZE</a></li>
-<li><a class="reference internal" href="#desk-free-response">DESK_FREE_RESPONSE</a></li>
-<li><a class="reference internal" href="#desk-allow-rating">DESK_ALLOW_RATING</a></li>
-<li><a class="reference internal" href="#desk-slug-urls">DESK_SLUG_URLS</a></li>
-<li><a class="reference internal" href="#desk-load-jquery">DESK_LOAD_JQUERY</a></li>
+<li><a class="reference internal" href="#knowledge-allow-anonymous">KNOWLEDGE_ALLOW_ANONYMOUS</a></li>
+<li><a class="reference internal" href="#knowledge-auto-publicize">KNOWLEDGE_AUTO_PUBLICIZE</a></li>
+<li><a class="reference internal" href="#knowledge-free-response">KNOWLEDGE_FREE_RESPONSE</a></li>
+<li><a class="reference internal" href="#knowledge-allow-rating">KNOWLEDGE_ALLOW_RATING</a></li>
+<li><a class="reference internal" href="#knowledge-slug-urls">KNOWLEDGE_SLUG_URLS</a></li>
+<li><a class="reference internal" href="#knowledge-load-jquery">KNOWLEDGE_LOAD_JQUERY</a></li>
 </ul>
 </li>
 </ul>
@@ -136,7 +136,7 @@ and you will need to.</p>
         <li class="right" >
           <a href="customize.html" title="Customize"
              >previous</a> |</li>
-        <li><a href="index.html">Django Desk 0.0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Django Knowledge 0.0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

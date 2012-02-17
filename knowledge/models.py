@@ -15,9 +15,9 @@ STATUSES_EXTENDED = STATUSES + (
 )
 
 
-class DeskBase(models.Model):
+class KnowledgeBase(models.Model):
     """
-    The base class for Desk models.
+    The base class for Knowledge models.
     """
     is_question = False
     is_response = False
@@ -76,7 +76,7 @@ class DeskBase(models.Model):
         abstract = True
 
 
-class Question(DeskBase):
+class Question(KnowledgeBase):
     is_question = True
 
     title = models.CharField(max_length=255)
@@ -126,10 +126,10 @@ class Question(DeskBase):
         return False
 
 
-class Response(DeskBase):
+class Response(KnowledgeBase):
     is_response = True
 
-    question = models.ForeignKey('desk.Question', related_name='responses')
+    question = models.ForeignKey('knowledge.Question', related_name='responses')
     status = models.CharField(
         max_length=32, choices=STATUSES_EXTENDED, default='inherit')
     accepted = models.BooleanField(default=False)

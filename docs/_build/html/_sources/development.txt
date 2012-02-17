@@ -1,7 +1,7 @@
 Development
 ===========
 
-Right now *django-desk* is still under heavy development. We're approaching the 
+Right now *django-knowledge* is still under heavy development. We're approaching the 
 full development of this product in the manner described below.
 
 
@@ -13,8 +13,8 @@ Development pattern
 1. **Documentation first!**
    
    This is vitally important as we pusposefully want to create something that 
-   is a **best in class** application. We want django-desk be the *south* of help
-   desk software for Django. 
+   is a **best in class** application. We want django-knowledge be the *south* of help
+   knowledge software for Django. 
 
 2. **Tests next!**
    
@@ -57,5 +57,5 @@ their own example application.
 Code
 ~~~~
 
-Do your coding, but remember to run ``pep8 desk`` and pylint ``pylint desk`` and fix any
+Do your coding, but remember to run ``pep8 knowledge`` and pylint ``pylint knowledge`` and fix any
 errors you see, or explan why you won't in your commit message.

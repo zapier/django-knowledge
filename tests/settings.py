@@ -19,7 +19,7 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
 
-    'desk',
+    'knowledge',
     'django_coverage',
     'example',
 )

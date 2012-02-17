@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Django Desk documentation build configuration file, created by
+# Django Knowledge documentation build configuration file, created by
 # sphinx-quickstart on Thu Feb 16 12:54:45 2012.
 #
 # This file is execfile()d with the current directory set to its containing dir.
@@ -17,7 +17,7 @@ import sys, os
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 sys.path.insert(0, os.path.abspath('..'))
-version_tuple = __import__('desk').VERSION
+version_tuple = __import__('knowledge').VERSION
 version = ".".join([str(v) for v in version_tuple])
 
 
@@ -43,7 +43,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Django Desk'
+project = u'Django Knowledge'
 copyright = u'2012, Zapier'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -167,7 +167,7 @@ html_static_path = ['_static']
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'DjangoDeskdoc'
+htmlhelp_basename = 'DjangoKnowledgedoc'
 
 
 # -- Options for LaTeX output --------------------------------------------------
@@ -186,7 +186,7 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'DjangoDesk.tex', u'Django Desk Documentation',
+  ('index', 'DjangoKnowledge.tex', u'Django Knowledge Documentation',
    u'Zapier', 'manual'),
 ]
 
@@ -216,7 +216,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'djangodesk', u'Django Desk Documentation',
+    ('index', 'djangoknowledge', u'Django Knowledge Documentation',
      [u'Zapier'], 1)
 ]
 
@@ -230,8 +230,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'DjangoDesk', u'Django Desk Documentation',
-   u'Zapier', 'DjangoDesk', 'One line description of project.',
+  ('index', 'DjangoKnowledge', u'Django Knowledge Documentation',
+   u'Zapier', 'DjangoKnowledge', 'One line description of project.',
    'Miscellaneous'),
 ]
 

@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Overview &mdash; Django Desk 0.0.1 documentation</title>
+    <title>Overview &mdash; Django Knowledge 0.0.1 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -24,9 +24,9 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Django Desk 0.0.1 documentation" href="index.html" />
+    <link rel="top" title="Django Knowledge 0.0.1 documentation" href="index.html" />
     <link rel="next" title="Install" href="install.html" />
-    <link rel="prev" title="Welcome to Django Desk’s documentation!" href="index.html" /> 
+    <link rel="prev" title="Welcome to Django Knowledge’s documentation!" href="index.html" /> 
   </head>
   <body>
     <div class="related">
@@ -39,9 +39,9 @@
           <a href="install.html" title="Install"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="index.html" title="Welcome to Django Desk’s documentation!"
+          <a href="index.html" title="Welcome to Django Knowledge’s documentation!"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Django Desk 0.0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Django Knowledge 0.0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -52,24 +52,24 @@
             
   <div class="section" id="overview">
 <h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
-<p>Django Desk is aiming to be a very simple knowledge base and question support engine,
-not entirely dissimilar to ZenDesk, Assistly, or HelpJuice, and to some degree
+<p>Django Knowledge is aiming to be a very simple knowledge base and question support engine,
+not entirely dissimilar to ZenKnowledge, Assistly, or HelpJuice, and to some degree
 StackOverflow or even UserVoice or GetSatisfaction.</p>
-<div class="section" id="goals-of-django-desk">
-<span id="about-goals"></span><h2>Goals of django-desk<a class="headerlink" href="#goals-of-django-desk" title="Permalink to this headline">¶</a></h2>
-<p>The goals of <tt class="docutils literal"><span class="pre">django-desk</span></tt> are simple and straightforward:</p>
+<div class="section" id="goals-of-django-knowledge">
+<span id="about-goals"></span><h2>Goals of django-knowledge<a class="headerlink" href="#goals-of-django-knowledge" title="Permalink to this headline">¶</a></h2>
+<p>The goals of <tt class="docutils literal"><span class="pre">django-knowledge</span></tt> are simple and straightforward:</p>
 <ol class="arabic simple">
 <li>Searchable knowledge base.</li>
 <li>A form to ask a missing question.</li>
 <li>Staff can answer via Django&#8217;s admin interface.</li>
 </ol>
 </div>
-<div class="section" id="how-django-desk-works">
-<span id="about-how-it-works"></span><h2>How django-desk works<a class="headerlink" href="#how-django-desk-works" title="Permalink to this headline">¶</a></h2>
-<p>At its core, there are only a few moving parts, which keeps django-desk light and extensible.</p>
+<div class="section" id="how-django-knowledge-works">
+<span id="about-how-it-works"></span><h2>How django-knowledge works<a class="headerlink" href="#how-django-knowledge-works" title="Permalink to this headline">¶</a></h2>
+<p>At its core, there are only a few moving parts, which keeps django-knowledge light and extensible.</p>
 <div class="section" id="models">
 <h3>Models<a class="headerlink" href="#models" title="Permalink to this headline">¶</a></h3>
-<p>There are only two data models in django-desk: <strong>Question</strong> and <strong>Response</strong>. As you can
+<p>There are only two data models in django-knowledge: <strong>Question</strong> and <strong>Response</strong>. As you can
 imagine, <strong>Question</strong> is the base model which can have an arbitrary number or <strong>Response</strong>&#8216;s.
 While <strong>Response</strong> is more or less a series of comments on a <strong>Question</strong>.</p>
 <p><strong>Question</strong>&#8216;s and <strong>Response</strong>&#8216;s can each be either <em>public</em>, <em>private</em> or <em>internal</em> (or
@@ -77,13 +77,13 @@ While <strong>Response</strong> is more or less a series of comments on a <stron
 </div>
 <div class="section" id="views">
 <h3>Views<a class="headerlink" href="#views" title="Permalink to this headline">¶</a></h3>
-<p>In the same spirit, there are only 4 user facing views: <strong>desk_index</strong>, <strong>desk_list</strong>,
-<strong>desk_thread</strong>, and <strong>desk_ask</strong>.</p>
+<p>In the same spirit, there are only 4 user facing views: <strong>knowledge_index</strong>, <strong>knowledge_list</strong>,
+<strong>knowledge_thread</strong>, and <strong>knowledge_ask</strong>.</p>
 <ul class="simple">
-<li><strong>desk_index</strong> a general listing of of popular questions plus search box</li>
-<li><strong>desk_list</strong> listing of a specific subset of questions (by tags or search term)</li>
-<li><strong>desk_thread</strong> response thread for a specific question</li>
-<li><strong>desk_ask</strong> form for asking a question</li>
+<li><strong>knowledge_index</strong> a general listing of of popular questions plus search box</li>
+<li><strong>knowledge_list</strong> listing of a specific subset of questions (by tags or search term)</li>
+<li><strong>knowledge_thread</strong> response thread for a specific question</li>
+<li><strong>knowledge_ask</strong> form for asking a question</li>
 </ul>
 </div>
 <div class="section" id="templates">
@@ -106,8 +106,8 @@ While <strong>Response</strong> is more or less a series of comments on a <stron
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Overview</a><ul>
-<li><a class="reference internal" href="#goals-of-django-desk">Goals of django-desk</a></li>
-<li><a class="reference internal" href="#how-django-desk-works">How django-desk works</a><ul>
+<li><a class="reference internal" href="#goals-of-django-knowledge">Goals of django-knowledge</a></li>
+<li><a class="reference internal" href="#how-django-knowledge-works">How django-knowledge works</a><ul>
 <li><a class="reference internal" href="#models">Models</a></li>
 <li><a class="reference internal" href="#views">Views</a></li>
 <li><a class="reference internal" href="#templates">Templates</a></li>
@@ -120,7 +120,7 @@ While <strong>Response</strong> is more or less a series of comments on a <stron
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="index.html"
-                        title="previous chapter">Welcome to Django Desk&#8217;s documentation!</a></p>
+                        title="previous chapter">Welcome to Django Knowledge&#8217;s documentation!</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="install.html"
                         title="next chapter">Install</a></p>
@@ -156,9 +156,9 @@ While <strong>Response</strong> is more or less a series of comments on a <stron
           <a href="install.html" title="Install"
              >next</a> |</li>
         <li class="right" >
-          <a href="index.html" title="Welcome to Django Desk’s documentation!"
+          <a href="index.html" title="Welcome to Django Knowledge’s documentation!"
              >previous</a> |</li>
-        <li><a href="index.html">Django Desk 0.0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Django Knowledge 0.0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

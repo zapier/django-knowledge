@@ -1,9 +1,9 @@
-from desk import settings
+from knowledge import settings
 
 from django.test import TestCase
 from django.contrib.auth.models import User
 
-from desk.models import Question, Response
+from knowledge.models import Question, Response
 
 
 class BasicSettingsTest(TestCase):

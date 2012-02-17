@@ -11,18 +11,18 @@ Install
 Using pip or easy_install
 -------------------------
 
-We highly recommend using pip to install *django-desk*, the packages are regularly updated 
+We highly recommend using pip to install *django-knowledge*, the packages are regularly updated 
 with stable releases:
 
 .. code-block:: bash
 
-   pip install django-desk
+   pip install django-knowledge
 
 Or, alternatively:
 
 .. code-block:: bash
 
-   easy_install django-desk
+   easy_install django-knowledge
 
 But really, you shouldn't do that.
 
@@ -32,16 +32,16 @@ But really, you shouldn't do that.
 Using git repositories
 ----------------------
 
-Regular development happens at our`github repo <https://github.com/zapier/django-desk>`_. Grabbing the 
+Regular development happens at our`github repo <https://github.com/zapier/django-knowledge>`_. Grabbing the 
 cutting edge version might give you some extra features or fix some newly discovered bugs. We recommend
-not installing from the git repo unless you are actively developing *django-desk*. Please don't
+not installing from the git repo unless you are actively developing *django-knowledge*. Please don't
 use it in production (and if you do, report back what broked)!
 
 .. code-block:: bash
 
-   git clone git@github.com:zapier/django-desk.git django-desk
+   git clone git@github.com:zapier/django-knowledge.git django-knowledge
 
-You can add the **desk** folder inside the resulting **django-desk** to your PYTHONPATH or 
+You can add the **knowledge** folder inside the resulting **django-knowledge** to your PYTHONPATH or 
 simply run ``python setup.py install`` to add it to your **site-packages**.
 
 
@@ -50,7 +50,7 @@ simply run ``python setup.py install`` to add it to your **site-packages**.
 Using archives (tarball or zip)
 ------------------------------
 
-Visit our `tags page <https://github.com/zapier/django-desk/tags>`_ to grab the archives of 
-both current and previous stable releases. After unzipping or untarring, you can add the **desk** 
-folder inside the resulting **django-desk** to your PYTHONPATH or simply run ``python setup.py install`` 
+Visit our `tags page <https://github.com/zapier/django-knowledge/tags>`_ to grab the archives of 
+both current and previous stable releases. After unzipping or untarring, you can add the **knowledge** 
+folder inside the resulting **django-knowledge** to your PYTHONPATH or simply run ``python setup.py install`` 
 to add it to your **site-packages**.

@@ -1,17 +1,17 @@
 Overview
 =================
 
-Django Desk is aiming to be a very simple knowledge base and question support engine, 
-not entirely dissimilar to ZenDesk, Assistly, or HelpJuice, and to some degree 
+Django Knowledge is aiming to be a very simple knowledge base and question support engine, 
+not entirely dissimilar to ZenKnowledge, Assistly, or HelpJuice, and to some degree 
 StackOverflow or even UserVoice or GetSatisfaction.
 
 
 .. _about-goals:
 
-Goals of django-desk
+Goals of django-knowledge
 --------------------
 
-The goals of ``django-desk`` are simple and straightforward:
+The goals of ``django-knowledge`` are simple and straightforward:
 
 1. Searchable knowledge base.
 2. A form to ask a missing question.
@@ -20,16 +20,16 @@ The goals of ``django-desk`` are simple and straightforward:
 
 .. _about-how-it-works:
 
-How django-desk works
+How django-knowledge works
 ---------------------
 
-At its core, there are only a few moving parts, which keeps django-desk light and extensible.
+At its core, there are only a few moving parts, which keeps django-knowledge light and extensible.
 
 
 Models
 ~~~~~~
 
-There are only two data models in django-desk: **Question** and **Response**. As you can 
+There are only two data models in django-knowledge: **Question** and **Response**. As you can 
 imagine, **Question** is the base model which can have an arbitrary number or **Response**'s.
 While **Response** is more or less a series of comments on a **Question**.
 
@@ -40,13 +40,13 @@ While **Response** is more or less a series of comments on a **Question**.
 Views
 ~~~~~
 
-In the same spirit, there are only 4 user facing views: **desk_index**, **desk_list**, 
-**desk_thread**, and **desk_ask**.
+In the same spirit, there are only 4 user facing views: **knowledge_index**, **knowledge_list**, 
+**knowledge_thread**, and **knowledge_ask**.
 
-- **desk_index** a general listing of of popular questions plus search box
-- **desk_list** listing of a specific subset of questions (by tags or search term)
-- **desk_thread** response thread for a specific question
-- **desk_ask** form for asking a question
+- **knowledge_index** a general listing of of popular questions plus search box
+- **knowledge_list** listing of a specific subset of questions (by tags or search term)
+- **knowledge_thread** response thread for a specific question
+- **knowledge_ask** form for asking a question
 
 
 Templates
