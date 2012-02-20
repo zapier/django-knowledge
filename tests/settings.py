@@ -29,8 +29,6 @@ INSTALLED_APPS = (
 
 ROOT_URLCONF = 'tests.urls'
 
-KNOWLEDGE_ALLOW_ANONYMOUS = True
-
 TEMPLATE_DIRS = (
     os.path.join(DIRNAME, 'templates').replace('\\','/')
 )

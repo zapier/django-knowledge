@@ -105,7 +105,6 @@ class KnowledgeBase(models.Model):
 
     class Meta:
         abstract = True
-        ordering = ['-added']
 
     def save(self, *args, **kwargs):
         if not self.user and self.name and self.email\
@@ -195,6 +194,9 @@ class Question(KnowledgeBase):
     def __unicode__(self):
         return self.title
 
+    class Meta:
+        ordering = ['-added']
+
 
 class Response(KnowledgeBase):
     is_response = True
@@ -220,3 +222,6 @@ class Response(KnowledgeBase):
     
     def __unicode__(self):
         return self.body[0:100] + u'...'
+
+    class Meta:
+        ordering = ['added']
