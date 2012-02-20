@@ -43,9 +43,9 @@ def knowledge_list(request,
             request.GET.get('page', '1'))
 
     return render(request, template, {
+        'request': request,
         'search': search,
-        'questions': questions.object_list,
-        'paginator': paginator,
+        'questions': questions,
         'category': category,
         'categories': Category.objects.all(),
         'form': Form(request.user),

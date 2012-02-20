@@ -42,13 +42,6 @@ title appended to the end and incorrect or missing slugs will result in a 301 re
 If ``False``, the slug is ommitted.
 
 
-KNOWLEDGE_LOAD_JQUERY
-----------------
-
-Default ``True``. If ``True``, we'll load our local static jQuery. If ``False``, we 
-don't and you will need to ensure it is loaded yourself.
-
-
 KNOWLEDGE_BASE_TEMPLATE
 ----------------
 

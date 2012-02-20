@@ -1,24 +1,48 @@
 {% extends 'django_knowledge/inner.html' %}
 
+{% load knowledge_tags %}
+
 {% block knowledge_widgets %}
 
 <div class="dk-widget">
-  <h3>Showing {{ paginator.count }} results{% if search %} for "{{ search }}"{% endif %}{% if category %} in "{{ category.title }}" category{% endif %}:</h3>
+  <h3>Showing {{ questions.paginator.count }} results{% if search %} for <em>{{ search }}</em>{% endif %}{% if category %} in <em>{{ category.title }}</em> category{% endif %}:</h3>
   <hr />
   <ol class="question-list">
-    {% for question in questions %}
+    {% for question in questions.object_list %}
       <li><a href="{{ question.get_absolute_url }}">{{ question.title }}</a></li>
     {% endfor %}
   </ol>
+
+  {% if not questions.paginator.count %}
+    <p class="center"><em>No results found.</em></p>
+  {% endif %}
+  
+  <hr class="light"/>
+
+  <div class="center">
+    <strong>
+    {% if questions.has_previous %}
+      <a href="?{% page_query request questions.previous_page_number %}">&larr; previous</a>
+    {% endif %}
+
+    &nbsp; page {{ questions.number }} of {{ questions.paginator.num_pages }} &nbsp;
+
+    {% if questions.has_next %}
+      <a href="?{% page_query request questions.next_page_number %}">next &rarr;</a>
+    {% endif %}
+    </strong>
+  </div>
 </div>
 
 {% if form and paginator.count < 5 %}
-    <div class="dk-widget">
-      <h3>Ask a Question</h3>
-      <hr />
+  <div class="dk-widget">
+    <h3>Ask a Question</h3>
+    <hr />
 
-      {% include "django_knowledge/form.html" with submit_value="Submit this support request" submit_and="and we'll get back to you as soon as possible." %}
-    </div>
+    {% url knowledge_ask as form_url %}
+
+    {% include "django_knowledge/form.html" with submit_value="Submit this support request" submit_and="and we'll get back to you as soon as possible." submit_url=form_url %}
+  </div>
 {% endif %}
 
 {% endblock knowledge_widgets %}

@@ -252,9 +252,16 @@ caption {
     color: #888; }
   .dk-inner .clear {
     clear: both; }
+  .dk-inner .center {
+    text-align: center; }
   .dk-inner .dk-roof h2 {
     margin-bottom: .15em;
     font-weight: 600; }
+    .dk-inner .dk-roof h2 a {
+      color: #333;
+      text-decoration: none; }
+      .dk-inner .dk-roof h2 a:hover {
+        text-decoration: underline; }
   .dk-inner .dk-search {
     border: 1px solid #ccc;
     padding: 1%;
@@ -273,8 +280,6 @@ caption {
       width: 87%;
       height: 16px;
       float: left; }
-      .dk-inner .dk-search input.question-search.unclicked {
-        color: #aaa; }
     .dk-inner .dk-search .submit-question-search {
       height: 34px;
       width: 10%;
@@ -362,7 +367,7 @@ caption {
             height: 80%; }
           .dk-inner .dk-content .dk-widget .dk-dialog .the-author.gravatar.smaller img {
             margin-top: 0;
-            margin-left: 20%;
+            margin-left: 17%;
             max-width: 40px;
             max-height: 40px; }
         .dk-inner .dk-content .dk-widget .dk-dialog .the-content.gravatar {

@@ -23,10 +23,23 @@
     color:#888;
   }
   .clear { clear:both; }
+  .center { text-align:center; }
 
   .dk-roof {
-    h2 { margin-bottom: .15em; font-weight:600; }
-  }
+    h2 { 
+      margin-bottom: .15em;
+      font-weight:600; 
+      
+      a { 
+        color:#333;
+        text-decoration:none;
+
+        &:hover {
+          text-decoration:underline;
+        }
+      }
+    } // h2
+  } // .dk-roof
 
   .dk-search {
     border:1px solid #ccc;
@@ -43,10 +56,6 @@
       width:87%;
       height:16px;
       float:left;
-
-      &.unclicked {
-        color:#aaa;
-      }
     }
 
     .submit-question-search {
@@ -94,7 +103,6 @@
         margin-left:10px;
       }
       hr.light { color:#e7e7e7; background:#e7e7e7; }
-
 
       form.dk-form {
         .field-wrapper {
@@ -159,7 +167,7 @@
           &.smaller {
             img {
               margin-top:0;
-              margin-left:20%;
+              margin-left:17%;
               max-width:40px;
               max-height:40px;
             }

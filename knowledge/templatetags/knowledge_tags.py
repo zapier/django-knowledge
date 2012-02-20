@@ -1,9 +1,9 @@
 from hashlib import md5
 from urllib import urlencode
 
-from django.template import Library
+from django import template
 
-register = Library()
+register = template.Library()
 
 
 @register.simple_tag
@@ -18,3 +18,10 @@ def get_gravatar(email, size=60, rating='g', default=None):
 
     url = '%s?%s' % (url, urlencode(options))
     return url.replace('&', '&amp;')
+
+
+@register.simple_tag
+def page_query(request, page_num):
+    qs = request.GET.copy()
+    qs['page'] = page_num
+    return qs.urlencode()
