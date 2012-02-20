@@ -128,7 +128,7 @@ class Question(KnowledgeBase):
             return True
         else:
             return False
-    
+
     @models.permalink
     def get_absolute_url(self):
         from django.template.defaultfilters import slugify

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  
+  <title>{% block title %}{% endblock title %}</title>
+  
+  <link rel="stylesheet" href="/static/css/main.css">
+
+</head>
+
+<body id="dk-body">
+
+<div class="dk-wrapper">
+
+  <div class="dk-header"></div>
+  
+  {% block knowledge_inner %}
+  {% endblock knowledge_inner %}
+
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="/static/js/main.js"></script>
+  
+</body>
+</html>

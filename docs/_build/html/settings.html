@@ -25,7 +25,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Django Knowledge 0.0.1 documentation" href="index.html" />
-    <link rel="prev" title="Customize" href="customize.html" /> 
+    <link rel="prev" title="Performance" href="performance.html" /> 
   </head>
   <body>
     <div class="related">
@@ -35,7 +35,7 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="customize.html" title="Customize"
+          <a href="performance.html" title="Performance"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">Django Knowledge 0.0.1 documentation</a> &raquo;</li> 
       </ul>
@@ -48,17 +48,18 @@
             
   <div class="section" id="settings">
 <h1>Settings<a class="headerlink" href="#settings" title="Permalink to this headline">¶</a></h1>
-<p>Django Knowledge has its own series of custom settings you can use to tweak its operation.
-As with normal Django settings, these go in <tt class="docutils literal"><span class="pre">settings.py</span></tt>, or a variant thereof.</p>
+<p>Django Knowledge has its own series of custom settings you can use to tweak its
+operation. As with normal Django settings, these go in <tt class="docutils literal"><span class="pre">settings.py</span></tt>, or a variant
+thereof.</p>
 <div class="section" id="knowledge-allow-anonymous">
 <h2>KNOWLEDGE_ALLOW_ANONYMOUS<a class="headerlink" href="#knowledge-allow-anonymous" title="Permalink to this headline">¶</a></h2>
-<p>Default <tt class="docutils literal"><span class="pre">False</span></tt>. If <tt class="docutils literal"><span class="pre">True</span></tt>, users who are not logged in can ask questions.
-If <tt class="docutils literal"><span class="pre">False</span></tt> only registered and logged in users can ask questions.</p>
+<p>Default <tt class="docutils literal"><span class="pre">False</span></tt>. If <tt class="docutils literal"><span class="pre">True</span></tt>, users who are not logged in can ask questions. If
+<tt class="docutils literal"><span class="pre">False</span></tt> only registered and logged in users can ask questions.</p>
 </div>
 <div class="section" id="knowledge-auto-publicize">
 <h2>KNOWLEDGE_AUTO_PUBLICIZE<a class="headerlink" href="#knowledge-auto-publicize" title="Permalink to this headline">¶</a></h2>
-<p>Default <tt class="docutils literal"><span class="pre">False</span></tt>. If <tt class="docutils literal"><span class="pre">True</span></tt>, answered questions are automatically published.
-If <tt class="docutils literal"><span class="pre">False</span></tt>, staff must manually publish questions after answering.</p>
+<p>Default <tt class="docutils literal"><span class="pre">False</span></tt>. If <tt class="docutils literal"><span class="pre">True</span></tt>, answered questions are automatically published. If
+<tt class="docutils literal"><span class="pre">False</span></tt>, staff must manually publish questions after answering.</p>
 </div>
 <div class="section" id="knowledge-free-response">
 <h2>KNOWLEDGE_FREE_RESPONSE<a class="headerlink" href="#knowledge-free-response" title="Permalink to this headline">¶</a></h2>
@@ -78,8 +79,15 @@ If <tt class="docutils literal"><span class="pre">False</span></tt>, the slug is
 </div>
 <div class="section" id="knowledge-load-jquery">
 <h2>KNOWLEDGE_LOAD_JQUERY<a class="headerlink" href="#knowledge-load-jquery" title="Permalink to this headline">¶</a></h2>
-<p>Default <tt class="docutils literal"><span class="pre">True</span></tt>. If <tt class="docutils literal"><span class="pre">True</span></tt>, we&#8217;ll load our local static jQuery. If <tt class="docutils literal"><span class="pre">False</span></tt>, we don&#8217;t
-and you will need to.</p>
+<p>Default <tt class="docutils literal"><span class="pre">True</span></tt>. If <tt class="docutils literal"><span class="pre">True</span></tt>, we&#8217;ll load our local static jQuery. If <tt class="docutils literal"><span class="pre">False</span></tt>, we
+don&#8217;t and you will need to ensure it is loaded yourself.</p>
+</div>
+<div class="section" id="knowledge-base-template">
+<h2>KNOWLEDGE_BASE_TEMPLATE<a class="headerlink" href="#knowledge-base-template" title="Permalink to this headline">¶</a></h2>
+<p>Default <tt class="docutils literal"><span class="pre">django_knowledge/base.html</span></tt>. This template should have a block called
+<tt class="docutils literal"><span class="pre">wrapper</span></tt> that each subtemplate will fill. Alternatively, you can create the default
+file in your own project (<tt class="docutils literal"><span class="pre">myproject/templates/django_knowledge/base.html</span></tt>) to
+override ours.</p>
 </div>
 </div>
 
@@ -98,13 +106,14 @@ and you will need to.</p>
 <li><a class="reference internal" href="#knowledge-allow-rating">KNOWLEDGE_ALLOW_RATING</a></li>
 <li><a class="reference internal" href="#knowledge-slug-urls">KNOWLEDGE_SLUG_URLS</a></li>
 <li><a class="reference internal" href="#knowledge-load-jquery">KNOWLEDGE_LOAD_JQUERY</a></li>
+<li><a class="reference internal" href="#knowledge-base-template">KNOWLEDGE_BASE_TEMPLATE</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="customize.html"
-                        title="previous chapter">Customize</a></p>
+  <p class="topless"><a href="performance.html"
+                        title="previous chapter">Performance</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/settings.txt"
@@ -134,7 +143,7 @@ and you will need to.</p>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="customize.html" title="Customize"
+          <a href="performance.html" title="Performance"
              >previous</a> |</li>
         <li><a href="index.html">Django Knowledge 0.0.1 documentation</a> &raquo;</li> 
       </ul>

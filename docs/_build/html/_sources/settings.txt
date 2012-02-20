@@ -1,22 +1,23 @@
 Settings
 ========
 
-Django Knowledge has its own series of custom settings you can use to tweak its operation.
-As with normal Django settings, these go in ``settings.py``, or a variant thereof.
+Django Knowledge has its own series of custom settings you can use to tweak its 
+operation. As with normal Django settings, these go in ``settings.py``, or a variant 
+thereof.
 
 
 KNOWLEDGE_ALLOW_ANONYMOUS
 --------------------
 
-Default ``False``. If ``True``, users who are not logged in can ask questions. 
-If ``False`` only registered and logged in users can ask questions.
+Default ``False``. If ``True``, users who are not logged in can ask questions. If 
+``False`` only registered and logged in users can ask questions.
 
 
 KNOWLEDGE_AUTO_PUBLICIZE
 -------------------
 
-Default ``False``. If ``True``, answered questions are automatically published. 
-If ``False``, staff must manually publish questions after answering.
+Default ``False``. If ``True``, answered questions are automatically published. If 
+``False``, staff must manually publish questions after answering.
 
 
 KNOWLEDGE_FREE_RESPONSE
@@ -44,5 +45,14 @@ If ``False``, the slug is ommitted.
 KNOWLEDGE_LOAD_JQUERY
 ----------------
 
-Default ``True``. If ``True``, we'll load our local static jQuery. If ``False``, we don't
-and you will need to.
+Default ``True``. If ``True``, we'll load our local static jQuery. If ``False``, we 
+don't and you will need to ensure it is loaded yourself.
+
+
+KNOWLEDGE_BASE_TEMPLATE
+----------------
+
+Default ``django_knowledge/base.html``. This template should have a block called 
+``wrapper`` that each subtemplate will fill. Alternatively, you can create the default 
+file in your own project (``myproject/templates/django_knowledge/base.html``) to 
+override ours.

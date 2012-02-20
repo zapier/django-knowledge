@@ -6,3 +6,6 @@ FREE_RESPONSE = getattr(settings, 'KNOWLEDGE_FREE_RESPONSE', False)
 ALLOW_RATING = getattr(settings, 'KNOWLEDGE_ALLOW_RATING', True)
 SLUG_URLS = getattr(settings, 'KNOWLEDGE_SLUG_URLS', True)
 LOAD_JQUERY = getattr(settings, 'KNOWLEDGE_LOAD_JQUERY', True)
+
+BASE_TEMPLATE = getattr(settings, 'KNOWLEDGE_BASE_TEMPLATE',
+    'django_knowledge/base.html')

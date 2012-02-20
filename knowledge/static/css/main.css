@@ -1,0 +1,366 @@
+/* from blueprint */
+div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, code,
+del, dfn, em, img, q, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, dialog, figure, footer, header,
+hgroup, nav, section, hr {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* This helps to make newer HTML5 elements behave like DIVs in older browers */
+article, aside, details, figcaption, figure, dialog,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+/* Line-height should always be unitless! */
+body {
+  line-height: 1.5;
+  background: white; }
+
+/* Tables still need 'cellspacing="0"' in the markup. */
+table {
+  border-collapse: separate;
+  border-spacing: 0; }
+
+/* float:none prevents the span-x classes from breaking table-cell display */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  float: none !important; }
+
+table, th, td {
+  vertical-align: middle; }
+
+/* Remove possible quote marks (") from <q>, <blockquote>. */
+blockquote:before, blockquote:after, q:before, q:after {
+  content: ''; }
+
+blockquote, q {
+  quotes: "" ""; }
+
+/* Remove annoying border on linked images. */
+a img {
+  border: none; }
+
+/* Remember to define your own focus styles! */
+:focus {
+  outline: 0; }
+
+hr {
+  color: #ccc;
+  background: #ccc;
+  height: 1px;
+  border: 0;
+  margin: 0 0 1.5em; }
+
+/* typography update */
+html {
+  font-size: 100.01%; }
+
+body {
+  font-size: 75%;
+  color: #333;
+  background: #fff;
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif; }
+
+/* Headings
+-------------------------------------------------------------- */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+  color: #111; }
+
+h1 {
+  font-size: 3em;
+  line-height: 1;
+  margin-bottom: 0.5em; }
+
+h2 {
+  font-size: 2em;
+  margin-bottom: 0.75em; }
+
+h3 {
+  font-size: 1.5em;
+  line-height: 1;
+  margin-bottom: 1em; }
+
+h4 {
+  font-size: 1.2em;
+  line-height: 1.25;
+  margin-bottom: 1.25em; }
+
+h5 {
+  font-size: 1em;
+  font-weight: bold;
+  margin-bottom: 1.5em; }
+
+h6 {
+  font-size: 1em;
+  font-weight: bold; }
+
+h1 img, h2 img, h3 img,
+h4 img, h5 img, h6 img {
+  margin: 0; }
+
+/* Text elements
+-------------------------------------------------------------- */
+p {
+  margin: 0 0 1.5em; }
+
+/*
+  These can be used to pull an image at the start of a paragraph, so
+  that the text flows around it (usage: <p><img class="left">Text</p>)
+ */
+.left {
+  float: left !important; }
+
+p .left {
+  margin: 1.5em 1.5em 1.5em 0;
+  padding: 0; }
+
+.right {
+  float: right !important; }
+
+p .right {
+  margin: 1.5em 0 1.5em 1.5em;
+  padding: 0; }
+
+a:focus,
+a:hover {
+  color: #09f; }
+
+a {
+  color: #06c;
+  text-decoration: underline; }
+
+blockquote {
+  margin: 1.5em;
+  color: #666;
+  font-style: italic; }
+
+strong, dfn {
+  font-weight: bold; }
+
+em, dfn {
+  font-style: italic; }
+
+sup, sub {
+  line-height: 0; }
+
+abbr,
+acronym {
+  border-bottom: 1px dotted #666; }
+
+address {
+  margin: 0 0 1.5em;
+  font-style: italic; }
+
+del {
+  color: #666; }
+
+pre {
+  margin: 1.5em 0;
+  white-space: pre; }
+
+pre, code, tt {
+  font: 1em 'andale mono', 'lucida console', monospace;
+  line-height: 1.5; }
+
+hr {
+  color: #ccc;
+  background: #ccc;
+  height: 1px;
+  border: 0;
+  margin: 0 0 1.25em; }
+
+/* Lists
+-------------------------------------------------------------- */
+li ul,
+li ol {
+  margin: 0; }
+
+ul, ol {
+  margin: 0 1.5em 1.5em 0;
+  padding-left: 1.5em; }
+
+ul {
+  list-style-type: disc; }
+
+ol {
+  list-style-type: decimal; }
+
+dl {
+  margin: 0 0 1.5em 0; }
+
+dl dt {
+  font-weight: bold; }
+
+dd {
+  margin-left: 1.5em; }
+
+/* Tables
+-------------------------------------------------------------- */
+/*
+  Because of the need for padding on TH and TD, the vertical rhythm
+  on table cells has to be 27px, instead of the standard 18px or 36px
+  of other elements.
+ */
+table {
+  margin-bottom: 1.4em;
+  width: 100%; }
+
+th {
+  font-weight: bold; }
+
+thead th {
+  background: #c3d9ff; }
+
+th, td, caption {
+  padding: 4px 10px 4px 5px; }
+
+/*
+  You can zebra-stripe your tables in outdated browsers by adding
+  the class "even" to every other table row.
+ */
+tbody tr:nth-child(even) td,
+tbody tr.even td {
+  background: #e5ecf9; }
+
+tfoot {
+  font-style: italic; }
+
+caption {
+  background: #eee; }
+
+#dk-body {
+  background: #f7f7f7; }
+
+.dk-wrapper {
+  max-width: 960px;
+  margin: 0 auto; }
+
+.dk-inner {
+  padding: 20px 0; }
+  .dk-inner .quiet {
+    font-weight: normal;
+    color: #888; }
+  .dk-inner .clear {
+    clear: both; }
+  .dk-inner .dk-roof h2 {
+    margin-bottom: .15em;
+    font-weight: 600; }
+  .dk-inner .dk-search {
+    border: 1px solid #ccc;
+    padding: 1%;
+    margin-top: 24px;
+    background: #eee;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px; }
+    .dk-inner .dk-search input.question-search {
+      -moz-border-radius: 6px;
+      -webkit-border-radius: 6px;
+      border-radius: 6px;
+      padding: 8px 1%;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      width: 87%;
+      height: 16px;
+      float: left; }
+      .dk-inner .dk-search input.question-search.unclicked {
+        color: #aaa; }
+    .dk-inner .dk-search .submit-question-search {
+      height: 34px;
+      width: 10%;
+      padding: 8px 1%;
+      float: right;
+      background: green;
+      -moz-border-radius: 6px;
+      -webkit-border-radius: 6px;
+      border-radius: 6px;
+      border: 1px solid #004d00;
+      cursor: pointer;
+      color: white;
+      font-size: 15px;
+      line-height: 15px;
+      text-align: center;
+      text-shadow: 1px 1px black; }
+      .dk-inner .dk-search .submit-question-search:hover {
+        background: #007100; }
+  .dk-inner .dk-content {
+    width: 72%;
+    float: left;
+    margin-top: 28px; }
+    .dk-inner .dk-content .dk-widget {
+      border: 1px solid #ccc;
+      -moz-box-shadow: 2px 2px 6px #dddddd;
+      -webkit-box-shadow: 2px 2px 6px #dddddd;
+      box-shadow: 2px 2px 6px #dddddd;
+      padding: 18px 2%;
+      background: #fff;
+      margin-bottom: 24px; }
+      .dk-inner .dk-content .dk-widget h2 {
+        margin-bottom: 0.2em;
+        font-weight: 600; }
+      .dk-inner .dk-content .dk-widget h3 {
+        margin-bottom: 0.6em;
+        font-weight: 600; }
+      .dk-inner .dk-content .dk-widget ol.question-list {
+        font-size: 14px;
+        margin-left: 10px; }
+      .dk-inner .dk-content .dk-widget form.dk-form .field-wrapper {
+        padding-bottom: 12px; }
+        .dk-inner .dk-content .dk-widget form.dk-form .field-wrapper .field-label label {
+          font-size: 14px;
+          font-weight: 600; }
+        .dk-inner .dk-content .dk-widget form.dk-form .field-wrapper .field-label small {
+          font-size: 11px; }
+        .dk-inner .dk-content .dk-widget form.dk-form .field-wrapper input, .dk-inner .dk-content .dk-widget form.dk-form .field-wrapper textarea {
+          padding: 8px 1%;
+          font-size: 14px;
+          width: 96%;
+          border: 1px solid #ccc; }
+      .dk-inner .dk-content .dk-widget form.dk-form .form-footer {
+        border-top: 1px dashed #ccc;
+        padding-top: 10px;
+        width: 96%; }
+        .dk-inner .dk-content .dk-widget form.dk-form .form-footer input.submit-question {
+          font-size: 16px; }
+      .dk-inner .dk-content .dk-widget .dk-dialog {
+        padding-bottom: 1.5em;
+        overflow: auto;
+        min-height: 78px; }
+        .dk-inner .dk-content .dk-widget .dk-dialog p {
+          margin-bottom: 1em; }
+        .dk-inner .dk-content .dk-widget .dk-dialog .the-author.gravatar {
+          width: 13%;
+          overflow: hidden;
+          float: left; }
+          .dk-inner .dk-content .dk-widget .dk-dialog .the-author.gravatar img {
+            margin-top: 6px;
+            padding: 5%;
+            border: 1px solid #ccc;
+            max-width: 60px;
+            max-height: 60px;
+            width: 80%;
+            height: 80%; }
+        .dk-inner .dk-content .dk-widget .dk-dialog .the-content.gravatar {
+          width: 87%;
+          float: right; }
+  .dk-inner .dk-sidebar {
+    width: 25%;
+    float: right;
+    margin-top: 38px; }
+    .dk-inner .dk-sidebar .inner {
+      padding: 0 2%; }
+    .dk-inner .dk-sidebar h4 {
+      margin-bottom: 0.3em;
+      font-weight: 600; }
+    .dk-inner .dk-sidebar hr {
+      margin-bottom: 0.6em; }
