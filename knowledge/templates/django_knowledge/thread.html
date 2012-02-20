@@ -1,6 +1,59 @@
-{% extends BASE %}
+{% extends 'django_knowledge/inner.html' %}
 
-{% block knowledge_inner %}
-  <div class="dk-content"></div>
-  <div class="dk-sidebar"></div>
-{% endblock knowledge_inner %}
+{% load markup %}
+{% load knowledge_tags %}
+
+{% block title %}{{ question.title }}{% endblock title %}
+
+{% block knowledge_widgets %}
+
+<div class="dk-widget">
+
+  <div class="dk-dialog">
+    <div class="the-author gravatar"><img src="{% get_gravatar question.get_email %}" alt="{{ question.get_name }} gravatar"></div>
+    <div class="the-content gravatar">
+      <h2>{{ question.title }}</h2>
+      <h5>{{ question.get_name }} <span class="quiet">
+        {% if question.user.is_staff %}&nbsp;<span class="dk-label dk-label-success">staff</span>{% endif %}
+        &nbsp;{{ question.added }}
+      </span></h5>
+
+      {{ question.body|markdown }}
+    </div>
+
+    <div class="clear"></div>
+
+    <br /> 
+    <hr class="light"/>
+  </div>
+
+  {% for response in responses %}
+    <div class="dk-dialog">
+      <div class="the-author gravatar smaller"><img src="{% get_gravatar response.get_email 40 %}" alt="{{ response.get_name }} gravatar"></div>
+      <div class="the-content gravatar">
+        <h5>{{ response.get_name }} <span class="quiet">
+          {% if question.user == response.user %}&nbsp;<span class="dk-label">poster</span>{% endif %}
+          {% if response.user.is_staff %}&nbsp;<span class="dk-label dk-label-success">staff</span>{% endif %}
+          &nbsp;{{ response.added }}
+        </span></h5>
+
+        {{ response.body|markdown }}
+      </div>
+    </div>
+  {% empty %}
+    <p>No responses yet!</p>
+  {% endfor %}
+
+  <br/> 
+  <hr class="light"/>
+  <br/> 
+
+  {% if form %}
+    {% include "django_knowledge/form.html" with submit_value="Respond to this question" submit_and="we have lots of work to do." %}
+  {% else %}
+    <p>Please log in to ask a question!</p>
+  {% endif %}
+
+</div>
+
+{% endblock knowledge_widgets %}

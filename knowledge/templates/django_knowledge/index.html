@@ -1,102 +1,15 @@
-{% extends BASE %}
+{% extends 'django_knowledge/inner.html' %}
 
-{% block knowledge_inner %}<div class="dk-inner">
- 
-  <div class="dk-roof">
-    <h2>Welcome to our Support Center.</h2>
-    <h4>Search for answers to your questions below, or ask your own.</h4>
-  </div>
+{% block knowledge_widgets %}
 
-  <div class="dk-search">
-    <form action="" method="get">
-      <input class="question-search unclicked" value="Start typing your question here." type="text" /> <input value="Search" type="submit" class="submit-question-search" />
-    </form>
-    <div class="clear"></div>
-  </div>
+<div class="dk-widget">
+  <h3>Top {{ questions|length }} Questions</h3>
+  <hr />
+  <ol class="question-list">
+    {% for question in questions %}
+      <li><a href="{{ question.get_absolute_url }}">{{ question.title }}</a></li>
+    {% endfor %}
+  </ol>
+</div>
 
-  <div class="dk-content">
-
-    <div class="dk-widget">
-      <h3>Top 20 Questions</h3>
-      <hr />
-      <ol class="question-list">
-        <li><a href="#">Where is my pet cat?</a></li>
-        <li><a href="#">Where is my pet cat?</a></li>
-        <li><a href="#">Where is my pet cat?</a></li>
-        <li><a href="#">Where is my pet cat?</a></li>
-        <li><a href="#">Where is my pet cat?</a></li>
-        <li><a href="#">Where is my pet cat?</a></li>
-      </ol>
-    </div>
-
-    <div class="dk-widget">
-
-      <div class="dk-dialog">
-        <div class="the-author gravatar"><img src="https://secure.gravatar.com/avatar/883955996dbb79f38d8814dbfb336885.jpg?s=60&amp;r=G" alt="Bryan Helmig"></div>
-        <div class="the-content gravatar">
-          <h2>What time is the superbowl?</h2>
-          <h5>Bryan Helmig <span class="quiet"> | NOV 18, 2010 10:12PM EST</span></h5>
-
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu elit sed orci eleifend cursus. Aliquam erat volutpat. Morbi nibh risus, tempus eu ullamcorper vitae, facilisis ac justo. </p>
-          <p>Aenean nec mi felis. Donec ornare sapien eget enim malesuada nec sagittis nisl facilisis. Curabitur mollis fringilla eleifend. Maecenas fringilla, sapien vel tristique pharetra, lacus orci egestas mauris, sit amet facilisis odio augue quis enim. Nam tristique elit et orci pharetra molestie. Sed sit amet nulla eget dui tristique molestie.</p>
-        </div>
-
-        <hr class="clear"/>
-      </div>
-
-
-      <div class="dk-dialog">
-        <div class="the-author"></div>
-        <div class="the-content">
-          <h5>Bill Gates <span class="quiet"> | NOV 18, 2010 11:59PM EST</span></h5>
-
-          <p>Aenean nec mi felis. Donec ornare sapien eget enim malesuada nec sagittis nisl facilisis.</p>
-          <p>Curabitur mollis fringilla eleifend.</p>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="dk-widget">
-      <h3>Ask a Question</h3>
-      <hr />
-
-      <form action="" method="post" class="dk-form">
-        <div class="field-wrapper">
-          <div class="field-label">
-            <label for="id_the_target">AIM Nickname: <small><em class="quiet">(required)</em></small></label>
-            <br />
-            <small class="help-text">Add "zapierapp" to your friends list to receive messages.</small>
-          </div>
-          <div class="field-input">
-            <input type="text" name="the_target" value="bryanhelmig" id="id_the_target">
-          </div>
-        </div>
-
-        <div class="field-wrapper">
-          <div class="field-label">
-            <label for="id_the_message">The Message: <small><em class="quiet">(required)</em></small></label>
-            <br />
-            <small class="help-text">Please detail the problem and what might be going wrong.</small>
-          </div>
-          <div class="field-input">
-            <textarea id="id_the_message" rows="10" cols="40" name="the_message" class="current">So here is: {{Field2}}</textarea>
-          </div>
-        </div>
-
-        <div class="form-footer">
-          <input class="submit-question" type="submit" value="Submit this support request"> <small>and we'll get back to you as soon as possible.</small>
-        </div>
-      </form>
-    </div>
-
-
-  </div>
-
-  <div class="dk-sidebar">
-    <div class="inner">
-      {% include "django_knowledge/sidebar.html" %}
-    </div>
-  </div>
-
-</div>{% endblock knowledge_inner %}
+{% endblock knowledge_widgets %}

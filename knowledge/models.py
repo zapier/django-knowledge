@@ -17,6 +17,17 @@ STATUSES_EXTENDED = STATUSES + (
 )
 
 
+class Category(models.Model):
+    added = models.DateTimeField(auto_now_add=True)
+    lastchanged = models.DateTimeField(auto_now=True)
+
+    title = models.CharField(max_length=255)
+    slug = models.SlugField()
+
+    def __unicode__(self):
+        return self.title
+
+
 class KnowledgeBase(models.Model):
     """
     The base class for Knowledge models.
@@ -27,15 +38,18 @@ class KnowledgeBase(models.Model):
     added = models.DateTimeField(auto_now_add=True)
     lastchanged = models.DateTimeField(auto_now=True)
 
-
-    user = models.ForeignKey('auth.User', blank=True, 
+    user = models.ForeignKey('auth.User', blank=True,
                              null=True, db_index=True)
 
     # for anonymous posting, if permitted
-    name = models.CharField(max_length=64, blank=True, null=True)
-    email = models.EmailField(blank=True, null=True)
+    name = models.CharField(max_length=64, blank=True, null=True,
+        help_text='Enter your first and last name.')
+    email = models.EmailField(blank=True, null=True,
+        help_text='Enter a valid email address.')
 
-    body = models.TextField(blank=True, null=True)
+    get_name = lambda self: (self.name or '{0} {1}'.format(
+        self.user.first_name, self.user.last_name))
+    get_email = lambda self: self.email or self.user.email
 
     points = models.PositiveIntegerField(default=0)
 
@@ -71,31 +85,46 @@ class KnowledgeBase(models.Model):
         if save:
             self.save()
 
-    def public(self):
-        self.switch('public')
+    def public(self, save=True):
+        self.switch('public', save)
 
-    def private(self):
-        self.switch('private')
+    def private(self, save=True):
+        self.switch('private', save)
 
-    def inherit(self):
-        self.switch('inherit')
+    def inherit(self, save=True):
+        self.switch('inherit', save)
 
-    def internal(self):
-        self.switch('internal')
+    def internal(self, save=True):
+        self.switch('internal', save)
 
     class Meta:
         abstract = True
+
+    def save(self, *args, **kwargs):
+        if not self.user and self.name and self.email:
+            self.public(save=False)
+
+        super(KnowledgeBase, self).save(*args, **kwargs)
 
 
 class Question(KnowledgeBase):
     is_question = True
 
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=255,
+        verbose_name='Question',
+        help_text='Enter your question or suggestion.')
+    body = models.TextField(blank=True, null=True,
+        verbose_name='Description',
+        help_text='Please offer details. Markdown enabled.')
+
     status = models.CharField(
         max_length=32, choices=STATUSES,
         default='private', db_index=True)
 
     locked = models.BooleanField(default=False)
+
+    categories = models.ManyToManyField('knowledge.Category')
+
     objects = QuestionManager()
 
     def inherit(self):
@@ -107,8 +136,8 @@ class Question(KnowledgeBase):
 
     def get_responses(self, user=None):
         responses = self.responses.all()
-        #if user:
-        #    return [r for r in responses if r.can_view(user)]
+        if user:
+            return [r for r in responses if r.can_view(user)]
         return responses
 
     def answered(self):
@@ -141,6 +170,9 @@ class Question(KnowledgeBase):
     def get_absolute_url(self):
         from django.template.defaultfilters import slugify
         return ('knowledge_thread', [self.id, slugify(self.title)])
+    
+    def __unicode__(self):
+        return self.title
 
 
 class Response(KnowledgeBase):
@@ -148,9 +180,16 @@ class Response(KnowledgeBase):
 
     question = models.ForeignKey('knowledge.Question',
         related_name='responses')
+
+    body = models.TextField(blank=True, null=True,
+        verbose_name='Response',
+        help_text='Please enter your response. Markdown enabled.')
     status = models.CharField(
         max_length=32, choices=STATUSES_EXTENDED,
         default='inherit', db_index=True)
     accepted = models.BooleanField(default=False)
 
     objects = ResponseManager()
+    
+    def __unicode__(self):
+        return self.body[0:100] + u'...'

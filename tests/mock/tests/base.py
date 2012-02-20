@@ -7,9 +7,13 @@ from knowledge.models import Question, Response
 class TestCase(DjangoTestCase):
     def setUp(self):
         self.admin = User.objects.create_superuser('admin', 'admin@example.com', 'secret')
-        self.joe = User.objects.create_user('joe', 'joe@example.com', 'secret')
+        self.joe = User.objects.create_user('joe', 'joedirt@example.com', 'secret')
         self.bob = User.objects.create_user('bob', 'bob@example.com', 'secret')
         self.anon = AnonymousUser()
+
+        self.joe.first_name = 'Joe'
+        self.joe.last_name = 'Dirt'
+        self.joe.save()
 
         ## joe asks a question ##
         self.question = Question.objects.create(

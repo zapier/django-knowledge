@@ -2,17 +2,16 @@
 <hr />
 
 <ul>
-  <li><a href="#">Start now</a></li>
-  <li><a href="#">Start now</a></li>
-  <li><a href="#">Start now</a></li>
-  <li><a href="#">Start now</a></li>
+  {% for category in categories %}
+    <li><a href="{% url knowledge_list_category category.slug %}">{{ category.title }}</a></li>
+  {% endfor %}
 </ul>
 
 <br />
 
-<h4>Ask Question</h4>
+<h4>Get Involved</h4>
 <hr />
 
 <ul>
-  <li><a href="#">Start now</a></li>
+  <li><a href="{% url knowledge_ask %}">Ask a question or give suggestion.</a></li>
 </ul>

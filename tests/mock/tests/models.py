@@ -193,6 +193,23 @@ class BasicModelTest(TestCase):
         )
 
 
+    def test_normal_question(self):
+        self.assertEquals(self.question.get_name(), 'Joe Dirt')
+        self.assertEquals(self.question.get_email(), 'joedirt@example.com')
+
+
+    def test_anon_question(self):
+        q = Question.objects.create(
+            title = 'Where is my cat?',
+            body = 'His name is whiskers.',
+            name = 'Joe Dirt',
+            email = 'joedirt@example.com'
+        )
+
+        self.assertEquals(q.get_name(), 'Joe Dirt')
+        self.assertEquals(q.get_email(), 'joedirt@example.com')
+
+
 
 
 

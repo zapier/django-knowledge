@@ -74,7 +74,7 @@ with stable releases:</p>
 </div>
 <div class="section" id="using-git-repositories">
 <span id="installation-git"></span><h2>Using git repositories<a class="headerlink" href="#using-git-repositories" title="Permalink to this headline">¶</a></h2>
-<p>Regular development happens at our`github repo &lt;<a class="reference external" href="https://github.com/zapier/django-knowledge">https://github.com/zapier/django-knowledge</a>&gt;`_. Grabbing the
+<p>Regular development happens at our <a class="reference external" href="https://github.com/zapier/django-knowledge">GitHub repository</a>. Grabbing the
 cutting edge version might give you some extra features or fix some newly discovered bugs. We recommend
 not installing from the git repo unless you are actively developing <em>django-knowledge</em>. Please don&#8217;t
 use it in production (and if you do, report back what broked)!</p>
@@ -91,6 +91,14 @@ both current and previous stable releases. After unzipping or untarring, you can
 folder inside the resulting <strong>django-knowledge</strong> to your PYTHONPATH or simply run <tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt>
 to add it to your <strong>site-packages</strong>.</p>
 </div>
+<div class="section" id="setting-up-your-django-project">
+<span id="installation-setup"></span><h2>Setting up your Django project<a class="headerlink" href="#setting-up-your-django-project" title="Permalink to this headline">¶</a></h2>
+<p>First, you&#8217;ll want to add <tt class="docutils literal"><span class="pre">knowledge</span></tt> and <tt class="docutils literal"><span class="pre">django.contrib.markup</span></tt> to your <tt class="docutils literal"><span class="pre">INSTALLED_APPS</span></tt>. You may
+need to <tt class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">markdown</span></tt> to cover the markup dependency.</p>
+<p>Second, add <tt class="docutils literal"><span class="pre">url(r'^knowledge/',</span> <span class="pre">include('knowledge.urls'))</span></tt> to your <tt class="docutils literal"><span class="pre">urls.py</span></tt>.</p>
+<p>Finally, be sure to run <tt class="docutils literal"><span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">syncdb</span></tt> or <tt class="docutils literal"><span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">migrate</span> <span class="pre">knowledge</span></tt> to set up
+the necessary database tables.</p>
+</div>
 </div>
 
 
@@ -105,6 +113,7 @@ to add it to your <strong>site-packages</strong>.</p>
 <li><a class="reference internal" href="#using-pip-or-easy-install">Using pip or easy_install</a></li>
 <li><a class="reference internal" href="#using-git-repositories">Using git repositories</a></li>
 <li><a class="reference internal" href="#using-archives-tarball-or-zip">Using archives (tarball or zip)</a></li>
+<li><a class="reference internal" href="#setting-up-your-django-project">Setting up your Django project</a></li>
 </ul>
 </li>
 </ul>

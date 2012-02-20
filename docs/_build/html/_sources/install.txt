@@ -32,7 +32,7 @@ But really, you shouldn't do that.
 Using git repositories
 ----------------------
 
-Regular development happens at our`github repo <https://github.com/zapier/django-knowledge>`_. Grabbing the 
+Regular development happens at our `GitHub repository <https://github.com/zapier/django-knowledge>`_. Grabbing the 
 cutting edge version might give you some extra features or fix some newly discovered bugs. We recommend
 not installing from the git repo unless you are actively developing *django-knowledge*. Please don't
 use it in production (and if you do, report back what broked)!
@@ -54,3 +54,18 @@ Visit our `tags page <https://github.com/zapier/django-knowledge/tags>`_ to grab
 both current and previous stable releases. After unzipping or untarring, you can add the **knowledge** 
 folder inside the resulting **django-knowledge** to your PYTHONPATH or simply run ``python setup.py install`` 
 to add it to your **site-packages**.
+
+
+
+.. _installation-setup:
+ 
+Setting up your Django project
+------------------------------
+
+First, you'll want to add ``knowledge`` and ``django.contrib.markup`` to your ``INSTALLED_APPS``. You may 
+need to ``pip install markdown`` to cover the markup dependency. 
+
+Second, add ``url(r'^knowledge/', include('knowledge.urls'))`` to your ``urls.py``.
+
+Finally, be sure to run ``python manage.py syncdb`` or ``python manage.py migrate knowledge`` to set up
+the necessary database tables.

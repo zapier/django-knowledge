@@ -1,0 +1,25 @@
+<form action="" method="post" class="dk-form">
+  {% csrf_token %}
+
+  {% for field in form.visible_fields %}
+    <div class="field-wrapper">
+      <div class="field-label">
+        <label for="id_{{ field.html_name }}">{{ field.label }}: {% if field.field.required %}<small><em class="quiet">(required)</em></small>{% endif %}</label>
+        
+        {% if field.field.help_text %}
+          <br />
+          <small class="help-text">{{ field.field.help_text }}</small>
+        {% endif %}
+      </div>
+      <div class="field-input">
+        {{ field }}
+      </div>
+
+      {{ field.errors }}
+    </div>
+  {% endfor %}
+
+  <div class="form-footer">
+    <input class="submit-question" type="submit" value="{{ submit_value }}"> <small>{{ submit_and }}</small>
+  </div>
+</form>

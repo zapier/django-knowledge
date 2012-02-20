@@ -1,6 +1,24 @@
-{% extends BASE %}
+{% extends 'django_knowledge/inner.html' %}
 
-{% block knowledge_inner %}
-  <div class="dk-content"></div>
-  <div class="dk-sidebar"></div>
-{% endblock knowledge_inner %}
+{% block knowledge_widgets %}
+
+<div class="dk-widget">
+  <h3>Showing {{ paginator.count }} results{% if search %} for "{{ search }}"{% endif %}{% if category %} in "{{ category.title }}" category{% endif %}:</h3>
+  <hr />
+  <ol class="question-list">
+    {% for question in questions %}
+      <li><a href="{{ question.get_absolute_url }}">{{ question.title }}</a></li>
+    {% endfor %}
+  </ol>
+</div>
+
+{% if form and paginator.count < 5 %}
+    <div class="dk-widget">
+      <h3>Ask a Question</h3>
+      <hr />
+
+      {% include "django_knowledge/form.html" with submit_value="Submit this support request" submit_and="and we'll get back to you as soon as possible." %}
+    </div>
+{% endif %}
+
+{% endblock knowledge_widgets %}

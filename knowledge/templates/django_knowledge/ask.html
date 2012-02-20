@@ -1,6 +1,17 @@
-{% extends BASE %}
+{% extends 'django_knowledge/inner.html' %}
 
-{% block knowledge_inner %}
-  <div class="dk-content"></div>
-  <div class="dk-sidebar"></div>
-{% endblock knowledge_inner %}
+{% block title %}Ask a Question{% endblock title %}
+
+{% block knowledge_widgets %}
+<div class="dk-widget">
+  <h3>Ask a Question</h3>
+  <hr />
+
+  {% if form %}
+    {% include "django_knowledge/form.html" with submit_value="Submit this support request" submit_and="and we'll get back to you as soon as possible." %}
+  {% else %}
+    <p>Please log in to ask a question!</p>
+  {% endif %}
+
+</div>
+{% endblock knowledge_widgets %}

@@ -18,7 +18,9 @@ DATABASES = {
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
+    'django.contrib.admin',
     'django.contrib.sessions',
+    'django.contrib.markup',
 
     'knowledge',
     'django_coverage',
@@ -26,8 +28,6 @@ INSTALLED_APPS = (
 )
 
 ROOT_URLCONF = 'tests.urls'
-
-
 
 TEMPLATE_DIRS = (
     os.path.join(DIRNAME, 'templates').replace('\\','/')
