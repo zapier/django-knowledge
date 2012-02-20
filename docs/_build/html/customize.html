@@ -52,6 +52,104 @@
             
   <div class="section" id="customize">
 <h1>Customize<a class="headerlink" href="#customize" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="templates">
+<span id="customize-static"></span><h2>Templates<a class="headerlink" href="#templates" title="Permalink to this headline">¶</a></h2>
+<p>The default base template is <tt class="docutils literal"><span class="pre">django_knowledge/base.html</span></tt> which contains a
+single <tt class="docutils literal"><span class="pre">{%</span> <span class="pre">block</span> <span class="pre">knowledge_inner</span> <span class="pre">%}</span></tt> tag. This base template loads two css
+files from your static (see below): <tt class="docutils literal"><span class="pre">reset.css</span></tt> and <tt class="docutils literal"><span class="pre">base.css</span></tt>.</p>
+<div class="section" id="if-you-have-your-own-template-shim-wrapper">
+<h3>If you have your own template shim/wrapper:<a class="headerlink" href="#if-you-have-your-own-template-shim-wrapper" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Change <tt class="docutils literal"><span class="pre">KNOWLEDGE_BASE_TEMPLATE</span></tt> to your own <tt class="docutils literal"><span class="pre">base.html</span></tt> location.</li>
+<li>Put <tt class="docutils literal"><span class="pre">{%</span> <span class="pre">block</span> <span class="pre">knowledge_inner</span> <span class="pre">%}</span></tt> around all your content.</li>
+<li>Include <tt class="docutils literal"><span class="pre">{{</span> <span class="pre">STATIC_URL</span> <span class="pre">}}knowledge/css/main.css</span></tt> for knowledge specific styling.
+You should purposefully leave out <tt class="docutils literal"><span class="pre">{{</span> <span class="pre">STATIC_URL</span> <span class="pre">}}knowledge/css/reset.css</span></tt> if you
+don&#8217;t want us to modify your existing base styles.</li>
+</ol>
+<p>If you do decide to change the base template via the <tt class="docutils literal"><span class="pre">KNOWLEDGE_BASE_TEMPLATE</span></tt>
+setting, your new template might look something like this:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">&quot;en&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;title&gt;</span>{% block title %}{% endblock title %} | Johnny&#39;s Support Center<span class="nt">&lt;/title&gt;</span>
+
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;{{ STATIC_URL }}css/my-own-reset.css&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;{{ STATIC_URL }}css/my-own-style.css&quot;</span><span class="nt">&gt;</span>
+
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;{{ STATIC_URL }}knowledge/css/main.css&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;wrapper&quot;</span><span class="nt">&gt;</span>
+
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;header&quot;</span><span class="nt">&gt;</span>
+      Welcome to the Johnny&#39;s app!
+  <span class="nt">&lt;/div&gt;</span>
+
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;content&quot;</span><span class="nt">&gt;</span>
+    {% block knowledge_inner %}
+      {% block content %}
+        <span class="c">&lt;!-- your tradition content is loaded here if not django knowledge --&gt;</span>
+      {% endblock content %}
+
+      <span class="c">&lt;!-- django knowlege is loaded here --&gt;</span>
+    {% endblock knowledge_inner %}
+  <span class="nt">&lt;/div&gt;</span>
+
+
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;footer&quot;</span><span class="nt">&gt;</span>
+      Copyright 2012
+  <span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+</div>
+<p>That isn&#8217;t to say that our css styles will fit in perfectly, but we&#8217;ve been careful
+to namespace under <tt class="docutils literal"><span class="pre">dk-`</span></tt> the majority of our css classes, so conflicts should be
+minimal.</p>
+</div>
+<div class="section" id="if-you-want-to-use-the-included-template-shim-wrapper">
+<h3>If you want to use the included template shim/wrapper:<a class="headerlink" href="#if-you-want-to-use-the-included-template-shim-wrapper" title="Permalink to this headline">¶</a></h3>
+<p>1. Ensure static resources are loading for <tt class="docutils literal"><span class="pre">{{</span> <span class="pre">STATIC_URL</span> <span class="pre">}}knowledge/css/reset.css</span></tt>
+and <tt class="docutils literal"><span class="pre">{{</span> <span class="pre">STATIC_URL</span> <span class="pre">}}knowledge/css/main.css</span></tt>.
+2. Done.</p>
+</div>
+<div class="section" id="modifying-common-singular-sections">
+<h3>Modifying common singular sections:<a class="headerlink" href="#modifying-common-singular-sections" title="Permalink to this headline">¶</a></h3>
+<p>There are two very common areas for modification:</p>
+<ol class="arabic simple">
+<li><tt class="docutils literal"><span class="pre">django_knowledge/welcome.html</span></tt> - The support header containing the link and phrase
+&#8220;Welcome to our Support Center&#8221;. Simply override this locally by adding
+<tt class="docutils literal"><span class="pre">templates/django_knowledge/welcome.html</span></tt> to your project.</li>
+<li><tt class="docutils literal"><span class="pre">django_knowledge/sidebar.html</span></tt> - The sidebar containing links to the homepage, ask
+a question and categories. Likewise, simply override this locally by adding
+<tt class="docutils literal"><span class="pre">templates/django_knowledge/sidebar.html</span></tt> to your project.</li>
+</ol>
+</div>
+</div>
+<div class="section" id="static">
+<span id="id1"></span><h2>Static<a class="headerlink" href="#static" title="Permalink to this headline">¶</a></h2>
+<p>As long as you are using Django&#8217;s static files system, setting up static files should
+be as easy as <tt class="docutils literal"><span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">collectstatic</span></tt>. If not, you can always copy your files
+manually to a legacy <tt class="docutils literal"><span class="pre">MEDIA_URL</span></tt> and override the base template according to the above
+templates section.</p>
+</div>
+<div class="section" id="css">
+<span id="customize-css"></span><h2>CSS<a class="headerlink" href="#css" title="Permalink to this headline">¶</a></h2>
+<p>We purposefully namespace the majority of our css classes with <tt class="docutils literal"><span class="pre">dk-</span></tt> in order to keep
+them from conflicting with your existing css. There are two included css files:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">reset.css</span></tt> - The majority of the base classes that act on body, typography, etc...
+This is ripped from Blueprint (though Blueprint is not a prerequisite). This should
+probably only be included if you aren&#8217;t using your own shim.</li>
+<li><tt class="docutils literal"><span class="pre">main.css</span></tt> - This contains the real meat of the styles. Most of these are namespaced
+so they shouldn&#8217;t affect your other styles (IE: the header/footer your shim has).
+However, the inverse is not true. Your styles may (and probably will) effect knowledge&#8217;s
+css. You&#8217;re kind of on your own here.</li>
+</ul>
+</div>
 </div>
 
 
@@ -60,6 +158,21 @@
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Customize</a><ul>
+<li><a class="reference internal" href="#templates">Templates</a><ul>
+<li><a class="reference internal" href="#if-you-have-your-own-template-shim-wrapper">If you have your own template shim/wrapper:</a></li>
+<li><a class="reference internal" href="#if-you-want-to-use-the-included-template-shim-wrapper">If you want to use the included template shim/wrapper:</a></li>
+<li><a class="reference internal" href="#modifying-common-singular-sections">Modifying common singular sections:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#static">Static</a></li>
+<li><a class="reference internal" href="#css">CSS</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="development.html"
                         title="previous chapter">Development</a></p>

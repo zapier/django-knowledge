@@ -15,6 +15,8 @@ DATABASES = {
     }
 }
 
+STATIC_URL = '/static/'
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',

@@ -1,21 +1,11 @@
 @import "mixins";
 
-#dk-body {
-  background:#f7f7f7;
-}
-
-.dk-wrapper {
-  // all our reset stuff is namespaced under dk wrapper 
-  max-width:960px;
-  margin:0 auto;
-}
-
-.dk-header {
-}
-
 .dk-inner {
   padding:20px 0;
   font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+
+  // common resets
+  input {margin:0;}
 
   .quiet {
     font-weight:normal;

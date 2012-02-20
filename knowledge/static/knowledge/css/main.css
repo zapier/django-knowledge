@@ -1,13 +1,8 @@
-#dk-body {
-  background: #f7f7f7; }
-
-.dk-wrapper {
-  max-width: 960px;
-  margin: 0 auto; }
-
 .dk-inner {
   padding: 20px 0;
   font-family: "Helvetica Neue", Arial, Helvetica, sans-serif; }
+  .dk-inner input {
+    margin: 0; }
   .dk-inner .quiet {
     font-weight: normal;
     color: #888; }

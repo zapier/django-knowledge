@@ -164,3 +164,15 @@ tfoot       { font-style: italic; }
 caption     { background: #eee; }
 
 
+#dk-body {
+  background:#f7f7f7;
+}
+
+.dk-wrapper {
+  // all our reset stuff is namespaced under dk wrapper 
+  max-width:960px;
+  margin:0 auto;
+}
+
+.dk-header {
+}

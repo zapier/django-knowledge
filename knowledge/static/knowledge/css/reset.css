@@ -237,3 +237,10 @@ tfoot {
 
 caption {
   background: #eee; }
+
+#dk-body {
+  background: #f7f7f7; }
+
+.dk-wrapper {
+  max-width: 960px;
+  margin: 0 auto; }

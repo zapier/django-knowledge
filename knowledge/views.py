@@ -28,6 +28,7 @@ def knowledge_index(request,
     questions = Question.objects.can_view(request.user)[0:20]
 
     return render(request, template, {
+        'request': request,
         'questions': questions,
         'categories': Category.objects.all(),
         'BASE': BASE
@@ -166,6 +167,7 @@ def knowledge_ask(request,
         form = Form(request.user)
 
     return render(request, template, {
+        'request': request,
         'form': form,
         'categories': Category.objects.all(),
         'BASE': BASE

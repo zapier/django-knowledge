@@ -67,5 +67,7 @@ need to ``pip install markdown`` to cover the markup dependency.
 
 Second, add ``url(r'^knowledge/', include('knowledge.urls'))`` to your ``urls.py``.
 
-Finally, be sure to run ``python manage.py syncdb`` or ``python manage.py migrate knowledge`` to set up
+Third, be sure to run ``python manage.py syncdb`` or ``python manage.py migrate knowledge`` to set up
 the necessary database tables.
+
+Finally, follow the steps outlined in the :doc:`customize` section for templates and static resources.

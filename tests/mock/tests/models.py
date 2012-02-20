@@ -22,9 +22,6 @@ class BasicModelTest(TestCase):
         self.assertFalse(question.answered())
         self.assertFalse(question.accepted())
 
-        # passes quietly
-        question.accept()
-
         ## admin responds ##
         response = Response.objects.create(
             question = question,
