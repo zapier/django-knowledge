@@ -27,7 +27,14 @@ class KnowledgeBase(models.Model):
     added = models.DateTimeField(auto_now_add=True)
     lastchanged = models.DateTimeField(auto_now=True)
 
-    user = models.ForeignKey('auth.User', db_index=True)
+
+    user = models.ForeignKey('auth.User', blank=True, 
+                             null=True, db_index=True)
+
+    # for anonymous posting, if permitted
+    name = models.CharField(max_length=64, blank=True, null=True)
+    email = models.EmailField(blank=True, null=True)
+
     body = models.TextField(blank=True, null=True)
 
     points = models.PositiveIntegerField(default=0)
@@ -88,6 +95,7 @@ class Question(KnowledgeBase):
         max_length=32, choices=STATUSES,
         default='private', db_index=True)
 
+    locked = models.BooleanField(default=False)
     objects = QuestionManager()
 
     def inherit(self):

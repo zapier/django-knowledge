@@ -8,7 +8,9 @@
   </div>
 
   <div class="dk-search">
-    <input class="question-search unclicked" value="Start typing your question here." type="text" /> <input value="Search" type="button" class="submit-question-search" />
+    <form action="" method="get">
+      <input class="question-search unclicked" value="Start typing your question here." type="text" /> <input value="Search" type="submit" class="submit-question-search" />
+    </form>
     <div class="clear"></div>
   </div>
 
@@ -30,7 +32,7 @@
     <div class="dk-widget">
 
       <div class="dk-dialog">
-        <div class="the-author gravatar"><img src="https://secure.gravatar.com/avatar/883955996dbb79f38d8814dbfb336885.jpg?s=60&r=G" alt="Bryan Helmig"></div>
+        <div class="the-author gravatar"><img src="https://secure.gravatar.com/avatar/883955996dbb79f38d8814dbfb336885.jpg?s=60&amp;r=G" alt="Bryan Helmig"></div>
         <div class="the-content gravatar">
           <h2>What time is the superbowl?</h2>
           <h5>Bryan Helmig <span class="quiet"> | NOV 18, 2010 10:12PM EST</span></h5>
@@ -38,9 +40,10 @@
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu elit sed orci eleifend cursus. Aliquam erat volutpat. Morbi nibh risus, tempus eu ullamcorper vitae, facilisis ac justo. </p>
           <p>Aenean nec mi felis. Donec ornare sapien eget enim malesuada nec sagittis nisl facilisis. Curabitur mollis fringilla eleifend. Maecenas fringilla, sapien vel tristique pharetra, lacus orci egestas mauris, sit amet facilisis odio augue quis enim. Nam tristique elit et orci pharetra molestie. Sed sit amet nulla eget dui tristique molestie.</p>
         </div>
+
+        <hr class="clear"/>
       </div>
 
-      <hr class=""/>
 
       <div class="dk-dialog">
         <div class="the-author"></div>
@@ -58,7 +61,7 @@
       <h3>Ask a Question</h3>
       <hr />
 
-      <form action="" class="dk-form">
+      <form action="" method="post" class="dk-form">
         <div class="field-wrapper">
           <div class="field-label">
             <label for="id_the_target">AIM Nickname: <small><em class="quiet">(required)</em></small></label>
@@ -82,7 +85,7 @@
         </div>
 
         <div class="form-footer">
-          <input class="submit-question" type="button" value="Submit this support request"> <small>and we'll get back to you as soon as possible.</small>
+          <input class="submit-question" type="submit" value="Submit this support request"> <small>and we'll get back to you as soon as possible.</small>
         </div>
       </form>
     </div>

@@ -1,4 +1,4 @@
-from example.tests.base import TestCase
+from mock.tests.base import TestCase
 
 
 class SimpleTest(TestCase):

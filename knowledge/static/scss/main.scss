@@ -72,6 +72,7 @@
     }
   } // .dk-search
 
+
   .dk-content {
     width:72%;
     float:left;
@@ -84,7 +85,7 @@
       background:#fff;
       margin-bottom:24px;
 
-      h2 { margin-bottom:0.2em; font-weight:600; }
+      h2 { margin-bottom:0.15em; font-weight:600; }
       h3 { margin-bottom:0.6em; font-weight:600; }
 
       ol.question-list {
@@ -127,8 +128,10 @@
       .dk-dialog {
         padding-bottom:1.5em;
         overflow:auto;
-        p { margin-bottom: 1em; }
         min-height:78px;
+
+        p { margin-bottom: 1em; }
+        hr { color:#e7e7e7; background:#e7e7e7; }
 
         .the-author.gravatar {
           width:13%;
@@ -153,6 +156,7 @@
 
     } // dk-widget
   } // .dk-content
+
 
   .dk-sidebar {
     width:25%;

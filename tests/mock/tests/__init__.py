@@ -7,6 +7,6 @@ modules = [filename.rsplit('.', 1)[0]
 __test__ = dict()
 
 for module in modules:
-    exec("from example.tests.%s import __doc__ as module_doc" % module)
-    exec("from example.tests.%s import *" % module)
+    exec("from mock.tests.%s import __doc__ as module_doc" % module)
+    exec("from mock.tests.%s import *" % module)
     __test__[module] = module_doc or ""

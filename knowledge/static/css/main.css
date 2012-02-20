@@ -306,7 +306,7 @@ caption {
       background: #fff;
       margin-bottom: 24px; }
       .dk-inner .dk-content .dk-widget h2 {
-        margin-bottom: 0.2em;
+        margin-bottom: 0.15em;
         font-weight: 600; }
       .dk-inner .dk-content .dk-widget h3 {
         margin-bottom: 0.6em;
@@ -338,6 +338,9 @@ caption {
         min-height: 78px; }
         .dk-inner .dk-content .dk-widget .dk-dialog p {
           margin-bottom: 1em; }
+        .dk-inner .dk-content .dk-widget .dk-dialog hr {
+          color: #e7e7e7;
+          background: #e7e7e7; }
         .dk-inner .dk-content .dk-widget .dk-dialog .the-author.gravatar {
           width: 13%;
           overflow: hidden;

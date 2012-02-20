@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User, AnonymousUser
 
-from example.tests.base import TestCase
+from mock.tests.base import TestCase
 from knowledge.models import Question, Response
 
 Q = Question.objects

@@ -22,7 +22,7 @@ INSTALLED_APPS = (
 
     'knowledge',
     'django_coverage',
-    'example',
+    'mock',
 )
 
 ROOT_URLCONF = 'tests.urls'
