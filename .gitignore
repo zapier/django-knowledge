@@ -4,3 +4,4 @@ build
 dist
 
 *.sqlite
+.sass-cache
