@@ -41,7 +41,7 @@ def knowledge_list(request,
                    Form=QuestionForm,
                    BASE=settings.BASE_TEMPLATE):
 
-    search = request.GET.get('search', None)
+    search = request.GET.get('title', None)
     questions = Question.objects.can_view(request.user)
 
     if search:
@@ -63,7 +63,7 @@ def knowledge_list(request,
         'questions': questions,
         'category': category,
         'categories': Category.objects.all(),
-        'form': Form(request.user),
+        'form': Form(request.user, request.GET), # prefill title
         'BASE': BASE
     })
 

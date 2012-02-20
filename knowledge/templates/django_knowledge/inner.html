@@ -10,7 +10,7 @@
 
   <div class="dk-search">
     <form action="{% if category %}{% url knowledge_list_category category.slug %}{% else %}{% url knowledge_list %}{% endif %}" method="get">
-      <input class="question-search" {% if search %}value="{{ search|force_escape }}"{% else %}placeholder="Start typing your question here."{% endif %} type="text" name="search"/> <input value="Search" type="submit" class="submit-question-search" />
+      <input class="question-search" {% if search %}value="{{ search|force_escape }}"{% else %}placeholder="Start typing your question here."{% endif %} type="text" name="title"/> <input value="Search" type="submit" class="submit-question-search" />
     </form>
     <div class="clear"></div>
   </div>
