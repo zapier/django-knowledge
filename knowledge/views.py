@@ -86,7 +86,7 @@ def knowledge_thread(request,
 
     if request.method == 'POST':
         form = Form(request.user, question, request.POST)
-        if form.is_valid():
+        if form and form.is_valid():
             response = form.save()
             return redirect(question.get_absolute_url())
     else:
@@ -149,6 +149,7 @@ def knowledge_moderate(
             instance if instance.is_question else instance.question
         ).get_absolute_url())
     except NoReverseMatch, e:
+        # if we delete an instance...
         return redirect(reverse('knowledge_index'))
 
 
@@ -160,7 +161,7 @@ def knowledge_ask(request,
 
     if request.method == 'POST':
         form = Form(request.user, request.POST)
-        if form.is_valid():
+        if form and form.is_valid():
             question = form.save()
             return redirect(question.get_absolute_url())
     else:
