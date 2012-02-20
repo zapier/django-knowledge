@@ -95,10 +95,41 @@ to add it to your <strong>site-packages</strong>.</p>
 <span id="installation-setup"></span><h2>Setting up your Django project<a class="headerlink" href="#setting-up-your-django-project" title="Permalink to this headline">¶</a></h2>
 <p>First, you&#8217;ll want to add <tt class="docutils literal"><span class="pre">knowledge</span></tt> and <tt class="docutils literal"><span class="pre">django.contrib.markup</span></tt> to your <tt class="docutils literal"><span class="pre">INSTALLED_APPS</span></tt>. You may
 need to <tt class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">markdown</span></tt> to cover the markup dependency.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s">&#39;django.contrib.contenttypes&#39;</span><span class="p">,</span>
+    <span class="s">&#39;django.contrib.comments&#39;</span><span class="p">,</span>
+    <span class="s">&#39;django.contrib.sessions&#39;</span><span class="p">,</span>
+    <span class="s">&#39;django.contrib.sites&#39;</span><span class="p">,</span>
+    <span class="s">&#39;django.contrib.admin&#39;</span><span class="p">,</span>
+
+    <span class="c"># Your favorite apps</span>
+
+    <span class="s">&#39;django.contrib.markup&#39;</span><span class="p">,</span>
+    <span class="s">&#39;knowledge&#39;</span><span class="p">,)</span>
+</pre></div>
+</div>
 <p>Second, add <tt class="docutils literal"><span class="pre">url(r'^knowledge/',</span> <span class="pre">include('knowledge.urls'))</span></tt> to your <tt class="docutils literal"><span class="pre">urls.py</span></tt>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">urlpatterns</span> <span class="o">=</span> <span class="n">patterns</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">,</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^admin/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">)),</span>
+
+    <span class="c"># your url patterns</span>
+
+    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^knowledge/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s">&#39;knowledge.urls&#39;</span><span class="p">)),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
 <p>Third, be sure to run <tt class="docutils literal"><span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">syncdb</span></tt> or <tt class="docutils literal"><span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">migrate</span> <span class="pre">knowledge</span></tt> to set up
 the necessary database tables.</p>
-<p>Finally, follow the steps outlined in the <a class="reference internal" href="customize.html"><em>Customize</em></a> section for templates and static resources.</p>
+<div class="highlight-bash"><div class="highlight"><pre>python manage.py syncdb
+<span class="c"># or...</span>
+python manage.py migrate knowledge
+</pre></div>
+</div>
+<p>Finally, follow the steps outlined in the <a class="reference internal" href="customize.html"><em>Customize</em></a> section for templates and static resources.
+Short version, don&#8217;t forget to run <tt class="docutils literal"><span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">collectstatic</span></tt>.</p>
+<div class="highlight-bash"><div class="highlight"><pre>python manage.py collectstatic
+</pre></div>
+</div>
 </div>
 </div>
 

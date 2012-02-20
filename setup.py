@@ -12,6 +12,7 @@ setup(
     author = 'Bryan Helmig',
     author_email = 'bryan@zapier.com',
     url = 'http://github.com/zapier/django-knowledge',
+    install_requires=['Markdown>=2.1.1',]
     packages=['knowledge'],
     package_data={'knowledge': ['templates/*']},
     classifiers = ['Development Status :: 4 - Beta',

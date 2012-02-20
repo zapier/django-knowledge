@@ -52,8 +52,11 @@
             
   <div class="section" id="customize">
 <h1>Customize<a class="headerlink" href="#customize" title="Permalink to this headline">¶</a></h1>
+<p>Since <strong>django-knowledge</strong> ships with default themes and styles, you might have
+to spend a little time perfecting <em>your look</em>. However, it should work right out
+of the box with minimal setup (or none!) if you don&#8217;t mind the defaults.</p>
 <div class="section" id="templates">
-<span id="customize-static"></span><h2>Templates<a class="headerlink" href="#templates" title="Permalink to this headline">¶</a></h2>
+<span id="customize-template"></span><h2>Templates<a class="headerlink" href="#templates" title="Permalink to this headline">¶</a></h2>
 <p>The default base template is <tt class="docutils literal"><span class="pre">django_knowledge/base.html</span></tt> which contains a
 single <tt class="docutils literal"><span class="pre">{%</span> <span class="pre">block</span> <span class="pre">knowledge_inner</span> <span class="pre">%}</span></tt> tag. This base template loads two css
 files from your static (see below): <tt class="docutils literal"><span class="pre">reset.css</span></tt> and <tt class="docutils literal"><span class="pre">base.css</span></tt>.</p>
@@ -130,11 +133,14 @@ a question and categories. Likewise, simply override this locally by adding
 </div>
 </div>
 <div class="section" id="static">
-<span id="id1"></span><h2>Static<a class="headerlink" href="#static" title="Permalink to this headline">¶</a></h2>
+<span id="customize-static"></span><h2>Static<a class="headerlink" href="#static" title="Permalink to this headline">¶</a></h2>
 <p>As long as you are using Django&#8217;s static files system, setting up static files should
 be as easy as <tt class="docutils literal"><span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">collectstatic</span></tt>. If not, you can always copy your files
 manually to a legacy <tt class="docutils literal"><span class="pre">MEDIA_URL</span></tt> and override the base template according to the above
 templates section.</p>
+<p>Likewise, feel free to override the included CSS with your own rules in your own stylesheets.
+We&#8217;d recommend not editing the included CSS, as an update or <tt class="docutils literal"><span class="pre">collectstatic</span></tt> might
+overwrite them.</p>
 </div>
 <div class="section" id="css">
 <span id="customize-css"></span><h2>CSS<a class="headerlink" href="#css" title="Permalink to this headline">¶</a></h2>

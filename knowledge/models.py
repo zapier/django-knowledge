@@ -47,11 +47,20 @@ class KnowledgeBase(models.Model):
     email = models.EmailField(blank=True, null=True,
         help_text='Enter a valid email address.')
 
+    points = models.PositiveIntegerField(default=0)
+
+
+    #########################
+    #### GENERIC GETTERS ####
+    #########################
+
     get_name = lambda self: (self.name or '{0} {1}'.format(
         self.user.first_name, self.user.last_name))
+
     get_email = lambda self: self.email or self.user.email
 
-    points = models.PositiveIntegerField(default=0)
+    get_points = lambda self: self.points
+
 
     ########################
     #### STATUS METHODS ####
@@ -96,12 +105,6 @@ class KnowledgeBase(models.Model):
 
     def internal(self, save=True):
         self.switch('internal', save)
-
-    def flip_lock(self):
-        pass
-
-    def accept(self):
-        pass
 
     class Meta:
         abstract = True
@@ -169,7 +172,7 @@ class Question(KnowledgeBase):
     def clear_accepted(self):
         self.get_responses().update(accepted=False)
 
-    def accept(self, response):
+    def accept(self, response=None):
         """
         Given a response, make that the one and only accepted answer.
         Similar to StackOverflow.
@@ -184,6 +187,9 @@ class Question(KnowledgeBase):
             return False
 
     def states(self):
+        """
+        Handy for checking for mod bar button state.
+        """
         return [self.status, 'flip_lock' if self.locked else None]
 
     @models.permalink
@@ -214,7 +220,13 @@ class Response(KnowledgeBase):
 
     objects = ResponseManager()
 
+    def get_points(self):
+        return self.points + (25 if self.accepted else 0)
+
     def states(self):
+        """
+        Handy for checking for mod bar button state.
+        """
         return [self.status, 'accept' if self.accepted else None]
 
     def accept(self):

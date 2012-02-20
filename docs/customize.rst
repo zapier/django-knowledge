@@ -1,7 +1,11 @@
 Customize
 =========
 
-.. _customize-static:
+Since **django-knowledge** ships with default themes and styles, you might have
+to spend a little time perfecting *your look*. However, it should work right out 
+of the box with minimal setup (or none!) if you don't mind the defaults.
+
+.. _customize-template:
 
 Templates
 ---------
@@ -85,6 +89,7 @@ There are two very common areas for modification:
    a question and categories. Likewise, simply override this locally by adding 
    ``templates/django_knowledge/sidebar.html`` to your project.
 
+
 .. _customize-static:
 
 Static
@@ -94,6 +99,10 @@ As long as you are using Django's static files system, setting up static files s
 be as easy as ``python manage.py collectstatic``. If not, you can always copy your files
 manually to a legacy ``MEDIA_URL`` and override the base template according to the above
 templates section.
+
+Likewise, feel free to override the included CSS with your own rules in your own stylesheets.
+We'd recommend not editing the included CSS, as an update or ``collectstatic`` might
+overwrite them.
 
 
 .. _customize-css:

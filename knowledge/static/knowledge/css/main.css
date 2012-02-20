@@ -171,7 +171,9 @@
       margin-bottom: 0.3em;
       font-weight: 600; }
     .dk-inner .dk-sidebar hr {
-      margin-bottom: 0.6em; }
+      margin-bottom: 0.6em;
+      color: #bbb;
+      background: #bbb; }
   .dk-inner .dk-label {
     padding: 1px 3px 2px;
     position: relative;

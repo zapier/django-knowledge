@@ -10,7 +10,7 @@ def QuestionForm(user, *args, **kwargs):
     on the status us the passed in user.
     """
 
-    if not user.is_authenticated():
+    if user.is_anonymous():
         if not settings.ALLOW_ANONYMOUS:
             return None
         else:
@@ -52,7 +52,10 @@ def ResponseForm(user, question, *args, **kwargs):
     on the status us the passed in user.
     """
 
-    if not user.is_authenticated():
+    if question.locked:
+        return None
+
+    if user.is_anonymous():
         if not settings.ALLOW_ANONYMOUS:
             return None
         else:

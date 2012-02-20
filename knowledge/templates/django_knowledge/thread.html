@@ -20,20 +20,14 @@
 
       {{ question.body|markdown }}
 
-      {% if request.user.is_staff %}
-        <div class="dk-mod-bar">
-          {% for mod in allowed_mods.question %}
-            <a class="dk-label{% if mod in question.states %} dk-label-warning{% endif %}" href="{% url knowledge_moderate 'question' question.id mod %}">{{ mod }}</a>
-          {% endfor %}
-        </div>
-      {% endif %}
+      {% include "django_knowledge/mod_bar.html" with allowed_mods=allowed_mods.question type="question" node=question %}
     </div>
+  </div> <!-- .dk-dialog -->
 
-    <div class="clear"></div>
 
-    <br /> 
-    <hr class="light"/>
-  </div>
+  <hr class="light"/>
+  <br />
+
 
   {% for response in responses %}
     <div class="dk-dialog">
@@ -48,28 +42,25 @@
 
         {{ response.body|markdown }}
 
-        {% if request.user.is_staff %}
-          <div class="dk-mod-bar">
-            {% for mod in allowed_mods.response %}
-              <a class="dk-label{% if mod in response.states %} dk-label-warning{% endif %}" href="{% url knowledge_moderate 'response' response.id mod %}">{{ mod }}</a>
-            {% endfor %}
-          </div>
-        {% endif %}
+        {% include "django_knowledge/mod_bar.html" with allowed_mods=allowed_mods.response type="response" node=response %}
       </div>
-    </div>
+    </div> <!-- .dk-dialog -->
   {% empty %}
     <p class="center"><em>No responses yet.</em></p>
   {% endfor %}
 
+
   <br/> 
   <hr class="light"/>
   <br/> 
+
 
   {% if form %}
     {% include "django_knowledge/form.html" with submit_value="Respond to this question" submit_and="we have lots of work to do." %}
   {% else %}
     <p class="center"><em>Please log in to respond.</em></p>
   {% endif %}
+
 
 </div>
 

@@ -61,7 +61,7 @@ StackOverflow or even UserVoice or GetSatisfaction.</p>
 <ol class="arabic simple">
 <li>Searchable knowledge base.</li>
 <li>A form to ask a missing question.</li>
-<li>Staff can answer via Django&#8217;s admin interface.</li>
+<li>Staff can moderate via toolbar or Django&#8217;s admin interface.</li>
 </ol>
 </div>
 <div class="section" id="how-django-knowledge-works">
@@ -69,30 +69,34 @@ StackOverflow or even UserVoice or GetSatisfaction.</p>
 <p>At its core, there are only a few moving parts, which keeps django-knowledge light and extensible.</p>
 <div class="section" id="models">
 <h3>Models<a class="headerlink" href="#models" title="Permalink to this headline">¶</a></h3>
-<p>There are only two data models in django-knowledge: <strong>Question</strong> and <strong>Response</strong>. As you can
-imagine, <strong>Question</strong> is the base model which can have an arbitrary number or <strong>Response</strong>&#8216;s.
-While <strong>Response</strong> is more or less a series of comments on a <strong>Question</strong>.</p>
+<p>There are only three data models in django-knowledge: <strong>Question</strong>, <strong>Response</strong> and <strong>Category</strong>.
+As you can imagine, <strong>Question</strong> is the base model which can have an arbitrary number or <strong>Response</strong>&#8216;s.
+While <strong>Response</strong> is more or less a series of comments on a <strong>Question</strong>. <strong>Question</strong>&#8216;s can also
+have an arbitrary number of <strong>Categories</strong>.</p>
 <p><strong>Question</strong>&#8216;s and <strong>Response</strong>&#8216;s can each be either <em>public</em>, <em>private</em> or <em>internal</em> (or
-<em>inheret</em> for <strong>Response</strong>).</p>
+<em>inheret</em> for <strong>Response</strong>). <strong>Categories</strong> are always <em>public</em>.</p>
 </div>
 <div class="section" id="views">
 <h3>Views<a class="headerlink" href="#views" title="Permalink to this headline">¶</a></h3>
 <p>In the same spirit, there are only 4 user facing views: <strong>knowledge_index</strong>, <strong>knowledge_list</strong>,
 <strong>knowledge_thread</strong>, and <strong>knowledge_ask</strong>.</p>
 <ul class="simple">
-<li><strong>knowledge_index</strong> a general listing of of popular questions plus search box</li>
+<li><strong>knowledge_index</strong> a general listing of popular questions plus search box</li>
 <li><strong>knowledge_list</strong> listing of a specific subset of questions (by tags or search term)</li>
 <li><strong>knowledge_thread</strong> response thread for a specific question</li>
+<li><strong>knowledge_moderate</strong> a passthrough for moderators to manage questions &amp; responses</li>
 <li><strong>knowledge_ask</strong> form for asking a question</li>
 </ul>
 </div>
 <div class="section" id="templates">
 <h3>Templates<a class="headerlink" href="#templates" title="Permalink to this headline">¶</a></h3>
-<p>Templates are cool.</p>
+<p>We provide default styles for the templates. You can easily embed this within your own shim/wrapper
+or do nothing and just roll with the wrapper we provide. Read more in the <a class="reference internal" href="customize.html"><em>Customize</em></a> section.</p>
 </div>
-<div class="section" id="javascript-and-css-coffeescript-and-sass">
-<h3>Javascript and CSS (CoffeeScript and SASS)<a class="headerlink" href="#javascript-and-css-coffeescript-and-sass" title="Permalink to this headline">¶</a></h3>
-<p>We&#8217;ve included some generic styles and</p>
+<div class="section" id="css-sass">
+<h3>CSS (SASS)<a class="headerlink" href="#css-sass" title="Permalink to this headline">¶</a></h3>
+<p>The included generic styles are compiled via SASS&#8217;s scss. You can read more in the <a class="reference internal" href="customize.html"><em>Customize</em></a>
+section.</p>
 </div>
 </div>
 </div>
@@ -111,7 +115,7 @@ While <strong>Response</strong> is more or less a series of comments on a <stron
 <li><a class="reference internal" href="#models">Models</a></li>
 <li><a class="reference internal" href="#views">Views</a></li>
 <li><a class="reference internal" href="#templates">Templates</a></li>
-<li><a class="reference internal" href="#javascript-and-css-coffeescript-and-sass">Javascript and CSS (CoffeeScript and SASS)</a></li>
+<li><a class="reference internal" href="#css-sass">CSS (SASS)</a></li>
 </ul>
 </li>
 </ul>

@@ -1,0 +1,7 @@
+{% if request.user.is_staff %}
+  <div class="dk-mod-bar">
+    {% for mod in allowed_mods %}
+      <a class="dk-label{% if mod in node.states %} dk-label-warning{% endif %}" href="{% url knowledge_moderate type node.id mod %}">{{ mod }}</a>
+    {% endfor %}
+  </div>
+{% endif %}

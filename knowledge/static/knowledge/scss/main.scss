@@ -68,7 +68,7 @@
       &:hover {
         @include linear-gradient(darken(green, 0%), darken(green, 8%));
       }
-    }
+    } // .submit-question-search
   } // .dk-search
 
 
@@ -203,7 +203,7 @@
     }
 
     h4 { margin-bottom:0.3em; font-weight:600; }
-    hr { margin-bottom:0.6em; }
+    hr { margin-bottom:0.6em; color:#bbb; background:#bbb; }
   }
 
   // from bootstrap 2.0

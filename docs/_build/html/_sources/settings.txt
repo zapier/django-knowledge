@@ -23,7 +23,7 @@ Default ``False``. If ``True``, answered questions are automatically published. 
 KNOWLEDGE_FREE_RESPONSE
 ------------------
 
-Default ``False``. If ``True``, any user (respecting KNOWLEDGE_ALLOW_ANONYMOUS) can 
+Default ``True``. If ``True``, any user (respecting KNOWLEDGE_ALLOW_ANONYMOUS) can 
 respond to any question. If ``False``, only staff or original poster may respond.
 
 

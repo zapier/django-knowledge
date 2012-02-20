@@ -38,43 +38,71 @@ class BasicModelTest(TestCase):
 
         self.assertTrue(question.answered())
         self.assertTrue(question.accepted())
+        self.assertIn('accept', response.states())
+
+        ## someone clears the accepted answer ##
+        question.accept()
+
+        self.assertFalse(question.accepted())
+
+        response = Response.objects.get(id=response.id) # reload
+        self.assertNotIn('accept', response.states())
+
+        ## someone used the response accept shortcut ##
+        response.accept()
+
+        question = Question.objects.get(id=question.id) # reload
+        self.assertTrue(question.answered())
+        self.assertTrue(question.accepted())
+        self.assertIn('accept', response.states())
+
 
 
     def test_switching_question(self):
         ## joe asks a question ##
         question = self.question
         self.assertEquals(question.status, 'private')
+        self.assertIn('private', question.states())
 
         question.public()
         self.assertEquals(question.status, 'public')
+        self.assertIn('public', question.states())
 
         question.internal()
         self.assertEquals(question.status, 'internal')
+        self.assertIn('internal', question.states())
 
         question.private()
         self.assertEquals(question.status, 'private')
+        self.assertIn('private', question.states())
 
         # no change
         question.inherit()
         self.assertEquals(question.status, 'private')
+        self.assertIn('private', question.states())
 
 
     def test_switching_response(self):
         ## joe asks a question ##
         response = self.response
         self.assertEquals(response.status, 'inherit')
+        self.assertIn('inherit', response.states())
 
         response.public()
         self.assertEquals(response.status, 'public')
+        self.assertIn('public', response.states())
 
         response.internal()
         self.assertEquals(response.status, 'internal')
+        self.assertIn('internal', response.states())
 
         response.private()
         self.assertEquals(response.status, 'private')
+        self.assertIn('private', response.states())
 
         response.inherit()
         self.assertEquals(response.status, 'inherit')
+        self.assertIn('inherit', response.states())
 
 
     def test_private_states(self):
@@ -180,7 +208,17 @@ class BasicModelTest(TestCase):
 
         self.assertTrue(response.can_view(self.admin))
 
-    
+
+    def test_locking(self):
+        self.assertFalse(self.question.locked)
+        self.assertNotIn('flip_lock', self.question.states())
+
+        self.question.flip_lock()
+
+        self.assertTrue(self.question.locked)
+        self.assertIn('flip_lock', self.question.states())
+
+
     def test_url(self):
         self.assertEquals(
             '/knowledge/questions/{0}/{1}/'.format(
@@ -189,6 +227,12 @@ class BasicModelTest(TestCase):
             self.question.get_absolute_url()
         )
 
+    def test_points(self):
+        self.assertEquals(self.question.get_points(), 0)
+        self.assertEquals(self.response.get_points(), 0)
+
+        self.response.accept()
+        self.assertEquals(self.response.get_points(), 25)
 
     def test_normal_question(self):
         self.assertEquals(self.question.get_name(), 'Joe Dirt')

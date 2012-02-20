@@ -63,11 +63,50 @@ Setting up your Django project
 ------------------------------
 
 First, you'll want to add ``knowledge`` and ``django.contrib.markup`` to your ``INSTALLED_APPS``. You may 
-need to ``pip install markdown`` to cover the markup dependency. 
+need to ``pip install markdown`` to cover the markup dependency.
+
+..  code-block:: python
+
+    INSTALLED_APPS = (
+        'django.contrib.contenttypes',
+        'django.contrib.comments',
+        'django.contrib.sessions',
+        'django.contrib.sites',
+        'django.contrib.admin',
+
+        # Your favorite apps
+
+        'django.contrib.markup',
+        'knowledge',)
+
 
 Second, add ``url(r'^knowledge/', include('knowledge.urls'))`` to your ``urls.py``.
+
+..  code-block:: python
+
+    
+    urlpatterns = patterns('',
+        url(r'^admin/', include(admin.site.urls)),
+
+        # your url patterns
+
+        url(r'^knowledge/', include('knowledge.urls')),
+    )
+
 
 Third, be sure to run ``python manage.py syncdb`` or ``python manage.py migrate knowledge`` to set up
 the necessary database tables.
 
+.. code-block:: bash
+
+   python manage.py syncdb
+   # or...
+   python manage.py migrate knowledge
+
+
 Finally, follow the steps outlined in the :doc:`customize` section for templates and static resources.
+Short version, don't forget to run ``python manage.py collectstatic``.
+
+.. code-block:: bash
+
+   python manage.py collectstatic
