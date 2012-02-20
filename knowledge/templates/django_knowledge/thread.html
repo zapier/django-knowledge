@@ -39,8 +39,8 @@
         <h5>{{ response.get_name }} <span class="quiet">
           {% if response.accepted %}&nbsp;<span class="dk-label dk-label-warning">accepted answer</span>{% endif %}
           {% if question.user == response.user %}&nbsp;<span class="dk-label dk-label-info">poster</span>{% endif %}
-          {% if question.user %}
-            {% if question.user.is_staff %}&nbsp;<span class="dk-label dk-label-success">staff</span>
+          {% if response.user %}
+            {% if response.user.is_staff %}&nbsp;<span class="dk-label dk-label-success">staff</span>
             {% else %}&nbsp;<span class="dk-label">user</span>{% endif %}
           {% endif %}
           &nbsp;{{ response.added }}
