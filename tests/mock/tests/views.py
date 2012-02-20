@@ -6,7 +6,7 @@ from django.contrib.auth.models import User, AnonymousUser
 from django.core.urlresolvers import reverse
 from django.template.defaultfilters import slugify
 
-from knowledge.models import Question, Response
+from knowledge.models import Question, Response, Category
 
 
 class BasicViewTest(TestCase):
@@ -16,11 +16,32 @@ class BasicViewTest(TestCase):
         r = c.get(reverse('knowledge_index'))
         self.assertEquals(r.status_code, 200)
 
+
     def test_list(self):
         c = Client()
 
         r = c.get(reverse('knowledge_list'))
         self.assertEquals(r.status_code, 200)
+
+
+    def test_list_category(self):
+        c = Client()
+
+        r = c.get(reverse('knowledge_list_category', args=['notreal']))
+        self.assertEquals(r.status_code, 404)
+
+        category = Category.objects.create(title='Hello!', slug='hello')
+
+        r = c.get(reverse('knowledge_list_category', args=['hello']))
+        self.assertEquals(r.status_code, 200)
+
+
+    def test_list_search(self):
+        c = Client()
+
+        r = c.get(reverse('knowledge_list') + '?search=hello!')
+        self.assertEquals(r.status_code, 200)
+
 
     def test_thread(self):
         c = Client()
@@ -67,7 +88,6 @@ class BasicViewTest(TestCase):
         self.assertEquals(r.status_code, 200)
 
 
-
     def test_moderate(self):
         c = Client()
 
@@ -92,6 +112,13 @@ class BasicViewTest(TestCase):
 
         r = c.get(reverse('knowledge_moderate', args=['response', self.response.id, 'public']))
         self.assertEquals(r.status_code, 302)
+
+        r = c.get(reverse('knowledge_moderate', args=['question', self.question.id, 'delete']))
+        self.assertEquals(r.status_code, 302)
+
+        r = c.get(reverse('knowledge_moderate', args=['question', self.question.id, 'delete']))
+        self.assertEquals(r.status_code, 404)
+
 
     def test_ask(self):
         c = Client()

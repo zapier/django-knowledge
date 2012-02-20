@@ -55,6 +55,10 @@ def ResponseForm(user, question, *args, **kwargs):
     if question.locked:
         return None
 
+    if not settings.FREE_RESPONSE and not \
+            (user.is_staff or question.user == user):
+        return None
+
     if user.is_anonymous():
         if not settings.ALLOW_ANONYMOUS:
             return None

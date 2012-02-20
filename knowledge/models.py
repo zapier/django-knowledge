@@ -1,4 +1,4 @@
-import settings
+from knowledge import settings
 
 from django.db import models
 
@@ -115,6 +115,9 @@ class KnowledgeBase(models.Model):
             # first time because no id
             self.public(save=False)
 
+        if settings.AUTO_PUBLICIZE and not self.id:
+            self.public(save=False)
+
         super(KnowledgeBase, self).save(*args, **kwargs)
 
 
@@ -195,7 +198,11 @@ class Question(KnowledgeBase):
     @models.permalink
     def get_absolute_url(self):
         from django.template.defaultfilters import slugify
-        return ('knowledge_thread', [self.id, slugify(self.title)])
+
+        if settings.SLUG_URLS:
+            return ('knowledge_thread', [self.id, slugify(self.title)])
+        else:
+            return ('knowledge_thread_no_slug', [self.id])
     
     def __unicode__(self):
         return self.title

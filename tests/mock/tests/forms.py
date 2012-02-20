@@ -53,6 +53,14 @@ class BasicFormTest(TestCase):
             ResponseForm(self.bob, self.question)
         )
 
+        # lock the question...
+        self.question.flip_lock()
+
+        self.assertEqual(
+            None,
+            ResponseForm(self.admin, self.question)
+        )
+
     def test_form_saving(self):
         QUESTION_POST = {
             'title': 'This is a title friend!',
