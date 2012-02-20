@@ -19,6 +19,14 @@
       </span></h5>
 
       {{ question.body|markdown }}
+
+      {% if request.user.is_staff %}
+        <div class="dk-mod-bar">
+          {% for mod in allowed_mods.question %}
+            <a class="dk-label{% if mod in question.states %} dk-label-warning{% endif %}" href="{% url knowledge_moderate 'question' question.id mod %}">{{ mod }}</a>
+          {% endfor %}
+        </div>
+      {% endif %}
     </div>
 
     <div class="clear"></div>
@@ -32,12 +40,21 @@
       <div class="the-author gravatar smaller"><img src="{% get_gravatar response.get_email 40 %}" alt="{{ response.get_name }} gravatar"></div>
       <div class="the-content gravatar">
         <h5>{{ response.get_name }} <span class="quiet">
-          {% if question.user == response.user %}&nbsp;<span class="dk-label">poster</span>{% endif %}
+          {% if response.accepted %}&nbsp;<span class="dk-label dk-label-warning">accepted answer</span>{% endif %}
+          {% if question.user == response.user %}&nbsp;<span class="dk-label dk-label-info">poster</span>{% endif %}
           {% if response.user.is_staff %}&nbsp;<span class="dk-label dk-label-success">staff</span>{% endif %}
           &nbsp;{{ response.added }}
         </span></h5>
 
         {{ response.body|markdown }}
+
+        {% if request.user.is_staff %}
+          <div class="dk-mod-bar">
+            {% for mod in allowed_mods.response %}
+              <a class="dk-label{% if mod in response.states %} dk-label-warning{% endif %}" href="{% url knowledge_moderate 'response' response.id mod %}">{{ mod }}</a>
+            {% endfor %}
+          </div>
+        {% endif %}
       </div>
     </div>
   {% empty %}
@@ -51,7 +68,7 @@
   {% if form %}
     {% include "django_knowledge/form.html" with submit_value="Respond to this question" submit_and="we have lots of work to do." %}
   {% else %}
-    <p>Please log in to ask a question!</p>
+    <p class="center"><em>Please log in to respond.</em></p>
   {% endif %}
 
 </div>

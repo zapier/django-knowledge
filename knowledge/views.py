@@ -1,4 +1,6 @@
+from django.http import Http404
 from django.shortcuts import render, redirect, get_object_or_404
+from django.core.urlresolvers import reverse, NoReverseMatch
 from django.db.models import Q
 
 from knowledge.models import Question, Response, Category
@@ -6,6 +8,18 @@ from knowledge.forms import QuestionForm, ResponseForm
 from knowledge.utils import paginate
 from knowledge import settings
 
+ALLOWED_MODS = {
+    'question': [
+        'internal', 'private',
+        'public', 'delete',
+        'clear_accepted'
+    ],
+    'response': [
+        'internal', 'inherit',
+        'private', 'public',
+        'delete', 'accept'
+    ]
+}
 
 def knowledge_index(request,
                     template='django_knowledge/index.html',
@@ -78,12 +92,64 @@ def knowledge_thread(request,
         form = Form(request.user, question)
 
     return render(request, template, {
+        'request': request,
         'question': question,
         'responses': responses,
+        'allowed_mods': ALLOWED_MODS,
         'form': form,
         'categories': Category.objects.all(),
         'BASE': BASE
     })
+
+def knowledge_moderate(
+        request,
+        lookup_id,
+        model,
+        mod,
+        allowed_mods=ALLOWED_MODS,
+        BASE=settings.BASE_TEMPLATE):
+
+    """
+    An easy to extend method to moderate questions
+    and responses in a vaguely RESTful way.
+
+    Usage:
+        /knowledge/moderate/question/1/inherit/     -> 404
+        /knowledge/moderate/question/1/public/      -> 200
+
+        /knowledge/moderate/response/3/notreal/     -> 404
+        /knowledge/moderate/response/3/inherit/     -> 200
+
+    """
+
+    if model == 'question':
+        Model, perm = Question, 'change_question'
+    elif model == 'response':
+        Model, perm = Response, 'change_response'
+    else:
+        raise Http404
+
+    if not request.user.has_perm(perm):
+        raise Http404
+
+    if mod not in allowed_mods[model]:
+        raise Http404
+
+    instance = get_object_or_404(
+        Model.objects.can_view(request.user),
+        id=lookup_id)
+
+    func = getattr(instance, mod)
+    if callable(func):
+        func()
+
+    try:
+        return redirect((
+            instance if instance.is_question else instance.question
+        ).get_absolute_url())
+    except NoReverseMatch, e:
+        return redirect(reverse('knowledge_index'))
+
 
 
 def knowledge_ask(request,

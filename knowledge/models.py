@@ -97,11 +97,20 @@ class KnowledgeBase(models.Model):
     def internal(self, save=True):
         self.switch('internal', save)
 
+    def flip_lock(self):
+        pass
+
+    def accept(self):
+        pass
+
     class Meta:
         abstract = True
+        ordering = ['-added']
 
     def save(self, *args, **kwargs):
-        if not self.user and self.name and self.email:
+        if not self.user and self.name and self.email\
+                and not self.id: 
+            # first time because no id
             self.public(save=False)
 
         super(KnowledgeBase, self).save(*args, **kwargs)
@@ -130,6 +139,11 @@ class Question(KnowledgeBase):
     def inherit(self):
         pass
 
+    def flip_lock(self, save=True):
+        self.locked = not self.locked
+        if save:
+            self.save()
+
     ###################
     #### RESPONSES ####
     ###################
@@ -152,19 +166,26 @@ class Question(KnowledgeBase):
         or not.
         """
         return any([r.accepted for r in self.get_responses()])
+    
+    def clear_accepted(self):
+        self.get_responses().update(accepted=False)
 
-    def accept(self, response=None):
+    def accept(self, response):
         """
         Given a response, make that the one and only accepted answer.
         Similar to StackOverflow.
         """
+        self.clear_accepted()
+
         if response and response.question == self:
-            self.get_responses().update(accepted=False)
             response.accepted = True
             response.save()
             return True
         else:
             return False
+
+    def states(self):
+        return [self.status, 'flip_lock' if self.locked else None]
 
     @models.permalink
     def get_absolute_url(self):
@@ -190,6 +211,12 @@ class Response(KnowledgeBase):
     accepted = models.BooleanField(default=False)
 
     objects = ResponseManager()
+
+    def states(self):
+        return [self.status, 'accept' if self.accepted else None]
+
+    def accept(self):
+        self.question.accept(self)
     
     def __unicode__(self):
         return self.body[0:100] + u'...'

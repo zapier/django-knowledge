@@ -54,6 +54,17 @@ $useIEFilters: 0; // might be 0 or 1. disabled by default.
   }
 }
 
+@mixin opacity($opacity, $ie: $useIEFilters) {
+  -moz-opacity:   $opacity;
+  -khtml-opacity: $opacity;
+  opacity:        $opacity;
+
+  @if $ie == 1 {
+    filter:         alpha(opacity=($opacity * 100));
+    -ms-filter:     "progid:DXImageTransform.Microsoft.Alpha(Opacity=" + ($opacity * 100) + ")";
+  }
+}
+
 @mixin linear-gradient($from, $to, $ie: $useIEFilters) {
   @if $ie != 1 {
     background-color: $to;

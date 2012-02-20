@@ -7,5 +7,8 @@ urlpatterns = patterns('knowledge.views',
         name='knowledge_list_category'),
     url(r'^questions/(?P<question_id>\d+)/(?P<slug>[a-z0-9-]+)/$',
         'knowledge_thread', name='knowledge_thread'),
+    url(r'^moderate/(?P<model>[a-z]+)/'
+        r'(?P<lookup_id>\d+)/(?P<mod>[a-zA-Z0-9_]+)/$',
+        'knowledge_moderate', name='knowledge_moderate'),
     url(r'^ask/$', 'knowledge_ask', name='knowledge_ask'),
 )

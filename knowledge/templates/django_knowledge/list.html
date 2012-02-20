@@ -2,6 +2,8 @@
 
 {% load knowledge_tags %}
 
+{% block title %}Showing {{ questions.paginator.count }} results{% if search %} for {{ search }}{% endif %}{% if category %} in {{ category.title }} category{% endif %}{% endblock title %}
+
 {% block knowledge_widgets %}
 
 <div class="dk-widget">
