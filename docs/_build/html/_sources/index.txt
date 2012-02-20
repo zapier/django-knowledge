@@ -20,8 +20,8 @@ At a glance:
 ------------
 
 - Turn common questions or support requests into a **knowledge base**.
-- Use the familiar **Django admin** to handle support requests.
-- Included base **templates and design** with prebundled JS, CSS and HTML.
+- Staff get **moderation controls** or they can use the familiar *Django admin* to handle support requests.
+- Included base **templates and design** with prebundled CSS and HTML.
 
 
 Contents:
@@ -32,6 +32,7 @@ Contents:
 
    overview
    install
+   configuring
    development
    customize
    performance

@@ -15,6 +15,7 @@
   .center { text-align:center; }
 
   .dk-roof {
+    margin-bottom:24px;
     h2 { 
       margin-bottom: .15em;
       font-weight:600; 
@@ -33,9 +34,9 @@
   .dk-search {
     border:1px solid #ccc;
     padding:1%;
-    margin-top:24px;
     background:#eee;
     @include border-radius(4px);
+    margin-bottom:24px;
 
     input.question-search {
       @include border-radius(4px);
@@ -74,7 +75,6 @@
   .dk-content {
     width:72%;
     float:left;
-    margin-top:28px;
 
     .dk-widget {
       border:1px solid #ccc;
@@ -196,7 +196,7 @@
   .dk-sidebar {
     width:25%;
     float:right;
-    margin-top:38px;
+    padding-top:10px;
 
     .inner {
       padding:0 2%;
