@@ -39,7 +39,7 @@ class BasicViewTest(TestCase):
     def test_list_search(self):
         c = Client()
 
-        r = c.get(reverse('knowledge_list') + '?search=hello!')
+        r = c.get(reverse('knowledge_list') + '?title=hello!')
         self.assertEquals(r.status_code, 200)
 
 

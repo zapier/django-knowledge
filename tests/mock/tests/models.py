@@ -220,7 +220,11 @@ class BasicModelTest(TestCase):
         self.assertEquals(len(self.question.get_responses(self.joe)), 1)
         self.assertEquals(len(self.question.get_responses(self.admin)), 1)
 
-        
+    
+    def test_urls(self):
+        question_url = reverse('knowledge_thread', args=[self.question.id, slugify(self.question.title)])
+
+        self.assertEquals(self.question.url, question_url)
 
 
     def test_locking(self):
