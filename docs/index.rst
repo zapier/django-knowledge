@@ -20,8 +20,10 @@ At a glance:
 ------------
 
 - Turn common questions or support requests into a **knowledge base**.
+- Control who sees what with simple view statuses: *public*, *private*, or *internal*.
+- Assign questions and answers to **categories** for easy sorting.
 - Staff get **moderation controls** or they can use the familiar *Django admin* to handle support requests.
-- Included base **templates and design** with prebundled CSS and HTML.
+- Included base **templates and design** with prebundled HTML and CSS.
 
 
 Contents:
