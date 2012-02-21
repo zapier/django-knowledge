@@ -5,7 +5,8 @@ Q = models.Q
 
 class QuestionManager(models.Manager):
     def can_view(self, user):
-        qs = super(QuestionManager, self).get_query_set()
+        qs = super(QuestionManager, self).get_query_set()\
+                                         .select_related('user')
 
         if user.is_staff or user.is_superuser:
             return qs.all()
@@ -20,7 +21,8 @@ class QuestionManager(models.Manager):
 
 class ResponseManager(models.Manager):
     def can_view(self, user):
-        qs = super(ResponseManager, self).get_query_set()
+        qs = super(ResponseManager, self).get_query_set()\
+                            .select_related('question', 'user')
 
         if user.is_staff or user.is_superuser:
             return qs.all()

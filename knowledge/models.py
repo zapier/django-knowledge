@@ -153,10 +153,10 @@ class Question(KnowledgeBase):
     ###################
 
     def get_responses(self, user=None):
-        responses = self.responses.all()
         if user:
-            return [r for r in responses if r.can_view(user)]
-        return responses
+            return self.responses.can_view(user)
+        else:
+            return self.responses.all()
 
     def answered(self):
         """

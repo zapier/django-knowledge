@@ -88,7 +88,7 @@ def knowledge_thread(request,
         Question.objects.can_view(request.user),
         id=question_id)
 
-    responses = question.get_responses(request.user)
+    responses = Response.objects.can_view(request.user).filter(question=question)
 
     if request.path != question.get_absolute_url():
         return redirect(question.get_absolute_url(), permanent=True)
