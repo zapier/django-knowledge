@@ -7,7 +7,7 @@
 Welcome to django-knowledge's documentation!
 =======================================
 
-Django Knowledge makes it easy to add an integrated support desk, help desk or 
+django-knowledge makes it easy to add an integrated support desk, help desk or 
 knowledge base to your Django project with only a few lines of boilerplate code.
 While we give you a generic design for free, you should just as easily be able 
 to customize the look and feel of the app if you like.
@@ -39,6 +39,15 @@ Contents:
    customize
    performance
    settings
+
+
+Links:
+------
+
+* View a `live demo <https://zapier.com/support/>`_. This is the stock design, minus the 
+  custom header and footer.
+* Check out the `documentation <http://django-knowledge.readthedocs.org/>`_ at ReadTheDocs.
+* Visit our `GitHub repo <https://github.com/zapier/django-knowledge>`_ and join the development!.
 
 
 Screen Shots:
