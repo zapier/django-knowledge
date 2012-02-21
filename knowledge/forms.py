@@ -69,6 +69,9 @@ def ResponseForm(user, question, *args, **kwargs):
 
     selected_fields += ['body', 'question']
 
+    if user.is_staff:
+        selected_fields += ['status']
+
 
     class _ResponseForm(forms.ModelForm):
         def __init__(self, *args, **kwargs):
