@@ -15,12 +15,15 @@ form.
 While we give you a generic design for free, you should just as easily be able 
 to customize the look and feel of the app if you like.
 
+**django-knowledge** was developed internally for `Zapier <https://zapier.com/>`_.
+Check out their `live demo <https://zapier.com/support/>`_.
+
 
 At a glance:
 ------------
 
 - Turn common questions or support requests into a **knowledge base**.
-- Control who sees what with simple view statuses: *public*, *private*, or *internal*.
+- Control **who sees what** with simple view statuses: *public*, *private*, or *internal*.
 - Assign questions and answers to **categories** for easy sorting.
 - Staff get **moderation controls** or they can use the familiar *Django admin* to handle support requests.
 - Included base **templates and design** with prebundled HTML and CSS.

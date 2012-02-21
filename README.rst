@@ -12,7 +12,7 @@ At a glance:
 ------------
 
 - Turn common questions or support requests into a **knowledge base**.
-- Control who sees what with simple view statuses: *public*, *private*, or *internal*.
+- Control **who sees what** with simple view statuses: *public*, *private*, or *internal*.
 - Assign questions and answers to **categories** for easy sorting.
 - Staff get **moderation controls** or they can use the familiar *Django admin* to handle support requests.
 - Included base **templates and design** with prebundled HTML and CSS.
@@ -23,7 +23,7 @@ Links:
 
 * View a demo `demo <https://zapier.com/support/>`_. This is the stock design, minus the 
   custom header and footer.
-* Check out the `documentation <http://django-knowledge.readthedocs.org/>`_.
+* Check out the `documentation <http://django-knowledge.readthedocs.org/>`_ at Read the Docs.
 
 
 Screen Shots:
