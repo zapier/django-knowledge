@@ -64,7 +64,8 @@ class BasicFormTest(TestCase):
     def test_form_saving(self):
         QUESTION_POST = {
             'title': 'This is a title friend!',
-            'body': 'This is the body friend!'
+            'body': 'This is the body friend!',
+            'status': 'private'
         }
 
         form = QuestionForm(self.joe, QUESTION_POST)
@@ -96,3 +97,26 @@ class BasicFormTest(TestCase):
         self.assertEquals(response.email, None)
         self.assertEquals(response.body, 'This is the response body friend!')
         self.assertEquals(response.user, self.joe)
+    
+    def test_form_question_status(self):
+        # test the default for anonymous in tests/settings.py...
+        form = QuestionForm(self.joe)
+        self.assertIn('status', form.fields.keys())
+
+        # internal is only selectable for admins
+        QUESTION_POST = {
+            'title': 'This is a title friend!',
+            'body': 'This is the body friend!',
+            'status': 'internal'
+        }
+
+        self.assertFalse(QuestionForm(self.joe, QUESTION_POST).is_valid())
+        self.assertTrue(QuestionForm(self.admin, QUESTION_POST).is_valid())
+
+        QUESTION_POST = {
+            'title': 'This is a title friend!',
+            'body': 'This is the body friend!',
+            'status': 'public'
+        }
+        question = QuestionForm(self.joe, QUESTION_POST).save()
+        self.assertEquals(question.status, 'public')

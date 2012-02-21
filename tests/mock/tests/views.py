@@ -128,7 +128,8 @@ class BasicViewTest(TestCase):
 
         QUESTION_POST = {
             'title': 'This is a title friend!',
-            'body': 'This is the body friend!'
+            'body': 'This is the body friend!',
+            'status': 'private'
         }
 
         # invalid question POSTs are basically ignored...

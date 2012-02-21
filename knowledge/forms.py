@@ -14,11 +14,9 @@ def QuestionForm(user, *args, **kwargs):
         if not settings.ALLOW_ANONYMOUS:
             return None
         else:
-            selected_fields = ['name', 'email']
+            selected_fields = ['name', 'email', 'title', 'body']
     else:
-        selected_fields = ['user']
-
-    selected_fields += ['title', 'body']
+        selected_fields = ['user', 'title', 'body', 'status']
 
     class _QuestionForm(forms.ModelForm):
         def __init__(self, *args, **kwargs):
@@ -26,6 +24,13 @@ def QuestionForm(user, *args, **kwargs):
 
             for key in self.fields:
                 self.fields[key].required = True
+
+            qf = self.fields.get('status', None)
+            if qf:
+                choices = list(qf.choices)
+                if not user.is_staff:
+                    choices.remove(('internal', 'Internal'))
+                qf.choices = choices
 
             # a bit of a hack...
             # hide a field, and use clean to force

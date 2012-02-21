@@ -38,6 +38,9 @@ class BasicSettingsTest(TestCase):
             ResponseForm(self.anon, self.question)
         )
 
+        form = QuestionForm(self.anon)
+        self.assertNotIn('status', form.fields.keys())
+
         # missing the name/email...
         QUESTION_POST = {
             'title': 'This is a title friend!',
@@ -76,7 +79,8 @@ class BasicSettingsTest(TestCase):
 
         QUESTION_POST = {
             'title': 'This is a title friend!',
-            'body': 'This is the body friend!'
+            'body': 'This is the body friend!',
+            'status': 'private'
         }
 
         question = QuestionForm(self.joe, QUESTION_POST).save()
