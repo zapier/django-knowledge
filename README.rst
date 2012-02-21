@@ -21,7 +21,7 @@ At a glance:
 - Allow **anonymous questions**, or require a standard Django user account (the default).
 - Included base **templates and design** with prebundled HTML and CSS.
 - BSD license.
-q
+
 
 Links:
 ------
