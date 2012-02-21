@@ -26,7 +26,7 @@ Links:
 * View a `live demo <https://zapier.com/support/>`_. This is the stock design, minus the 
   custom header and footer.
 * Check out the `documentation <http://django-knowledge.readthedocs.org/>`_ at ReadTheDocs.
-* Visit our `GitHub repo <https://github.com/zapier/django-knowledge>`_ and join the development!.
+* Visit our `GitHub repo <https://github.com/zapier/django-knowledge>`_ and join the development!
 
 
 Screen Shots:

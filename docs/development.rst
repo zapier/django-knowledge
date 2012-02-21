@@ -37,7 +37,7 @@ Please join us in making django-knowledge the best open source help desk in the 
 Documentation
 ~~~~~~~~~~~~~
 
-We're using Sphinx, so make sure you have ``pip install sphinx``, browse on into the
+We're using **Sphinx**, so make sure you have ``pip install sphinx``, browse on into the
 *docs* folder and run ``make html``:
 
 .. code-block:: bash
@@ -73,11 +73,13 @@ Right now we're not bundling tests inside the installed package, they are part o
 their own example application. All tests are found in *tests/example/tests/* under split
 out files reflecting their location in the package.
 
+View the **coverage** stats by opening up the resulting *tests/reports/index.html*.
+
 
 Code
 ~~~~
 
-Setting up the development server is quite easy as well:
+Setting up the **development server** is quite easy as well:
 
 .. code-block:: bash
 
@@ -92,7 +94,7 @@ follow their install docs and then run something like:
 
    sass --watch knowledge/static/knowledge/scss:knowledge/static/knowledge/css
 
-Please remember to run pep8 and fix any errors you see, or explan why 
+Please remember to run **pep8** and fix any errors you see, or explan why 
 you won't in your commit message so we can yell at you:
 
 .. code-block:: bash
@@ -103,5 +105,5 @@ you won't in your commit message so we can yell at you:
 Committing
 ~~~~~~~~~~
 
-We work off of the master branch in our GitHub repo. Send a pull request! Tagged releases
+We work off of the **master branch** in our GitHub repo. Send a pull request! Tagged releases
 will be pushed to PyPi.
