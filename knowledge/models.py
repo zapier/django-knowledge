@@ -47,7 +47,6 @@ class KnowledgeBase(models.Model):
     email = models.EmailField(blank=True, null=True,
         help_text='Enter a valid email address.')
 
-
     #########################
     #### GENERIC GETTERS ####
     #########################
@@ -62,7 +61,6 @@ class KnowledgeBase(models.Model):
         return name.strip() or self.user.username
 
     get_email = lambda self: self.email or self.user.email
-
 
     ########################
     #### STATUS METHODS ####
@@ -113,7 +111,7 @@ class KnowledgeBase(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.user and self.name and self.email\
-                and not self.id: 
+                and not self.id:
             # first time because no id
             self.public(save=False)
 
@@ -176,7 +174,7 @@ class Question(KnowledgeBase):
         or not.
         """
         return any([r.accepted for r in self.get_responses()])
-    
+
     def clear_accepted(self):
         self.get_responses().update(accepted=False)
 
@@ -212,7 +210,7 @@ class Question(KnowledgeBase):
             return ('knowledge_thread', [self.id, slugify(self.title)])
         else:
             return ('knowledge_thread_no_slug', [self.id])
-    
+
     def __unicode__(self):
         return self.title
 
@@ -244,7 +242,7 @@ class Response(KnowledgeBase):
 
     def accept(self):
         self.question.accept(self)
-    
+
     def __unicode__(self):
         return self.body[0:100] + u'...'
 

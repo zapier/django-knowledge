@@ -21,6 +21,7 @@ ALLOWED_MODS = {
     ]
 }
 
+
 def get_my_questions(request):
     if request.user.is_anonymous():
         return None
@@ -62,7 +63,7 @@ def knowledge_list(request,
         category = get_object_or_404(Category, slug=category_slug)
         questions = questions.filter(categories=category)
 
-    paginator, questions = paginate(questions, 50, 
+    paginator, questions = paginate(questions, 50,
             request.GET.get('page', '1'))
 
     return render(request, template, {
@@ -72,7 +73,7 @@ def knowledge_list(request,
         'my_questions': get_my_questions(request),
         'category': category,
         'categories': Category.objects.all(),
-        'form': Form(request.user, initial={'title': search }), # prefill title
+        'form': Form(request.user, initial={'title': search}),  # prefill title
         'BASE': BASE
     })
 
@@ -111,6 +112,7 @@ def knowledge_thread(request,
         'categories': Category.objects.all(),
         'BASE': BASE
     })
+
 
 def knowledge_moderate(
         request,
@@ -161,7 +163,6 @@ def knowledge_moderate(
     except NoReverseMatch, e:
         # if we delete an instance...
         return redirect(reverse('knowledge_index'))
-
 
 
 def knowledge_ask(request,

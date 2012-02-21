@@ -50,7 +50,6 @@ def QuestionForm(user, *args, **kwargs):
 
     return _QuestionForm(*args, **kwargs)
 
-
 def ResponseForm(user, question, *args, **kwargs):
     """
     Build and return the appropriate form depending
@@ -76,7 +75,6 @@ def ResponseForm(user, question, *args, **kwargs):
 
     if user.is_staff:
         selected_fields += ['status']
-
 
     class _ResponseForm(forms.ModelForm):
         def __init__(self, *args, **kwargs):
