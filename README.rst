@@ -1,11 +1,13 @@
 Welcome to Django Knowledge!
 ============================
 
-Django Knowledge makes it easy to add an integrated help desk or knowledge base to your 
-Django project with only a few lines of boilerplate code. However, you should just as 
-easily be able to customize the looks and feel of the app.
+Django Knowledge makes it easy to add an integrated support desk, help desk or 
+knowledge base to your Django project with only a few lines of boilerplate code.
+While we give you a generic design for free, you should just as easily be able 
+to customize the look and feel of the app if you like.
 
 **django-knowledge** was developed internally for `Zapier <https://zapier.com/>`_.
+Check out their `live demo <https://zapier.com/support/>`_.
 
 
 At a glance:
