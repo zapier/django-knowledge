@@ -37,7 +37,6 @@ Contents:
 
    overview
    install
-   configuring
    development
    customize
    performance
