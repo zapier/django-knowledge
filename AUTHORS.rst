@@ -8,12 +8,6 @@ Development Lead
 - Bryan Helmig <bryan@zapier.com>
 
 
-Core Developers
-````````````````
-
-- Wade Foster <wade@zapier.com>
-
-
 Patches and Suggestions
 ```````````````````````
 
