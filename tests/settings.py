@@ -32,6 +32,8 @@ INSTALLED_APPS = (
 
 ROOT_URLCONF = 'tests.urls'
 
+KNOWLEDGE_ALLOW_ANONYMOUS = True
+
 COVERAGE_REPORT_HTML_OUTPUT_DIR = os.path.join(DIRNAME, 'reports').replace('\\','/')
 
 TEMPLATE_DIRS = (

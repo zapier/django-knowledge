@@ -14,13 +14,14 @@ At a glance:
 ------------
 
 - Turn common questions or support requests into a **knowledge base**.
-- Control **who sees what** with simple per object view permissions: *public*, *private*, or *internal*.
+- Control **who sees what** with simple per object view permissions: *public* (everyone), 
+  *private* (poster & staff), or *internal* (only staff).
 - Assign questions and answers to **categories** for easy sorting.
 - Staff get **moderation controls** or they can use the familiar *Django admin* to handle support requests.
 - Allow **anonymous questions**, or require a standard Django user account (the default).
 - Included base **templates and design** with prebundled HTML and CSS.
 - BSD license.
-
+q
 
 Links:
 ------

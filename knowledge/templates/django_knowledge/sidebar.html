@@ -1,3 +1,18 @@
+{% if my_questions %}
+
+  <h4>My Questions</h4>
+  <hr />
+
+  <ul>
+    {% for question in my_questions %}
+      <li><a href="{{ question.get_absolute_url }}">{{ question.title }}</a></li>
+    {% endfor %}
+  </ul>
+
+  <br />
+    
+{% endif %}
+
 <h4>Categories</h4>
 <hr />
 
