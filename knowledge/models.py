@@ -160,7 +160,7 @@ class Question(KnowledgeBase):
 
     def get_responses(self, user=None):
         if user:
-            return self.responses.can_view(user)
+            return Response.objects.can_view(user).filter(question=self)
         else:
             return self.responses.all()
 

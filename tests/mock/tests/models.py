@@ -196,6 +196,32 @@ class BasicModelTest(TestCase):
 
         self.assertTrue(response.can_view(self.admin))
 
+    
+    def test_get_responses(self):
+        """
+        Ensures adding another response isn't crossed into other responses.
+        """
+        self.assertEquals(len(self.question.get_responses(self.anon)), 0)
+        self.assertEquals(len(self.question.get_responses(self.joe)), 1)
+        self.assertEquals(len(self.question.get_responses(self.admin)), 1)
+
+        question = Question.objects.create(
+            title = 'Where is my cat?',
+            body = 'His name is whiskers.',
+            user = self.joe
+        )
+        response = Response.objects.create(
+            question = question,
+            user = self.admin,
+            body = 'I saw him in the backyard.'
+        )
+
+        self.assertEquals(len(self.question.get_responses(self.anon)), 0)
+        self.assertEquals(len(self.question.get_responses(self.joe)), 1)
+        self.assertEquals(len(self.question.get_responses(self.admin)), 1)
+
+        
+
 
     def test_locking(self):
         self.assertFalse(self.question.locked)
