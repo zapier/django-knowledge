@@ -219,17 +219,26 @@ class BasicModelTest(TestCase):
         self.assertEquals(self.question.get_name(), 'Joe Dirt')
         self.assertEquals(self.question.get_email(), 'joedirt@example.com')
 
+        question = Question.objects.create(
+            title = 'Where is my cat?',
+            body = 'His name is whiskers.',
+            user = self.bob
+        )
+
+        self.assertEquals(question.get_name(), 'bob') # no first/last
+        self.assertEquals(question.get_email(), 'bob@example.com')
+
 
     def test_anon_question(self):
-        q = Question.objects.create(
+        question = Question.objects.create(
             title = 'Where is my cat?',
             body = 'His name is whiskers.',
             name = 'Joe Dirt',
             email = 'joedirt@example.com'
         )
 
-        self.assertEquals(q.get_name(), 'Joe Dirt')
-        self.assertEquals(q.get_email(), 'joedirt@example.com')
+        self.assertEquals(question.get_name(), 'Joe Dirt')
+        self.assertEquals(question.get_email(), 'joedirt@example.com')
 
 
 

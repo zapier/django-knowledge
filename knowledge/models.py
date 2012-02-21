@@ -63,11 +63,6 @@ class KnowledgeBase(models.Model):
 
     get_email = lambda self: self.email or self.user.email
 
-    def as_dict(self):
-        def get(s, k):
-            return (getattr(s, k)() if callable(getattr(s, k)) 
-                                                else getattr(s, k))
-        return dict([ [k, get(self, k)] for k in self.dict_fields ])
 
     ########################
     #### STATUS METHODS ####
@@ -130,8 +125,6 @@ class KnowledgeBase(models.Model):
 
 class Question(KnowledgeBase):
     is_question = True
-    dict_fields = ['id', 'title', 'body', 'url', 'status', 
-        'locked', 'get_name', 'get_email']
 
     title = models.CharField(max_length=255,
         verbose_name='Question',
@@ -207,6 +200,7 @@ class Question(KnowledgeBase):
         """
         return [self.status, 'flip_lock' if self.locked else None]
 
+    @property
     def url(self):
         return self.get_absolute_url()
 
@@ -228,8 +222,6 @@ class Question(KnowledgeBase):
 
 class Response(KnowledgeBase):
     is_response = True
-    dict_fields = ['id', 'question_id', 'body', 'status', 
-        'accepted', 'get_name', 'get_email']
 
     question = models.ForeignKey('knowledge.Question',
         related_name='responses')
