@@ -27,17 +27,6 @@ class BasicMangerTest(TestCase):
         self.assertEquals(1, Q.can_view(self.admin).count())
 
 
-        ## someone comes along and internalizes this question ##
-        self.question.internal()
-
-        # only admin can see
-        self.assertEquals(0, Q.can_view(self.anon).count())
-        self.assertEquals(0, Q.can_view(self.bob).count())
-        self.assertEquals(0, Q.can_view(self.joe).count())
-
-        self.assertEquals(1, Q.can_view(self.admin).count())
-
-
         ## someone comes along and privatizes this question ##
         self.question.private()
 

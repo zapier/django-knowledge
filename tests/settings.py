@@ -25,6 +25,7 @@ INSTALLED_APPS = (
     'django.contrib.markup',
 
     'knowledge',
+    'south',
     'django_coverage',
     'mock',
 )

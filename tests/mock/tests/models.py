@@ -68,16 +68,15 @@ class BasicModelTest(TestCase):
         self.assertEquals(question.status, 'public')
         self.assertIn('public', question.states())
 
-        question.internal()
-        self.assertEquals(question.status, 'internal')
-        self.assertIn('internal', question.states())
-
         question.private()
         self.assertEquals(question.status, 'private')
         self.assertIn('private', question.states())
 
         # no change
         question.inherit()
+        self.assertEquals(question.status, 'private')
+        self.assertIn('private', question.states())
+        question.internal()
         self.assertEquals(question.status, 'private')
         self.assertIn('private', question.states())
 
@@ -131,17 +130,6 @@ class BasicModelTest(TestCase):
         self.assertTrue(question.can_view(self.bob))
 
         self.assertTrue(question.can_view(self.joe))
-        self.assertTrue(question.can_view(self.admin))
-
-
-        ## someone comes along and internalizes this question ##
-        question.internal()
-
-        # only admin can see
-        self.assertFalse(question.can_view(self.anon))
-        self.assertFalse(question.can_view(self.bob))
-        self.assertFalse(question.can_view(self.joe))
-
         self.assertTrue(question.can_view(self.admin))
 
 

@@ -2,7 +2,7 @@ from distutils.core import setup
 
 # Dynamically calculate the version based on mptt.VERSION
 version_tuple = __import__('knowledge').VERSION
-version = ".".join([str(v) for v in version_tuple])
+version = '.'.join([str(v) for v in version_tuple])
 
 setup(
     name = 'django-knowledge',
@@ -12,10 +12,13 @@ setup(
     author = 'Bryan Helmig',
     author_email = 'bryan@zapier.com',
     url = 'http://github.com/zapier/django-knowledge',
-    install_requires=['Markdown>=2.1.1',]
+    install_requires=['Markdown>=2.1.1',],
     packages=['knowledge'],
-    package_data={'knowledge': ['templates/*']},
-    classifiers = ['Development Status :: 4 - Beta',
+    package_data={'knowledge': [
+      'migrations/*',
+      'templates/django_knowledge/*',
+      'templatetags/*']},
+    classifiers = ['Development Status :: 3 - Alpha',
                    'Environment :: Web Environment',
                    'Framework :: Django',
                    'Intended Audience :: Developers',

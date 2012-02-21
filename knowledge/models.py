@@ -140,6 +140,9 @@ class Question(KnowledgeBase):
     def inherit(self):
         pass
 
+    def internal(self):
+        pass
+
     def flip_lock(self, save=True):
         self.locked = not self.locked
         if save:
