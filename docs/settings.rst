@@ -27,13 +27,6 @@ Default ``True``. If ``True``, any user (respecting KNOWLEDGE_ALLOW_ANONYMOUS) c
 respond to any question. If ``False``, only staff or original poster may respond.
 
 
-KNOWLEDGE_ALLOW_RATING
------------------
-
-Default ``True``. If ``True``, any user (respecting KNOWLEDGE_ALLOW_ANONYMOUS) can 
-rate any response. If ``False``, ratings are disabled.
-
-
 KNOWLEDGE_SLUG_URLS
 --------------
 
