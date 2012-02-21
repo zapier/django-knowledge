@@ -43,13 +43,24 @@ Screen Shots:
 -------------
 
 .. image:: http://bryanhelmig.com/downloads/knowledge/thread.png
+   :width: 100 %
+   :alt: a common thread viewed by anonymous user
 
 .. image:: http://bryanhelmig.com/downloads/knowledge/thread-mod.png
+   :width: 100 %
+   :alt: a common thread viewed by a moderator (staff)
 
 .. image:: http://bryanhelmig.com/downloads/knowledge/ask.png
+   :width: 100 %
+   :alt: ask form
 
 .. image:: http://bryanhelmig.com/downloads/knowledge/home.png
+   :width: 100 %
+   :alt: the home page
 
 .. image:: http://bryanhelmig.com/downloads/knowledge/results.png
+   :width: 100 %
+   :alt: search results with ask form at bottom
 
 .. image:: http://bryanhelmig.com/downloads/knowledge/tests.png
+   :alt: 100% coverage on tests
