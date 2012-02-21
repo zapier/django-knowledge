@@ -72,7 +72,7 @@ def knowledge_list(request,
         'my_questions': get_my_questions(request),
         'category': category,
         'categories': Category.objects.all(),
-        'form': Form(request.user, request.GET), # prefill title
+        'form': Form(request.user, initial={'title': search }), # prefill title
         'BASE': BASE
     })
 
