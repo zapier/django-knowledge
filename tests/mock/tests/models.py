@@ -227,13 +227,6 @@ class BasicModelTest(TestCase):
             self.question.get_absolute_url()
         )
 
-    def test_points(self):
-        self.assertEquals(self.question.get_points(), 0)
-        self.assertEquals(self.response.get_points(), 0)
-
-        self.response.accept()
-        self.assertEquals(self.response.get_points(), 25)
-
     def test_normal_question(self):
         self.assertEquals(self.question.get_name(), 'Joe Dirt')
         self.assertEquals(self.question.get_email(), 'joedirt@example.com')

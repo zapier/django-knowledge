@@ -5,65 +5,13 @@ Django Knowledge makes it easy to add an integrated help knowledge to your Djang
 with only a few lines of boilerplate code. However, you should just as easily
 be able to customize the looks and feel of the app.
 
-*Note: What follows is directly copied from the development docs. Any changes you make 
-here, be sure to update there.*
 
-Right now *django-knowledge* is still under heavy development. We're approaching the 
-full development of this product in the manner described below.
+At a glance:
+------------
 
-
-.. _development-pattern:
-
-Development pattern
------------
-
-1. **Documentation first!**
-   
-   This is vitally important as we pusposefully want to create something that 
-   is a **best in class** application. We want django-knowledge be the *south* of help
-   knowledge software for Django. 
-
-2. **Tests next!**
-   
-   Again, we want people to trust this application, so tests are an absolute must.
-   TDD is the name of the game here. 100% coverage is the goal.
-
-3. **Code final!**
-
-   And let's make it good code as well. PEP8, pylint and all that jazz.
+- Turn common questions or support requests into a **knowledge base**.
+- Staff get **moderation controls** or they can use the familiar *Django admin* to handle support requests.
+- Included base **templates and design** with prebundled CSS and HTML.
 
 
-.. _development-guide:
-
-Development guide
------------------
-
-Documentation
-~~~~~~~~~~~~~
-
-We're using Sphinx, so make sure you have ``pip install sphinx``, browse on into the
-*docs* folder and run ``make html``. Inside *docs/_build* should be the rendered html.
-Open up *docs/_build/html/index.html* in your browser to take a looksy.
-
-Editing the files is equally simple, just adhere to the reStructuredText format. I recommend
-using something like `watch <http://en.wikipedia.org/wiki/Watch_(Unix)>`_ and ``watch make html``
-while doing documentation to auto build everything while you work.
-
-
-Tests
-~~~~~
-
-Inside the *tests* directory is a bash script that runs a localized Django project
-that tests our application in a project context. A quick command ``tests/runtests.sh``
-should suffice for most basic needs.
-
-Right now we're not bundling tests inside the installed package, they are part of
-their own example application. All tests are found in *tests/example/tests/* under split
-out files reflecting their location in the package.
-
-
-Code
-~~~~
-
-Do your coding, but remember to run ``pep8 knowledge`` and pylint ``pylint knowledge`` and 
-fix any errors you see, or explan why you won't in your commit message.
+Links

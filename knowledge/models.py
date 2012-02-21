@@ -47,8 +47,6 @@ class KnowledgeBase(models.Model):
     email = models.EmailField(blank=True, null=True,
         help_text='Enter a valid email address.')
 
-    points = models.PositiveIntegerField(default=0)
-
 
     #########################
     #### GENERIC GETTERS ####
@@ -58,8 +56,6 @@ class KnowledgeBase(models.Model):
         self.user.first_name, self.user.last_name))
 
     get_email = lambda self: self.email or self.user.email
-
-    get_points = lambda self: self.points
 
 
     ########################
@@ -226,9 +222,6 @@ class Response(KnowledgeBase):
     accepted = models.BooleanField(default=False)
 
     objects = ResponseManager()
-
-    def get_points(self):
-        return self.points + (25 if self.accepted else 0)
 
     def states(self):
         """
