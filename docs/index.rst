@@ -37,3 +37,19 @@ Contents:
    customize
    performance
    settings
+
+
+Screen Shots:
+-------------
+
+.. image:: http://bryanhelmig.com/downloads/knowledge/thread.png
+
+.. image:: http://bryanhelmig.com/downloads/knowledge/thread-mod.png
+
+.. image:: http://bryanhelmig.com/downloads/knowledge/ask.png
+
+.. image:: http://bryanhelmig.com/downloads/knowledge/home.png
+
+.. image:: http://bryanhelmig.com/downloads/knowledge/results.png
+
+.. image:: http://bryanhelmig.com/downloads/knowledge/tests.png
