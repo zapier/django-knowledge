@@ -52,11 +52,22 @@ class KnowledgeBase(models.Model):
     #### GENERIC GETTERS ####
     #########################
 
-    get_name = lambda self: (self.name or '{0} {1}'.format(
-        self.user.first_name, self.user.last_name))
+    def get_name(self):
+        """
+        Get local name, then self.user's first/last, and finally
+        their username if all else fails.
+        """
+        name = (self.name or '{0} {1}'.format(
+            self.user.first_name, self.user.last_name))
+        return name.strip() or self.user.username
 
     get_email = lambda self: self.email or self.user.email
 
+    def as_dict(self):
+        def get(s, k):
+            return (getattr(s, k)() if callable(getattr(s, k)) 
+                                                else getattr(s, k))
+        return dict([ [k, get(self, k)] for k in self.dict_fields ])
 
     ########################
     #### STATUS METHODS ####
@@ -119,6 +130,8 @@ class KnowledgeBase(models.Model):
 
 class Question(KnowledgeBase):
     is_question = True
+    dict_fields = ['id', 'title', 'body', 'url', 'status', 
+        'locked', 'get_name', 'get_email']
 
     title = models.CharField(max_length=255,
         verbose_name='Question',
@@ -194,6 +207,9 @@ class Question(KnowledgeBase):
         """
         return [self.status, 'flip_lock' if self.locked else None]
 
+    def url(self):
+        return self.get_absolute_url()
+
     @models.permalink
     def get_absolute_url(self):
         from django.template.defaultfilters import slugify
@@ -212,6 +228,8 @@ class Question(KnowledgeBase):
 
 class Response(KnowledgeBase):
     is_response = True
+    dict_fields = ['id', 'question_id', 'body', 'status', 
+        'accepted', 'get_name', 'get_email']
 
     question = models.ForeignKey('knowledge.Question',
         related_name='responses')

@@ -1,5 +1,8 @@
-from django.http import Http404
-from django.shortcuts import render, redirect, get_object_or_404
+from django.utils import simplejson
+from django.forms.models import model_to_dict
+from django.http import Http404, HttpResponse
+from django.shortcuts import render as prerender
+from django.shortcuts import redirect, get_object_or_404
 from django.core.urlresolvers import reverse, NoReverseMatch
 from django.db.models import Q
 
@@ -20,6 +23,30 @@ ALLOWED_MODS = {
         'delete', 'accept'
     ]
 }
+
+def render(request, template, context):
+    """
+    This local render override is a bit silly in the sense that "API"
+    requests will only get public things (unless you pass in your 
+    Django auth cookies). To flesh this out would be rather extravagent
+    in scope.
+
+    Mark for possible removal?
+    """
+
+    if request.META.get('HTTP_ACCEPT', '') == 'application/json' and \
+            settings.DELIVER_JSON:
+
+        questions = context.get('questions', {})
+        responses = context.get('responses', {})
+        models = (questions or responses)
+
+        return HttpResponse(
+            simplejson.dumps([m.as_dict() for m in models]),
+            content_type='application/json'
+        )
+
+    return prerender(request, template, context)
 
 def get_my_questions(request):
     if request.user.is_anonymous():
