@@ -19,8 +19,9 @@ At a glance:
 Links:
 ------
 
-* View a demo `demo <https://zapier.com/support/>`_. This is the stock design, minus the custom
-  header and footer.
+* View a demo `demo <https://zapier.com/support/>`_. This is the stock design, minus the 
+  custom header and footer.
+* Check out the `documentation <http://django-knowledge.readthedocs.org/>`_.
 
 
 Screen Shots:
