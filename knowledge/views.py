@@ -10,7 +10,7 @@ from knowledge import settings
 
 ALLOWED_MODS = {
     'question': [
-        'private',
+        'private', 'flip_lock',
         'public', 'delete',
         'clear_accepted'
     ],
