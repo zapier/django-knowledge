@@ -20,6 +20,7 @@ At a glance:
 - Staff get **moderation controls** or they can use the familiar *Django admin* to handle support requests.
 - Allow **anonymous questions**, or require a standard Django user account (the default).
 - Included base **templates and design** with prebundled HTML and CSS.
+- Optionally **alert users** of new responses via email (or your own alert system).
 - BSD license.
 
 
