@@ -3,8 +3,9 @@ Alerts
 
 **django-knowledge** has built in functionality that sends email alerts to 
 subscribed users when a new response is added or accepted. Users can opt-in 
-or out this alert at the time of posting a question or response. They can
-also opt-in or out after the fact.
+or out this alert at the time of posting a question or response.
+
+*TODO:* They can also opt-in or out after the fact.
 
 
 Enabling
