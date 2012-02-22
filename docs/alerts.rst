@@ -47,8 +47,8 @@ own off request functionality:
 
 The email function should expect two keyword arguments:
 
-* ``target_dict`` - A dictionary for {'email': 'first last (or username)'} for anonymous or 
-  {'email': <User instances>}. This list is deduplicated by email address.
+* ``target_dict`` - A dictionary for {'me@dom.com': 'First Last (or username)'} for anonymous or 
+  {'me@dom.com': <User instances>}. This list is deduplicated by email address.
 * ``response`` - An Response instance of the model triggering this alert. May be 
   ``None`` in the future.
 

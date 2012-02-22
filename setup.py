@@ -17,8 +17,8 @@ setup(
     package_data={'knowledge': [
       'migrations/*',
       'static/knowledge/css/*',
-      'templates/django_knowledge/emails/*',
       'templates/django_knowledge/*',
+      'templates/django_knowledge/emails/*',
       'templatetags/*']},
     classifiers = ['Development Status :: 3 - Alpha',
                    'Environment :: Web Environment',
