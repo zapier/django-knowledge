@@ -30,8 +30,7 @@ def get_my_questions(request):
                                     .filter(user=request.user)
 
 def knowledge_index(request,
-                    template='django_knowledge/index.html',
-                    BASE=settings.BASE_TEMPLATE):
+                    template='django_knowledge/index.html'):
 
     questions = Question.objects.can_view(request.user)[0:20]
 
@@ -39,16 +38,14 @@ def knowledge_index(request,
         'request': request,
         'questions': questions,
         'my_questions': get_my_questions(request),
-        'categories': Category.objects.all(),
-        'BASE': BASE
+        'categories': Category.objects.all()
     })
 
 
 def knowledge_list(request,
                    category_slug=None,
                    template='django_knowledge/list.html',
-                   Form=QuestionForm,
-                   BASE=settings.BASE_TEMPLATE):
+                   Form=QuestionForm):
 
     search = request.GET.get('title', None)
     questions = Question.objects.can_view(request.user)
@@ -73,8 +70,7 @@ def knowledge_list(request,
         'my_questions': get_my_questions(request),
         'category': category,
         'categories': Category.objects.all(),
-        'form': Form(request.user, initial={'title': search}),  # prefill title
-        'BASE': BASE
+        'form': Form(request.user, initial={'title': search})  # prefill title
     })
 
 
@@ -82,8 +78,7 @@ def knowledge_thread(request,
                      question_id,
                      slug=None,
                      template='django_knowledge/thread.html',
-                     Form=ResponseForm,
-                     BASE=settings.BASE_TEMPLATE):
+                     Form=ResponseForm):
 
     question = get_object_or_404(
         Question.objects.can_view(request.user),
@@ -109,8 +104,7 @@ def knowledge_thread(request,
         'responses': responses,
         'allowed_mods': ALLOWED_MODS,
         'form': form,
-        'categories': Category.objects.all(),
-        'BASE': BASE
+        'categories': Category.objects.all()
     })
 
 
@@ -119,8 +113,7 @@ def knowledge_moderate(
         lookup_id,
         model,
         mod,
-        allowed_mods=ALLOWED_MODS,
-        BASE=settings.BASE_TEMPLATE):
+        allowed_mods=ALLOWED_MODS):
 
     """
     An easy to extend method to moderate questions
@@ -167,8 +160,7 @@ def knowledge_moderate(
 
 def knowledge_ask(request,
                   template='django_knowledge/ask.html',
-                  Form=QuestionForm,
-                  BASE=settings.BASE_TEMPLATE):
+                  Form=QuestionForm):
 
     if request.method == 'POST':
         form = Form(request.user, request.POST)
@@ -182,6 +174,5 @@ def knowledge_ask(request,
         'request': request,
         'my_questions': get_my_questions(request),
         'form': form,
-        'categories': Category.objects.all(),
-        'BASE': BASE
+        'categories': Category.objects.all()
     })

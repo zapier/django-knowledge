@@ -17,11 +17,11 @@ files from your static (see below): ``reset.css`` and ``base.css``.
 If you have your own template shim/wrapper:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. Change ``KNOWLEDGE_BASE_TEMPLATE`` to your own ``base.html`` location.
-2. Put ``{% block knowledge_inner %}`` around all your content.
-3. Include ``{{ STATIC_URL }}knowledge/css/main.css`` for knowledge specific styling.
+1. Copy and modify ``django_knowledge/base.html`` to your own template folder. Edit
+   it as you see fit.
+2. Include ``{{ STATIC_URL }}knowledge/css/main.css`` for knowledge specific styling.
    You should purposefully leave out ``{{ STATIC_URL }}knowledge/css/reset.css`` if you 
-   don't want us to modify your existing base styles.
+   don't want us to reset your existing base styles.
 
 If you do decide to change the base template via the ``KNOWLEDGE_BASE_TEMPLATE`` 
 setting, your new template might look something like this:
@@ -76,17 +76,22 @@ If you want to use the included template shim/wrapper:
 and ``{{ STATIC_URL }}knowledge/css/main.css``.
 2. Done.
 
+
 Modifying common singular sections:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 There are two very common areas for modification:
 
 1. ``django_knowledge/welcome.html`` - The support header containing the link and phrase 
-   "Welcome to our Support Center". Simply override this locally by adding 
+   "Welcome to our Support Center". Simply override this locally by copying and editing 
    ``templates/django_knowledge/welcome.html`` to your project.
 
 2. ``django_knowledge/sidebar.html`` - The sidebar containing links to the homepage, ask
-   a question and categories. Likewise, simply override this locally by adding 
+   a question and categories. Likewise, simply override this locally by copying and editing 
+   ``templates/django_knowledge/sidebar.html`` to your project.
+
+3. ``django_knowledge/form.html`` - The form loops over given forms and renders them. 
+   Likewise, you can simply override this locally by copying and editing 
    ``templates/django_knowledge/sidebar.html`` to your project.
 
 

@@ -33,12 +33,3 @@ KNOWLEDGE_SLUG_URLS
 Default ``True``. If ``True``, the URL for a question will have the slug from its
 title appended to the end and incorrect or missing slugs will result in a 301 redirect. 
 If ``False``, the slug is ommitted.
-
-
-KNOWLEDGE_BASE_TEMPLATE
-----------------
-
-Default ``django_knowledge/base.html``. This template should have a block called 
-``wrapper`` that each subtemplate will fill. Alternatively, you can create the default 
-file in your own project (``myproject/templates/django_knowledge/base.html``) to 
-override ours.
