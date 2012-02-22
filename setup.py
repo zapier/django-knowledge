@@ -15,11 +15,11 @@ setup(
     install_requires=['Markdown>=2.1.1',],
     packages=['knowledge'],
     package_data={'knowledge': [
-      'migrations/*',
+      'migrations/*.py',
       'static/knowledge/css/*.css',
       'templates/django_knowledge/*.html',
       'templates/django_knowledge/emails/*.html',
-      'templatetags/*']},
+      'templatetags/*.py']},
     classifiers = ['Development Status :: 3 - Alpha',
                    'Environment :: Web Environment',
                    'Framework :: Django',
