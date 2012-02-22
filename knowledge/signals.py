@@ -2,7 +2,7 @@ from knowledge.utils import get_module
 from knowledge import settings
 
 
-def send_alerts(target_dict, response):
+def send_alerts(target_dict, response, **kwargs):
     """
     This can be overridden via KNOWLEDGE_ALERTS_FUNCTION_PATH.
     """

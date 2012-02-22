@@ -151,7 +151,7 @@ class Question(KnowledgeBase):
 
     locked = models.BooleanField(default=False)
 
-    categories = models.ManyToManyField('knowledge.Category')
+    categories = models.ManyToManyField('knowledge.Category', blank=True)
 
     objects = QuestionManager()
 

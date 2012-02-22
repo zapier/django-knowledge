@@ -48,10 +48,13 @@ own off request functionality:
 
 The email function should expect two keyword arguments:
 
-* ``target_dict`` - A dictionary for {'me@dom.com': 'First Last (or username)'} for anonymous or 
-  {'me@dom.com': <User instances>}. This list is deduplicated by email address.
+* ``target_dict`` - A dictionary for {'me@dom.com': 'First Last (or username)'} for 
+  anonymous or {'me@dom.com': <User instances>}. This list is deduplicated by email 
+  address.
 * ``response`` - An Response instance of the model triggering this alert. May be 
   ``None`` in the future.
+* ``**kwargs`` - It would be wise to include a blanket keyword arg catcher, we'll 
+  likely add more things in the future, so this will keep your code from breaking.
 
 
 **Note:** just to clarify: if you change the email function path setting, you will 
