@@ -1,11 +1,13 @@
 {% extends 'django_knowledge/inner.html' %}
 
-{% block title %}Home{% endblock title %}
+{% load i18n %}
+
+{% block title %}{% trans "Support" %}{% endblock title %}
 
 {% block knowledge_widgets %}
 
 <div class="dk-widget">
-  <h3>Top {{ questions|length }} Questions</h3>
+  <h3>{% blocktrans with count=questions|length %}Top {{ count }} Questions{% endblocktrans %}</h3>
   <hr />
   <ol class="question-list">
     {% for question in questions %}

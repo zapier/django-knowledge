@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User, AnonymousUser
 from django.core.urlresolvers import reverse
 from django.template.defaultfilters import slugify
+from django.core import mail
 
 from mock.tests.base import TestCase
 from knowledge.models import Question, Response
@@ -219,6 +220,8 @@ class BasicModelTest(TestCase):
         self.assertEquals(len(self.question.get_responses(self.anon)), 0)
         self.assertEquals(len(self.question.get_responses(self.joe)), 1)
         self.assertEquals(len(self.question.get_responses(self.admin)), 1)
+
+        self.assertEqual(len(mail.outbox), 0)
 
     
     def test_urls(self):

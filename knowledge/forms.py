@@ -1,13 +1,16 @@
 from django import forms
+from django.utils.translation import ugettext_lazy as _
 
 from knowledge import settings
 from knowledge.models import Question, Response
+
+OPTIONAL_FIELDS = ['alert']
 
 
 def QuestionForm(user, *args, **kwargs):
     """
     Build and return the appropriate form depending
-    on the status us the passed in user.
+    on the status of the passed in user.
     """
 
     if user.is_anonymous():
@@ -18,18 +21,22 @@ def QuestionForm(user, *args, **kwargs):
     else:
         selected_fields = ['user', 'title', 'body', 'status']
 
+    if settings.ALERTS:
+        selected_fields += ['alert']
+
     class _QuestionForm(forms.ModelForm):
         def __init__(self, *args, **kwargs):
             super(_QuestionForm, self).__init__(*args, **kwargs)
 
             for key in self.fields:
-                self.fields[key].required = True
+                if not key in OPTIONAL_FIELDS:
+                    self.fields[key].required = True
 
+            # hide the internal status for non-staff
             qf = self.fields.get('status', None)
-            if qf:
+            if qf and not user.is_staff:
                 choices = list(qf.choices)
-                if not user.is_staff:
-                    choices.remove(('internal', 'Internal'))
+                choices.remove(('internal', _('Internal')))
                 qf.choices = choices
 
             # a bit of a hack...
@@ -53,7 +60,7 @@ def QuestionForm(user, *args, **kwargs):
 def ResponseForm(user, question, *args, **kwargs):
     """
     Build and return the appropriate form depending
-    on the status us the passed in user.
+    on the status of the passed in user and question.
     """
 
     if question.locked:
@@ -76,12 +83,16 @@ def ResponseForm(user, question, *args, **kwargs):
     if user.is_staff:
         selected_fields += ['status']
 
+    if settings.ALERTS:
+        selected_fields += ['alert']
+
     class _ResponseForm(forms.ModelForm):
         def __init__(self, *args, **kwargs):
             super(_ResponseForm, self).__init__(*args, **kwargs)
 
             for key in self.fields:
-                self.fields[key].required = True
+                if not key in OPTIONAL_FIELDS:
+                    self.fields[key].required = True
 
             # a bit of a hack...
             for key in ['user', 'question']:

@@ -38,6 +38,7 @@ Contents:
    overview
    install
    development
+   alerts
    customize
    performance
    settings

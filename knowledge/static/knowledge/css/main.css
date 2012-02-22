@@ -106,6 +106,8 @@
           font-size: 14px;
           width: 96%;
           border: 1px solid #ccc; }
+        .dk-inner .dk-content .dk-widget form.dk-form .field-wrapper input[type=checkbox] {
+          margin-top: 6px; }
         .dk-inner .dk-content .dk-widget form.dk-form .field-wrapper ul.errorlist {
           color: #8a1f11;
           margin: 0;

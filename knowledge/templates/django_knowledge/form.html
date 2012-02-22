@@ -1,10 +1,12 @@
+{% load i18n %}
+
 <form {% if submit_url %}action="{{ submit_url }}"{% endif %} method="post" class="dk-form">
   {% csrf_token %}
 
   {% for field in form.visible_fields %}
     <div class="field-wrapper">
       <div class="field-label">
-        <label for="id_{{ field.html_name }}">{{ field.label }}: {% if field.field.required %}<small><em class="quiet">(required)</em></small>{% endif %}</label>
+        <label for="id_{{ field.html_name }}">{{ field.label }}: {% if field.field.required %}<small><em class="quiet">({% trans "required" %})</em></small>{% endif %}</label>
         
         {% if field.field.help_text %}
           <br />
@@ -19,7 +21,10 @@
     </div>
   {% endfor %}
 
+  {# these are, for the most part, unused #}
+  {% for field in form.hidden_fields %}{{ field }}{% endfor %}
+
   <div class="form-footer">
-    <input class="submit-question" type="submit" value="{{ submit_value }}"> <small>&nbsp;{{ submit_and }}</small>
+    <input class="submit-question" type="submit" value="{% trans submit_value %}"> <small>&nbsp;{% trans submit_and %}</small>
   </div>
 </form>

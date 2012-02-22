@@ -1,6 +1,8 @@
+{% load i18n %}
+
 {% if my_questions %}
 
-  <h4>My Questions</h4>
+  <h4>{% trans "My Questions" %}</h4>
   <hr />
 
   <ul>
@@ -13,7 +15,7 @@
     
 {% endif %}
 
-<h4>Categories</h4>
+<h4>{% trans "Categories" %}</h4>
 <hr />
 
 <ul>
@@ -24,10 +26,10 @@
 
 <br />
 
-<h4>Navigate</h4>
+<h4>{% trans "Navigate" %}</h4>
 <hr />
 
 <ul>
-  <li><a href="{% url knowledge_ask %}">Ask a question or give suggestion.</a></li>
-  <li><a href="{% url knowledge_index %}">Return to homepage.</a></li>
+  <li><a href="{% url knowledge_ask %}">{% trans "Ask a question or give suggestion." %}</a></li>
+  <li><a href="{% url knowledge_index %}">{% trans "Return to homepage." %}</a></li>
 </ul>

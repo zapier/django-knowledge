@@ -19,6 +19,8 @@ STATIC_URL = '/static/'
 
 INTERNAL_IPS = ('127.0.0.1',)
 
+SITE_ID = 1
+
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -33,6 +35,7 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.admin',
     'django.contrib.sessions',
+    'django.contrib.sites',
     'django.contrib.markup',
 
     'debug_toolbar',

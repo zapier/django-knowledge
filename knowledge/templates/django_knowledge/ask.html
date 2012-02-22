@@ -1,16 +1,18 @@
 {% extends 'django_knowledge/inner.html' %}
 
-{% block title %}Ask a Question{% endblock title %}
+{% load i18n %}
+
+{% block title %}{% trans "Ask a Question" %}{% endblock title %}
 
 {% block knowledge_widgets %}
 <div class="dk-widget">
-  <h3>Ask a Question</h3>
+  <h3>{% trans "Ask a Question" %}</h3>
   <hr />
 
   {% if form %}
     {% include "django_knowledge/form.html" with submit_value="Submit this support request" submit_and="and we'll get back to you as soon as possible." %}
   {% else %}
-    <p class="center"><em>Please log in to ask a question.</em></p>
+    <p class="center"><em>{% trans "Please log in to ask a question." %}</em></p>
   {% endif %}
 
 </div>

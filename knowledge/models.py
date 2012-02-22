@@ -1,19 +1,20 @@
 from knowledge import settings
 
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
 
 from knowledge.managers import QuestionManager, ResponseManager
-
+from knowledge.signals import response_post_save
 
 STATUSES = (
-    ('public', 'Public'),
-    ('private', 'Private'),
-    ('internal', 'Internal'),
+    ('public', _('Public')),
+    ('private', _('Private')),
+    ('internal', _('Internal')),
 )
 
 
 STATUSES_EXTENDED = STATUSES + (
-    ('inherit', 'Inherit'),
+    ('inherit', _('Inherit')),
 )
 
 
@@ -32,20 +33,25 @@ class KnowledgeBase(models.Model):
     """
     The base class for Knowledge models.
     """
-    is_question = False
-    is_response = False
+    is_question, is_response = False, False
 
     added = models.DateTimeField(auto_now_add=True)
     lastchanged = models.DateTimeField(auto_now=True)
 
     user = models.ForeignKey('auth.User', blank=True,
                              null=True, db_index=True)
+    alert = models.BooleanField(default=settings.ALERTS,
+        verbose_name=_('Alert'),
+        help_text=_('Check this if you want to be alerted when a new'
+                        ' response is added.'))
 
     # for anonymous posting, if permitted
     name = models.CharField(max_length=64, blank=True, null=True,
-        help_text='Enter your first and last name.')
+        verbose_name=_('Name'),
+        help_text=_('Enter your first and last name.'))
     email = models.EmailField(blank=True, null=True,
-        help_text='Enter a valid email address.')
+        verbose_name=_('Email'),
+        help_text=_('Enter a valid email address.'))
 
     #########################
     #### GENERIC GETTERS ####
@@ -60,7 +66,9 @@ class KnowledgeBase(models.Model):
             self.user.first_name, self.user.last_name))
         return name.strip() or self.user.username
 
-    get_email = lambda self: self.email or self.user.email
+    get_email = lambda s: s.email or s.user.email
+    get_pair = lambda s: (s.get_name(), s.get_email())
+    get_user_or_pair = lambda s: s.user or s.get_pair()
 
     ########################
     #### STATUS METHODS ####
@@ -110,7 +118,7 @@ class KnowledgeBase(models.Model):
         abstract = True
 
     def save(self, *args, **kwargs):
-        if not self.user and self.name and self.email\
+        if not self.user and self.name and self.email \
                 and not self.id:
             # first time because no id
             self.public(save=False)
@@ -118,20 +126,26 @@ class KnowledgeBase(models.Model):
         if settings.AUTO_PUBLICIZE and not self.id:
             self.public(save=False)
 
+        created = not bool(self.id)
+
         super(KnowledgeBase, self).save(*args, **kwargs)
+
+        if self.is_response:
+            response_post_save(self, created)
 
 
 class Question(KnowledgeBase):
     is_question = True
 
     title = models.CharField(max_length=255,
-        verbose_name='Question',
-        help_text='Enter your question or suggestion.')
+        verbose_name=_('Question'),
+        help_text=_('Enter your question or suggestion.'))
     body = models.TextField(blank=True, null=True,
-        verbose_name='Description',
-        help_text='Please offer details. Markdown enabled.')
+        verbose_name=_('Description'),
+        help_text=_('Please offer details. Markdown enabled.'))
 
     status = models.CharField(
+        verbose_name=_('Status'),
         max_length=32, choices=STATUSES,
         default='private', db_index=True)
 
@@ -225,9 +239,10 @@ class Response(KnowledgeBase):
         related_name='responses')
 
     body = models.TextField(blank=True, null=True,
-        verbose_name='Response',
-        help_text='Please enter your response. Markdown enabled.')
+        verbose_name=_('Response'),
+        help_text=_('Please enter your response. Markdown enabled.'))
     status = models.CharField(
+        verbose_name=_('Status'),
         max_length=32, choices=STATUSES_EXTENDED,
         default='inherit', db_index=True)
     accepted = models.BooleanField(default=False)

@@ -1,5 +1,7 @@
 {% extends 'django_knowledge/inner.html' %}
 
+{% load i18n %}
+
 {% load knowledge_tags %}
 
 {% block title %}Showing {{ questions.paginator.count }} results{% if search %} for {{ search }}{% endif %}{% if category %} in {{ category.title }} category{% endif %}{% endblock title %}
@@ -7,7 +9,8 @@
 {% block knowledge_widgets %}
 
 <div class="dk-widget">
-  <h3>Showing {{ questions.paginator.count }} results{% if search %} for <em>{{ search }}</em>{% endif %}{% if category %} in <em>{{ category.title }}</em> category{% endif %}:</h3>
+  {# dunno how to do translation on this nasty block... #}
+  <h3>Showing {{ counter }} results{% if search %} for <em>{{ search }}</em>{% endif %}{% if category %} in <em>{{ category.title }}</em> category{% endif %}:</h3>
   <hr />
   <ol class="question-list">
     {% for question in questions.object_list %}
@@ -16,7 +19,7 @@
   </ol>
 
   {% if not questions.paginator.count %}
-    <p class="center"><em>No results found.</em></p>
+    <p class="center"><em>{% trans "No results found." %}</em></p>
   {% endif %}
   
   <hr class="light"/>
@@ -24,13 +27,13 @@
   <div class="center">
     <strong>
     {% if questions.has_previous %}
-      <a href="?{% page_query request questions.previous_page_number %}">&larr; previous</a>
+      <a href="?{% page_query request questions.previous_page_number %}">&larr; {% trans "previous" %}</a>
     {% endif %}
 
-    &nbsp; page {{ questions.number }} of {{ questions.paginator.num_pages }} &nbsp;
+    &nbsp; {% blocktrans with number=questions.number pages=questions.paginator.num_pages %}page {{ number }} of {{ page }}{% endblocktrans %} &nbsp;
 
     {% if questions.has_next %}
-      <a href="?{% page_query request questions.next_page_number %}">next &rarr;</a>
+      <a href="?{% page_query request questions.next_page_number %}">{% trans "next" %} &rarr;</a>
     {% endif %}
     </strong>
   </div>
@@ -38,7 +41,7 @@
 
 {% if form and paginator.count < 5 %}
   <div class="dk-widget">
-    <h3>Ask a Question</h3>
+    <h3>{% trans "Ask a Question" %}</h3>
     <hr />
 
     {% url knowledge_ask as form_url %}

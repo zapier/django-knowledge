@@ -1,0 +1,1 @@
+{% load i18n %}{% blocktrans with title=response.question.title name=site.name %}New response on "{{ title }}" on {{ name }}.{% endblocktrans %}
