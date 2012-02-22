@@ -27,15 +27,16 @@ If you do decide to change the base template via the ``KNOWLEDGE_BASE_TEMPLATE``
 setting, your new template might look something like this:
 
 .. code-block:: html
-    
+
     <!doctype html>
     <html lang="en">
     <head>
       <title>{% block title %}{% endblock title %} | Johnny's Support Center</title>
-      
+
       <link rel="stylesheet" href="{{ STATIC_URL }}css/my-own-reset.css">
       <link rel="stylesheet" href="{{ STATIC_URL }}css/my-own-style.css">
 
+      <!-- don't forget to add me! -->
       <link rel="stylesheet" href="{{ STATIC_URL }}knowledge/css/main.css">
     </head>
 
@@ -45,9 +46,10 @@ setting, your new template might look something like this:
       <div class="header">
           Welcome to the Johnny's app!
       </div>
-      
+
       <div class="content">
         {% block knowledge_inner %}
+
           {% block content %}
             <!-- your tradition content is loaded here if not django knowledge -->
           {% endblock content %}
@@ -56,11 +58,10 @@ setting, your new template might look something like this:
         {% endblock knowledge_inner %}
       </div>
 
-
       <div class="footer">
           Copyright 2012
       </div>
-      
+
     </div>
     </body>
     </html>
@@ -115,8 +116,8 @@ overwrite them.
 CSS
 ---
 
-We purposefully namespace the majority of our css classes with ``dk-`` in order to keep 
-them from conflicting with your existing css. There are two included css files:
+We purposefully namespace the majority of our CSS classes with ``dk-`` in order to keep 
+them from conflicting with your existing CSS. There are two included CSS files:
 
 * ``reset.css`` - The majority of the base classes that act on body, typography, etc... 
   This is ripped from Blueprint (though Blueprint is not a prerequisite). This should 
