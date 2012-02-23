@@ -1,4 +1,4 @@
-from django.conf.urls.defaults import patterns, include, url
+from django.conf.urls.defaults import patterns, url
 
 urlpatterns = patterns('knowledge.views',
     url(r'^$', 'knowledge_index', name='knowledge_index'),

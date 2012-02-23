@@ -1,4 +1,4 @@
-from django.http import Http404, HttpResponse
+from django.http import Http404
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.urlresolvers import reverse, NoReverseMatch
 from django.db.models import Q
@@ -6,7 +6,7 @@ from django.db.models import Q
 from knowledge.models import Question, Response, Category
 from knowledge.forms import QuestionForm, ResponseForm
 from knowledge.utils import paginate
-from knowledge import settings
+
 
 ALLOWED_MODS = {
     'question': [
@@ -28,6 +28,7 @@ def get_my_questions(request):
     else:
         return Question.objects.can_view(request.user)\
                                     .filter(user=request.user)
+
 
 def knowledge_index(request,
                     template='django_knowledge/index.html'):
@@ -92,7 +93,7 @@ def knowledge_thread(request,
     if request.method == 'POST':
         form = Form(request.user, question, request.POST)
         if form and form.is_valid():
-            response = form.save()
+            form.save()
             return redirect(question.get_absolute_url())
     else:
         form = Form(request.user, question)
@@ -153,7 +154,7 @@ def knowledge_moderate(
         return redirect((
             instance if instance.is_question else instance.question
         ).get_absolute_url())
-    except NoReverseMatch, e:
+    except NoReverseMatch:
         # if we delete an instance...
         return redirect(reverse('knowledge_index'))
 
