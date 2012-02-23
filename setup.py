@@ -1,4 +1,4 @@
-from distutils.core import setup
+from setuptools import setup
 
 # Dynamically calculate the version based on mptt.VERSION
 version_tuple = __import__('knowledge').VERSION
