@@ -232,12 +232,12 @@ class BasicModelTest(TestCase):
 
     def test_locking(self):
         self.assertFalse(self.question.locked)
-        self.assertNotIn('flip_lock', self.question.states())
+        self.assertNotIn('lock', self.question.states())
 
-        self.question.flip_lock()
+        self.question.lock()
 
         self.assertTrue(self.question.locked)
-        self.assertIn('flip_lock', self.question.states())
+        self.assertIn('lock', self.question.states())
 
 
     def test_url(self):

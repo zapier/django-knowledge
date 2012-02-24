@@ -54,7 +54,7 @@ class BasicFormTest(TestCase):
         )
 
         # lock the question...
-        self.question.flip_lock()
+        self.question.lock()
 
         self.assertEqual(
             None,

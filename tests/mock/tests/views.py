@@ -94,29 +94,38 @@ class BasicViewTest(TestCase):
         r = c.get(reverse('knowledge_moderate', args=['question', self.question.id, 'public']))
         self.assertEquals(r.status_code, 404)
 
-        r = c.get(reverse('knowledge_moderate', args=['response', self.response.id, 'public']))
+        r = c.post(reverse('knowledge_moderate', args=['question', self.question.id, 'public']))
+        self.assertEquals(r.status_code, 404)
+
+        r = c.post(reverse('knowledge_moderate', args=['response', self.response.id, 'public']))
         self.assertEquals(r.status_code, 404)
 
 
         c.login(username='admin', password='secret')
 
-        r = c.get(reverse('knowledge_moderate', args=['question', self.question.id, 'notreal']))
+        r = c.post(reverse('knowledge_moderate', args=['question', self.question.id, 'notreal']))
         self.assertEquals(r.status_code, 404)
 
         # nice try buddy!
-        r = c.get(reverse('knowledge_moderate', args=['user', self.admin.id, 'delete']))
+        r = c.post(reverse('knowledge_moderate', args=['user', self.admin.id, 'delete']))
         self.assertEquals(r.status_code, 404)
 
+        # GET does not work
         r = c.get(reverse('knowledge_moderate', args=['question', self.question.id, 'public']))
+        self.assertEquals(r.status_code, 404)
+
+        self.assertEquals(Question.objects.get(id=self.question.id).status, 'private')
+        r = c.post(reverse('knowledge_moderate', args=['question', self.question.id, 'public']))
+        self.assertEquals(r.status_code, 302)
+        self.assertEquals(Question.objects.get(id=self.question.id).status, 'public')
+
+        r = c.post(reverse('knowledge_moderate', args=['response', self.response.id, 'public']))
         self.assertEquals(r.status_code, 302)
 
-        r = c.get(reverse('knowledge_moderate', args=['response', self.response.id, 'public']))
+        r = c.post(reverse('knowledge_moderate', args=['question', self.question.id, 'delete']))
         self.assertEquals(r.status_code, 302)
 
-        r = c.get(reverse('knowledge_moderate', args=['question', self.question.id, 'delete']))
-        self.assertEquals(r.status_code, 302)
-
-        r = c.get(reverse('knowledge_moderate', args=['question', self.question.id, 'delete']))
+        r = c.post(reverse('knowledge_moderate', args=['question', self.question.id, 'delete']))
         self.assertEquals(r.status_code, 404)
 
 

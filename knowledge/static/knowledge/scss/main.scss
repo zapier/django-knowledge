@@ -186,14 +186,19 @@
         @include opacity(0.5);
         float:right;
 
-        a {
-          text-decoration:none;
-        }
-
         .dk-label {
           margin:0 2px;
         }
-      }
+
+        form {
+          display:inline-block;
+
+          input {
+            border:none;
+            cursor:pointer;
+          }
+        }
+      } // .dk-mod-bar
 
     } // dk-widget
   } // .dk-content

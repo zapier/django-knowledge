@@ -11,7 +11,7 @@ from knowledge.utils import paginate
 ALLOWED_MODS = {
     'question': [
         'private', 'public',
-        'delete', 'flip_lock',
+        'delete', 'lock',
         'clear_accepted'
     ],
     'response': [
@@ -128,6 +128,9 @@ def knowledge_moderate(
         /knowledge/moderate/response/3/inherit/     -> 200
 
     """
+
+    if request.method != 'POST':
+        raise Http404
 
     if model == 'question':
         Model, perm = Question, 'change_question'

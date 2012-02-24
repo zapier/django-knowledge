@@ -163,10 +163,13 @@
         -khtml-opacity: 0.5;
         opacity: 0.5;
         float: right; }
-        .dk-inner .dk-content .dk-widget .dk-mod-bar a {
-          text-decoration: none; }
         .dk-inner .dk-content .dk-widget .dk-mod-bar .dk-label {
           margin: 0 2px; }
+        .dk-inner .dk-content .dk-widget .dk-mod-bar form {
+          display: inline-block; }
+          .dk-inner .dk-content .dk-widget .dk-mod-bar form input {
+            border: none;
+            cursor: pointer; }
   .dk-inner .dk-sidebar {
     width: 25%;
     float: right;

@@ -104,15 +104,19 @@ class KnowledgeBase(models.Model):
 
     def public(self, save=True):
         self.switch('public', save)
+    public.alters_data = True
 
     def private(self, save=True):
         self.switch('private', save)
+    private.alters_data = True
 
     def inherit(self, save=True):
         self.switch('inherit', save)
+    inherit.alters_data = True
 
     def internal(self, save=True):
         self.switch('internal', save)
+    internal.alters_data = True
 
     class Meta:
         abstract = True
@@ -161,10 +165,11 @@ class Question(KnowledgeBase):
     def internal(self):
         pass
 
-    def flip_lock(self, save=True):
+    def lock(self, save=True):
         self.locked = not self.locked
         if save:
             self.save()
+    lock.alters_data = True
 
     ###################
     #### RESPONSES ####
@@ -191,6 +196,7 @@ class Question(KnowledgeBase):
 
     def clear_accepted(self):
         self.get_responses().update(accepted=False)
+    clear_accepted.alters_data = True
 
     def accept(self, response=None):
         """
@@ -205,12 +211,13 @@ class Question(KnowledgeBase):
             return True
         else:
             return False
+    accept.alters_data = True
 
     def states(self):
         """
         Handy for checking for mod bar button state.
         """
-        return [self.status, 'flip_lock' if self.locked else None]
+        return [self.status, 'lock' if self.locked else None]
 
     @property
     def url(self):
@@ -257,6 +264,7 @@ class Response(KnowledgeBase):
 
     def accept(self):
         self.question.accept(self)
+    accept.alters_data = True
 
     def __unicode__(self):
         return self.body[0:100] + u'...'
