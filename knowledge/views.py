@@ -10,8 +10,8 @@ from knowledge.utils import paginate
 
 ALLOWED_MODS = {
     'question': [
-        'private', 'flip_lock',
-        'public', 'delete',
+        'private', 'public',
+        'delete', 'flip_lock',
         'clear_accepted'
     ],
     'response': [
