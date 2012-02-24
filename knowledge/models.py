@@ -23,7 +23,7 @@ class Category(models.Model):
     lastchanged = models.DateTimeField(auto_now=True)
 
     title = models.CharField(max_length=255)
-    slug = models.SlugField()
+    slug = models.SlugField(unique=True)
 
     def __unicode__(self):
         return self.title

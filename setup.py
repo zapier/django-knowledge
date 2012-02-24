@@ -16,7 +16,7 @@ setup(
     packages=['knowledge'],
     package_data={'knowledge': [
       'migrations/*.py',
-      'static/knowledge/css/*.css',
+      'static/knowledge/css/*',
       'templates/django_knowledge/*.html',
       'templates/django_knowledge/emails/*.html',
       'templatetags/*.py']},
