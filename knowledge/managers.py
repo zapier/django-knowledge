@@ -1,6 +1,5 @@
 from django.db import models
-
-Q = models.Q
+from django.db.models import Q
 
 
 class QuestionManager(models.Manager):
@@ -13,10 +12,10 @@ class QuestionManager(models.Manager):
 
         if user.is_anonymous():
             return qs.filter(status='public')
-        else:
-            return qs.filter(
-                Q(status='public') | Q(status='private', user=user)
-            )
+
+        return qs.filter(
+            Q(status='public') | Q(status='private', user=user)
+        )
 
 
 class ResponseManager(models.Manager):
@@ -29,22 +28,22 @@ class ResponseManager(models.Manager):
 
         if user.is_anonymous():
             return qs.filter(status='public')
-        else:
-            # ooooh boy this is crazy!
-            return qs.filter(
-                Q(status='public') |
-                Q(  # respect private parent user/status
-                    Q(status='private') &
-                    Q(
-                        Q(user=user) |
-                        Q(question__user=user)
-                    )
-                ) |
-                Q(  # follow inherited status/users
-                    Q(status='inherit') &
-                    Q(
-                        Q(question__status='public') |
-                        Q(question__status='private', question__user=user)
-                    )
+
+        # ooooh boy this is crazy!
+        return qs.filter(
+            Q(status='public') |
+            Q(  # respect private parent user/status
+                Q(status='private') &
+                Q(
+                    Q(user=user) |
+                    Q(question__user=user)
+                )
+            ) |
+            Q(  # follow inherited status/users
+                Q(status='inherit') &
+                Q(
+                    Q(question__status='public') |
+                    Q(question__status='private', question__user=user)
                 )
             )
+        )

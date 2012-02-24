@@ -45,7 +45,7 @@ def response_post_save(response, created):
     Gathers all the responses for the sender's parent question
     and shuttles them to the predefined module.
 
-    For some reason I get crazy errors for a standard Django 
+    For some reason I get crazy errors for a standard Django
     signal. Will revisit.
     """
     func = get_module(settings.ALERTS_FUNCTION_PATH)
@@ -56,7 +56,7 @@ def response_post_save(response, created):
         instances += [response.question]
 
         # dedupe people who want alerts thanks to dict keys...
-        out_dict = dict([[i.get_email(), i.get_user_or_pair()] 
+        out_dict = dict([[i.get_email(), i.get_user_or_pair()]
                         for i in instances if i.alert])
 
         # remove the creator...

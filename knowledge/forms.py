@@ -57,6 +57,7 @@ def QuestionForm(user, *args, **kwargs):
 
     return _QuestionForm(*args, **kwargs)
 
+
 def ResponseForm(user, question, *args, **kwargs):
     """
     Build and return the appropriate form depending
