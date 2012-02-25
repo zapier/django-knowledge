@@ -61,7 +61,7 @@ class BasicSignalTest(TestCase):
 
         # another admin response
         response = ResponseForm(self.admin, self.question, RESPONSE_POST).save()
-        
+
         mail.outbox = [] # reset
         self.assertEqual(len(mail.outbox), 0)
         ######## TEARDOWN
@@ -122,3 +122,33 @@ class BasicSignalTest(TestCase):
 
         self.assertTrue(response.alert)
         self.assertEqual(len(mail.outbox), 1) # one for admin (not joe!)
+
+
+    def test_sending_staffers(self):
+        self.assertTrue(settings.ALERTS)
+
+        self.assertEqual(len(mail.outbox), 0)
+
+        QUESTION_POST = {
+            'title': 'This is a title friend!',
+            'body': 'This is the body friend!',
+            'status': 'private'
+        }
+
+        question = QuestionForm(self.joe, QUESTION_POST).save()
+        self.assertEqual(len(mail.outbox), 1) # one for admin (not joe!)
+
+
+    def test_sending_staffers_remove_self(self):
+        self.assertTrue(settings.ALERTS)
+
+        self.assertEqual(len(mail.outbox), 0)
+
+        QUESTION_POST = {
+            'title': 'This is a title friend!',
+            'body': 'This is the body friend!',
+            'status': 'private'
+        }
+
+        question = QuestionForm(self.admin, QUESTION_POST).save()
+        self.assertEqual(len(mail.outbox), 0) # none for admin

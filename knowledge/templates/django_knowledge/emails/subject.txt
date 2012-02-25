@@ -1,1 +1,1 @@
-{% load i18n %}{% blocktrans with title=response.question.title name=site.name %}New response on "{{ title }}" on {{ name }}.{% endblocktrans %}
+{% load i18n %}{% if response %}{% blocktrans with title=response.question.title name=site.name %}New response on "{{ title }}" on {{ name }}.{% endblocktrans %}{% endif %}{% if question %}{% blocktrans with title=question.title name=site.name %}New question "{{ title }}" on {{ name }}.{% endblocktrans %}{% endif %}

@@ -2,7 +2,7 @@ from knowledge.utils import get_module
 from knowledge import settings
 
 
-def send_alerts(target_dict, response, **kwargs):
+def send_alerts(target_dict, response=None, question=None, **kwargs):
     """
     This can be overridden via KNOWLEDGE_ALERTS_FUNCTION_PATH.
     """
@@ -23,6 +23,7 @@ def send_alerts(target_dict, response, **kwargs):
             'name': name,
             'email': email,
             'response': response,
+            'question': question,
             'site': site
         }
 
@@ -40,7 +41,7 @@ def send_alerts(target_dict, response, **kwargs):
         msg.send()
 
 
-def response_post_save(response, created):
+def knowledge_post_save(instance, created):
     """
     Gathers all the responses for the sender's parent question
     and shuttles them to the predefined module.
@@ -48,19 +49,32 @@ def response_post_save(response, created):
     For some reason I get crazy errors for a standard Django
     signal. Will revisit.
     """
+    from knowledge.models import Question, Response
+    from django.contrib.auth.models import User
+
     func = get_module(settings.ALERTS_FUNCTION_PATH)
 
     if settings.ALERTS and created:
         # pull together the instances (could be question or response)
-        instances = list(response.question.get_responses())
-        instances += [response.question]
 
-        # dedupe people who want alerts thanks to dict keys...
-        out_dict = dict([[i.get_email(), i.get_user_or_pair()]
-                        for i in instances if i.alert])
+        if isinstance(instance, Response):
+            instances = list(instance.question.get_responses())
+            instances += [instance.question]
+
+            # dedupe people who want alerts thanks to dict keys...
+            out_dict = dict([[i.get_email(), i.get_user_or_pair()]
+                            for i in instances if i.alert])
+
+        elif isinstance(instance, Question):
+            staffers = User.objects.filter(is_staff=True)
+            out_dict = dict([[user.email, user] for user in staffers
+                                if user.has_perm('change_question')])
 
         # remove the creator...
-        if response.get_email() in out_dict.keys():
-            del out_dict[response.get_email()]
+        if instance.get_email() in out_dict.keys():
+            del out_dict[instance.get_email()]
 
-        func(out_dict, response)
+        func(out_dict, 
+            response = instance if isinstance(instance, Response) else None,
+            question = instance if isinstance(instance, Question) else None
+        )

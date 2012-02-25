@@ -5,6 +5,9 @@ Alerts
 subscribed users when a new response is added or accepted. Users can opt-in 
 or out this alert at the time of posting a question or response.
 
+Further, Users with the flag 'is_staff' and the permission to change questions
+will receive updates when a new question is added.
+
 *TODO:* They can also opt-in or out after the fact.
 
 
@@ -52,8 +55,10 @@ The email function should expect two keyword arguments:
 * ``target_dict`` - A dictionary for {'me@dom.com': 'First Last (or username)'} for 
   anonymous or {'me@dom.com': <User instances>}. This list is deduplicated by email 
   address.
-* ``response`` - An Response instance of the model triggering this alert. May be 
-  ``None`` in the future.
+* ``response`` - A Response instance of the model triggering this alert. May be 
+  ``None``. Only passed in when a new response is added.
+* ``question`` - A Question instance of the model triggering this alert. May be 
+  ``None``. Only passed in when a new question is added.
 * ``**kwargs`` - It would be wise to include a blanket keyword arg catcher, we'll 
   likely add more things in the future, so this will keep your code from breaking.
 

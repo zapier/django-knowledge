@@ -4,7 +4,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 from knowledge.managers import QuestionManager, ResponseManager
-from knowledge.signals import response_post_save
+from knowledge.signals import knowledge_post_save
 
 STATUSES = (
     ('public', _('Public')),
@@ -137,8 +137,7 @@ class KnowledgeBase(models.Model):
 
         super(KnowledgeBase, self).save(*args, **kwargs)
 
-        if self.is_response:
-            response_post_save(self, created)
+        knowledge_post_save(self, created)
 
 
 class Question(KnowledgeBase):
