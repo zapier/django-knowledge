@@ -133,11 +133,7 @@ class KnowledgeBase(models.Model):
         if settings.AUTO_PUBLICIZE and not self.id:
             self.public(save=False)
 
-        created = not bool(self.id)
-
         super(KnowledgeBase, self).save(*args, **kwargs)
-
-        knowledge_post_save(self, created)
 
 
 class Question(KnowledgeBase):
@@ -273,3 +269,8 @@ class Response(KnowledgeBase):
 
     class Meta:
         ordering = ['added']
+
+
+# cannot attach on abstract = True... derp
+models.signals.post_save.connect(knowledge_post_save, sender=Question)
+models.signals.post_save.connect(knowledge_post_save, sender=Response)

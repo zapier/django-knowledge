@@ -41,13 +41,10 @@ def send_alerts(target_dict, response=None, question=None, **kwargs):
         msg.send()
 
 
-def knowledge_post_save(instance, created):
+def knowledge_post_save(sender, instance, created, **kwargs):
     """
     Gathers all the responses for the sender's parent question
     and shuttles them to the predefined module.
-
-    For some reason I get crazy errors for a standard Django
-    signal. Might be related to abstract = True? Will revisit.
     """
     from knowledge.models import Question, Response
     from django.contrib.auth.models import User
@@ -55,8 +52,8 @@ def knowledge_post_save(instance, created):
     func = get_module(settings.ALERTS_FUNCTION_PATH)
 
     if settings.ALERTS and created:
-        # pull together the instances (could be question or response)
-
+        # pull together the out_dict:
+        #    {'e@ma.il': ('first last', 'e@ma.il') or <User>}
         if isinstance(instance, Response):
             instances = list(instance.question.get_responses())
             instances += [instance.question]
