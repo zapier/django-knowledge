@@ -47,7 +47,7 @@ def knowledge_post_save(instance, created):
     and shuttles them to the predefined module.
 
     For some reason I get crazy errors for a standard Django
-    signal. Will revisit.
+    signal. Might be related to abstract = True? Will revisit.
     """
     from knowledge.models import Question, Response
     from django.contrib.auth.models import User
@@ -74,7 +74,8 @@ def knowledge_post_save(instance, created):
         if instance.get_email() in out_dict.keys():
             del out_dict[instance.get_email()]
 
-        func(out_dict, 
+        func(
+            target_dict = out_dict, 
             response = instance if isinstance(instance, Response) else None,
             question = instance if isinstance(instance, Question) else None
         )
