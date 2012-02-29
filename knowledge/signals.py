@@ -72,7 +72,7 @@ def knowledge_post_save(sender, instance, created, **kwargs):
             del out_dict[instance.get_email()]
 
         func(
-            target_dict = out_dict, 
-            response = instance if isinstance(instance, Response) else None,
-            question = instance if isinstance(instance, Question) else None
+            target_dict=out_dict,
+            response=instance if isinstance(instance, Response) else None,
+            question=instance if isinstance(instance, Question) else None
         )
