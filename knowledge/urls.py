@@ -7,7 +7,8 @@ urlpatterns = patterns('knowledge.views',
     url(r'^questions/$', views.KnowledgeList.as_view(),
         name='knowledge_list'),
 
-    url(r'^questions/(?P<category_slug>[a-z-]+)/$', 'knowledge_list',
+    url(r'^questions/(?P<category_slug>[a-z-]+)/$',
+        views.KnowledgeList.as_view(),
         name='knowledge_list_category'),
 
     url(r'^questions/(?P<question_id>\d+)/$',

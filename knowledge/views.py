@@ -80,40 +80,9 @@ class KnowledgeList(generic.ListView, KnowledgeBase):
         context['search'] = self.request.GET.get('title', None)
         context['my_questions'] = self.get_my_questions()
         context['categories'] = Category.objects.all()
+        context['form'] = QuestionForm(
+            self.request.user, initial={'title': context['search']})
         return context
-
-
-
-def knowledge_list(request,
-                   category_slug=None,
-                   template='django_knowledge/list.html',
-                   Form=QuestionForm):
-
-    search = request.GET.get('title', None)
-    questions = Question.objects.can_view(request.user)
-
-    if search:
-        questions = questions.filter(
-            Q(title__icontains=search) | Q(body__icontains=search)
-        )
-
-    category = None
-    if category_slug:
-        category = get_object_or_404(Category, slug=category_slug)
-        questions = questions.filter(categories=category)
-
-    paginator, questions = paginate(questions, 50,
-            request.GET.get('page', '1'))
-
-    return render(request, template, {
-        'request': request,
-        'search': search,
-        'questions': questions,
-        'my_questions': get_my_questions(request),
-        'category': category,
-        'categories': Category.objects.all(),
-        'form': Form(request.user, initial={'title': search})  # prefill title
-    })
 
 
 def knowledge_thread(request,
