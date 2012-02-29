@@ -57,6 +57,33 @@ class KnowledgeIndex(generic.ListView, KnowledgeBase):
         return context
 
 
+class KnowledgeList(generic.ListView, KnowledgeBase):
+    template_name = 'django_knowledge/list.html'
+    context_object_name = 'questions'
+
+    def get_queryset(self, *args, **kwargs):
+        qs = Question.objects.can_view(self.request.user)
+        search = self.request.GET.get('title', None)
+
+        if search:
+            qs = qs.filter(
+                Q(title__icontains=search) | Q(body__icontains=search))
+
+        if self.kwargs.get('category_slug', None):
+            category = get_object_or_404(Category,
+                slug=self.kwargs['category_slug'])
+            qs = qs.filter(categories=category)
+        return qs
+
+    def get_context_data(self, **kwargs):
+        context = super(KnowledgeList, self).get_context_data(**kwargs)
+        context['search'] = self.request.GET.get('title', None)
+        context['my_questions'] = self.get_my_questions()
+        context['categories'] = Category.objects.all()
+        return context
+
+
+
 def knowledge_list(request,
                    category_slug=None,
                    template='django_knowledge/list.html',
