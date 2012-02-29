@@ -2,6 +2,7 @@ from django.http import Http404
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.urlresolvers import reverse, NoReverseMatch
 from django.db.models import Q
+from django.views import generic
 
 from knowledge.models import Question, Response, Category
 from knowledge.forms import QuestionForm, ResponseForm
@@ -23,24 +24,37 @@ ALLOWED_MODS = {
 
 
 def get_my_questions(request):
+    # This will go away...
     if request.user.is_anonymous():
-        return None
-    else:
-        return Question.objects.can_view(request.user)\
-                                    .filter(user=request.user)
+        return Question.objects.none()
+    return Question.objects.can_view(request.user)\
+                           .filter(user=request.user)
 
 
-def knowledge_index(request,
-                    template='django_knowledge/index.html'):
+class KnowledgeBase(object):
+    """ Base class for knowledge views"""
 
-    questions = Question.objects.can_view(request.user)[0:20]
+    def get_my_questions(self):
+        if self.request.user.is_anonymous():
+            return Question.objects.none()
+        return Question.objects.can_view(self.request.user)\
+                               .filter(user=self.request.user)
 
-    return render(request, template, {
-        'request': request,
-        'questions': questions,
-        'my_questions': get_my_questions(request),
-        'categories': Category.objects.all()
-    })
+
+class KnowledgeIndex(generic.ListView, KnowledgeBase):
+    """ Index page for """
+    template_name = 'django_knowledge/index.html'
+    context_object_name = 'questions'
+
+    def get_queryset(self, *args, **kwargs):
+        return self.get_my_questions()
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(KnowledgeIndex, self).get_context_data(*args,
+                                                               **kwargs)
+        context['my_questions'] = self.get_my_questions()
+        context['categories'] = Category.objects.all()
+        return context
 
 
 def knowledge_list(request,

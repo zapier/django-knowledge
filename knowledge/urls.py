@@ -1,8 +1,9 @@
 from django.conf.urls.defaults import patterns, url
+from knowledge import views
 
 urlpatterns = patterns('knowledge.views',
-    url(r'^$', 'knowledge_index', name='knowledge_index'),
-
+    url(r'^$', views.KnowledgeIndex.as_view(),
+        name='knowledge_index'),
     url(r'^questions/$', 'knowledge_list', name='knowledge_list'),
 
     url(r'^questions/(?P<category_slug>[a-z-]+)/$', 'knowledge_list',
