@@ -1,22 +1,26 @@
+{% extends "django_knowledge/emails/base.html" %}
+
 {% load i18n %}
 
-<p>{% blocktrans with name=name %}Hello {{ name }},{% endblocktrans %}</p>
+{% block content %}
+    <p>{% blocktrans with name=name %}Hello {{ name }},{% endblocktrans %}</p>
 
-{% if response %}
-    <p>{% blocktrans with url=response.question.url title=response.question.title domain=site.domain %}
-    We just wanted to let you know that a new response has been added to the question "{{ title }}". You can visit it here: <a href="{{ domain }}{{ url }}">{{ domain }}{{ url }}</a>.
-    {% endblocktrans %}</p>
+    {% if response %}
+        <p>{% blocktrans with url=response.question.url title=response.question.title domain=site.domain %}
+        We just wanted to let you know that a new response has been added to the question "{{ title }}". You can visit it here: <a href="{{ domain }}{{ url }}">{{ domain }}{{ url }}</a>.
+        {% endblocktrans %}</p>
 
-    <p>{% trans "You are receiving these messages because you checked the 'alert' box when you originally posted." %}</p>
-{% endif %}
+        <p>{% trans "You are receiving these messages because you checked the 'alert' box when you originally posted." %}</p>
+    {% endif %}
 
-{% if question %}
-    <p>{% blocktrans with url=question.url title=question.title domain=site.domain %}
-    We just wanted to let you know that a new question has been added: "{{ title }}". You can visit it here: <a href="{{ domain }}{{ url }}">{{ domain }}{{ url }}</a>
-    {% endblocktrans %}</p>
+    {% if question %}
+        <p>{% blocktrans with url=question.url title=question.title domain=site.domain %}
+        We just wanted to let you know that a new question has been added: "{{ title }}". You can visit it here: <a href="{{ domain }}{{ url }}">{{ domain }}{{ url }}</a>
+        {% endblocktrans %}</p>
 
-    <p>{% trans "You are receiving these messages because you are a staff member." %}</p>
-{% endif %}
+        <p>{% trans "You are receiving these messages because you are a staff member." %}</p>
+    {% endif %}
 
-<p>{% blocktrans with name=site.name %}Thank you,
-{{ name }} team{% endblocktrans %}</p>
+    <p>{% blocktrans with name=site.name %}Thank you,
+    {{ name }} team{% endblocktrans %}</p>
+{% endblock content %}
