@@ -30,6 +30,8 @@ class Category(models.Model):
 
     class Meta:
         ordering = ['title']
+        verbose_name = _('Category')
+        verbose_name_plural = _('Categories')
 
 
 class KnowledgeBase(models.Model):
@@ -55,6 +57,20 @@ class KnowledgeBase(models.Model):
     email = models.EmailField(blank=True, null=True,
         verbose_name=_('Email'),
         help_text=_('Enter a valid email address.'))
+
+    class Meta:
+        abstract = True
+
+    def save(self, *args, **kwargs):
+        if not self.user and self.name and self.email \
+                and not self.id:
+            # first time because no id
+            self.public(save=False)
+
+        if settings.AUTO_PUBLICIZE and not self.id:
+            self.public(save=False)
+
+        super(KnowledgeBase, self).save(*args, **kwargs)
 
     #########################
     #### GENERIC GETTERS ####
@@ -121,20 +137,6 @@ class KnowledgeBase(models.Model):
         self.switch('internal', save)
     internal.alters_data = True
 
-    class Meta:
-        abstract = True
-
-    def save(self, *args, **kwargs):
-        if not self.user and self.name and self.email \
-                and not self.id:
-            # first time because no id
-            self.public(save=False)
-
-        if settings.AUTO_PUBLICIZE and not self.id:
-            self.public(save=False)
-
-        super(KnowledgeBase, self).save(*args, **kwargs)
-
 
 class Question(KnowledgeBase):
     is_question = True
@@ -156,6 +158,23 @@ class Question(KnowledgeBase):
     categories = models.ManyToManyField('knowledge.Category', blank=True)
 
     objects = QuestionManager()
+
+    class Meta:
+        ordering = ['-added']
+        verbose_name = _('Question')
+        verbose_name_plural = _('Questions')
+
+    def __unicode__(self):
+        return self.title
+
+    @models.permalink
+    def get_absolute_url(self):
+        from django.template.defaultfilters import slugify
+
+        if settings.SLUG_URLS:
+            return ('knowledge_thread', [self.id, slugify(self.title)])
+        else:
+            return ('knowledge_thread_no_slug', [self.id])
 
     def inherit(self):
         pass
@@ -221,21 +240,6 @@ class Question(KnowledgeBase):
     def url(self):
         return self.get_absolute_url()
 
-    @models.permalink
-    def get_absolute_url(self):
-        from django.template.defaultfilters import slugify
-
-        if settings.SLUG_URLS:
-            return ('knowledge_thread', [self.id, slugify(self.title)])
-        else:
-            return ('knowledge_thread_no_slug', [self.id])
-
-    def __unicode__(self):
-        return self.title
-
-    class Meta:
-        ordering = ['-added']
-
 
 class Response(KnowledgeBase):
     is_response = True
@@ -254,6 +258,14 @@ class Response(KnowledgeBase):
 
     objects = ResponseManager()
 
+    class Meta:
+        ordering = ['added']
+        verbose_name = _('Response')
+        verbose_name_plural = _('Responses')
+
+    def __unicode__(self):
+        return self.body[0:100] + u'...'
+
     def states(self):
         """
         Handy for checking for mod bar button state.
@@ -263,12 +275,6 @@ class Response(KnowledgeBase):
     def accept(self):
         self.question.accept(self)
     accept.alters_data = True
-
-    def __unicode__(self):
-        return self.body[0:100] + u'...'
-
-    class Meta:
-        ordering = ['added']
 
 
 # cannot attach on abstract = True... derp
