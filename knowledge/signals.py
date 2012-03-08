@@ -15,7 +15,7 @@ def send_alerts(target_dict, response=None, question=None, **kwargs):
 
     for email, name in target_dict.items():
         if isinstance(name, User):
-            name = '{0} {1}'.format(name.first_name, name.last_name)
+            name = u'{0} {1}'.format(name.first_name, name.last_name)
         else:
             name = name[0]
 
