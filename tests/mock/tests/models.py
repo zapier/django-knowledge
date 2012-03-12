@@ -224,6 +224,31 @@ class BasicModelTest(TestCase):
         self.assertEqual(len(mail.outbox), 0)
 
     
+    def test_get_public_responses(self):
+        """
+        Bug mentioned in issue #25.
+        """
+        question = Question.objects.create(
+            title = 'Where is my cat?',
+            body = 'His name is whiskers.',
+            user = self.joe,
+            status = 'public'
+
+        )
+        response = Response.objects.create(
+            question = question,
+            user = self.admin,
+            body = 'I saw him in the backyard.',
+            status = 'inherit'
+        )
+
+        self.assertEquals(len(question.get_responses(self.anon)), 1)
+        self.assertEquals(len(question.get_responses(self.joe)), 1)
+        self.assertEquals(len(question.get_responses(self.admin)), 1)
+
+        self.assertEqual(len(mail.outbox), 0)
+
+    
     def test_urls(self):
         question_url = reverse('knowledge_thread', args=[self.question.id, slugify(self.question.title)])
 

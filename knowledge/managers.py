@@ -27,7 +27,10 @@ class ResponseManager(models.Manager):
             return qs.all()
 
         if user.is_anonymous():
-            return qs.filter(status='public')
+            return qs.filter(
+                Q(status='public') |
+                Q(status='inherit', question__status='public')
+            )
 
         # ooooh boy this is crazy!
         return qs.filter(
