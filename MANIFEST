@@ -26,6 +26,7 @@ knowledge/templates/django_knowledge/mod_bar.html
 knowledge/templates/django_knowledge/sidebar.html
 knowledge/templates/django_knowledge/thread.html
 knowledge/templates/django_knowledge/welcome.html
+knowledge/templates/django_knowledge/emails/base.html
 knowledge/templates/django_knowledge/emails/message.html
 knowledge/templatetags/__init__.py
 knowledge/templatetags/knowledge_tags.py
