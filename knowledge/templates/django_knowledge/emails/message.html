@@ -10,6 +10,8 @@
         We just wanted to let you know that a new response has been added to the question "{{ title }}". You can visit it here: <a href="{{ domain }}{{ url }}">{{ domain }}{{ url }}</a>.
         {% endblocktrans %}</p>
 
+        {{ response.body }}
+
         <p>{% trans "You are receiving these messages because you checked the 'alert' box when you originally posted." %}</p>
     {% endif %}
 
@@ -17,6 +19,8 @@
         <p>{% blocktrans with url=question.url title=question.title domain=site.domain %}
         We just wanted to let you know that a new question has been added: "{{ title }}". You can visit it here: <a href="{{ domain }}{{ url }}">{{ domain }}{{ url }}</a>
         {% endblocktrans %}</p>
+
+        {{ question.body }}
 
         <p>{% trans "You are receiving these messages because you are a staff member." %}</p>
     {% endif %}
