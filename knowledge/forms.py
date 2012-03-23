@@ -7,6 +7,13 @@ from knowledge.models import Question, Response
 OPTIONAL_FIELDS = ['alert']
 
 
+__todo__ = """
+This is serious badness. Really? Functions masquerading as
+clases? Lame. This should be fixed. Sorry.
+                                                    ~bryan
+"""
+
+
 def QuestionForm(user, *args, **kwargs):
     """
     Build and return the appropriate form depending
