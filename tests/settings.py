@@ -4,6 +4,7 @@ DIRNAME = os.path.dirname(__file__)
 
 DEBUG = True
 
+DATABASE_ENGINE = 'sqlite3'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', 
