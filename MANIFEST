@@ -23,6 +23,7 @@ knowledge/templates/django_knowledge/index.html
 knowledge/templates/django_knowledge/inner.html
 knowledge/templates/django_knowledge/list.html
 knowledge/templates/django_knowledge/mod_bar.html
+knowledge/templates/django_knowledge/question_list.html
 knowledge/templates/django_knowledge/sidebar.html
 knowledge/templates/django_knowledge/thread.html
 knowledge/templates/django_knowledge/welcome.html

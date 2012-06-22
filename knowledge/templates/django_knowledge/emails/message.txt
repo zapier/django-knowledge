@@ -8,9 +8,7 @@
     We just wanted to let you know that a new response has been added to the question "{{ title }}". You can visit it here: {{ domain }}{{ url }}
     {% endblocktrans %}
 
-    <div style="background:#f3f3f3;margin:8px 0;padding:12px 18px">
-        {{ response.body|striptags|markdown }}
-    </div>
+    {{ response.body }}
 
     {% trans "You are receiving these messages because you checked the 'alert' box when you originally posted." %}
 {% endif %}
@@ -20,9 +18,7 @@
     We just wanted to let you know that a new question has been added: "{{ title }}". You can visit it here: {{ domain }}{{ url }}
     {% endblocktrans %}
 
-    <div style="background:#f3f3f3;margin:8px 0;padding:12px 18px">
-        {{ question.body|striptags|markdown }}
-    </div>
+    {{ question.body }}
 
     {% trans "You are receiving these messages because you are a staff member." %}
 {% endif %}
