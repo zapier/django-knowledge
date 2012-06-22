@@ -2,6 +2,6 @@
 
 <ol class="question-list">
   {% for question in questions %}
-    <li><a href="{{ question.get_absolute_url }}">{{ question.title }}</a>&nbsp; {% if not question.get_responses %}<span class="dk-label dk-label-important">{% trans "no responses" %}</span>{% else %}<span class="dk-label">{{ question.get_responses|length }} responses</span>{% endif %}&nbsp; {% if question.accepted %}<span class="dk-label dk-label-warning">{% trans "accepted" %}</span>&nbsp;{% endif %} <small class="quiet">by {{ question.get_name }}</small></li>
+    <li><a href="{{ question.get_absolute_url }}">{{ question.title }}</a>&nbsp; {% if not question.get_responses %}<span class="dk-label dk-label-important">{% trans "no responses" %}</span>{% else %}<span class="dk-label">{{ question.get_responses|length }} responses</span>{% endif %}&nbsp; {% if question.accepted %}<span class="dk-label dk-label-warning">{% trans "accepted" %}</span>&nbsp;{% endif %} {% if question.user.is_staff %}<span class="dk-label dk-label-success">{% trans "staff" %}</span>&nbsp;{% endif %} <small class="quiet">by {{ question.get_name }}</small></li>
   {% endfor %}
 </ol>
