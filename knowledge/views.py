@@ -1,3 +1,5 @@
+import settings
+
 from django.http import Http404
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.urlresolvers import reverse, NoReverseMatch
@@ -27,13 +29,16 @@ def get_my_questions(request):
         return None
     else:
         return Question.objects.can_view(request.user)\
-                                    .filter(user=request.user)
+                               .filter(user=request.user)
 
 
 def knowledge_index(request,
                     template='django_knowledge/index.html'):
 
-    questions = Question.objects.can_view(request.user)[0:20]
+    questions = Question.objects.can_view(request.user)\
+                                .prefetch_related('responses__question')[0:20]
+    # this is for get_responses()
+    [setattr(q, '_requesting_user', request.user) for q in questions]
 
     return render(request, template, {
         'request': request,
@@ -49,7 +54,8 @@ def knowledge_list(request,
                    Form=QuestionForm):
 
     search = request.GET.get('title', None)
-    questions = Question.objects.can_view(request.user)
+    questions = Question.objects.can_view(request.user)\
+                                .prefetch_related('responses__question')
 
     if search:
         questions = questions.filter(
@@ -61,8 +67,11 @@ def knowledge_list(request,
         category = get_object_or_404(Category, slug=category_slug)
         questions = questions.filter(categories=category)
 
-    paginator, questions = paginate(questions, 50,
-            request.GET.get('page', '1'))
+    paginator, questions = paginate(questions,
+                                    50,
+                                    request.GET.get('page', '1'))
+    # this is for get_responses()
+    [setattr(q, '_requesting_user', request.user) for q in questions]
 
     return render(request, template, {
         'request': request,
@@ -80,10 +89,16 @@ def knowledge_thread(request,
                      slug=None,
                      template='django_knowledge/thread.html',
                      Form=ResponseForm):
-
-    question = get_object_or_404(
-        Question.objects.can_view(request.user),
-        id=question_id)
+    
+    try:
+        question = Question.objects.can_view(request.user)\
+                                   .get(id=question_id)
+    except Question.DoesNotExist:
+        if Question.objects.filter(id=question_id).exists() and \
+                                hasattr(settings, 'LOGIN_REDIRECT_URL'):
+            return redirect(settings.LOGIN_REDIRECT_URL)
+        else:
+            raise Http404
 
     responses = question.get_responses(request.user)
 

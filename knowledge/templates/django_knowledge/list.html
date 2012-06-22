@@ -12,11 +12,9 @@
   {# dunno how to do translation on this nasty block... #}
   <h3>Showing {{ counter }} results{% if search %} for <em>{{ search }}</em>{% endif %}{% if category %} in <em>{{ category.title }}</em> category{% endif %}:</h3>
   <hr />
-  <ol class="question-list">
-    {% for question in questions.object_list %}
-      <li><a href="{{ question.get_absolute_url }}">{{ question.title }}</a> <small class="quiet">&nbsp;by {{ question.get_name }}</small></li>
-    {% endfor %}
-  </ol>
+
+  {% include 'django_knowledge/question_list.html' with questions=questions.object_list %}
+
 
   {% if not questions.paginator.count %}
     <p class="center"><em>{% trans "No results found." %}</em></p>

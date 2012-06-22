@@ -140,6 +140,7 @@ class KnowledgeBase(models.Model):
 
 class Question(KnowledgeBase):
     is_question = True
+    _requesting_user = None
 
     title = models.CharField(max_length=255,
         verbose_name=_('Question'),
@@ -193,8 +194,9 @@ class Question(KnowledgeBase):
     ###################
 
     def get_responses(self, user=None):
+        user = user or self._requesting_user
         if user:
-            return Response.objects.can_view(user).filter(question=self)
+            return [r for r in self.responses.all() if r.can_view(user)]
         else:
             return self.responses.all()
 
