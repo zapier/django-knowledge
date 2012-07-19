@@ -13,6 +13,13 @@ Default ``False``. If ``True``, users who are not logged in can ask questions. I
 ``False`` only registered and logged in users can ask questions.
 
 
+KNOWLEDGE_LOGIN_REQUIRED
+------------------------
+
+Default ``False``. If ``True`` users that are not authenticated are redirected to
+LOGIN_URL.
+
+
 KNOWLEDGE_AUTO_PUBLICIZE
 ------------------------
 

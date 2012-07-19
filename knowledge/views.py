@@ -1,6 +1,6 @@
 import settings
 
-from django.http import Http404
+from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.urlresolvers import reverse, NoReverseMatch
 from django.db.models import Q
@@ -25,6 +25,10 @@ ALLOWED_MODS = {
 
 
 def get_my_questions(request):
+
+    if settings.LOGIN_REQUIRED and not request.user.is_authenticated():
+        return HttpResponseRedirect(settings.LOGIN_URL+"?next=%s" % request.path)
+
     if request.user.is_anonymous():
         return None
     else:
@@ -34,6 +38,9 @@ def get_my_questions(request):
 
 def knowledge_index(request,
                     template='django_knowledge/index.html'):
+
+    if settings.LOGIN_REQUIRED and not request.user.is_authenticated():
+        return HttpResponseRedirect(settings.LOGIN_URL+"?next=%s" % request.path)
 
     questions = Question.objects.can_view(request.user)\
                                 .prefetch_related('responses__question')[0:20]
@@ -52,6 +59,9 @@ def knowledge_list(request,
                    category_slug=None,
                    template='django_knowledge/list.html',
                    Form=QuestionForm):
+
+    if settings.LOGIN_REQUIRED and not request.user.is_authenticated():
+        return HttpResponseRedirect(settings.LOGIN_URL+"?next=%s" % request.path)
 
     search = request.GET.get('title', None)
     questions = Question.objects.can_view(request.user)\
@@ -89,6 +99,9 @@ def knowledge_thread(request,
                      slug=None,
                      template='django_knowledge/thread.html',
                      Form=ResponseForm):
+
+    if settings.LOGIN_REQUIRED and not request.user.is_authenticated():
+        return HttpResponseRedirect(settings.LOGIN_URL+"?next=%s" % request.path)
     
     try:
         question = Question.objects.can_view(request.user)\
@@ -144,6 +157,9 @@ def knowledge_moderate(
 
     """
 
+    if settings.LOGIN_REQUIRED and not request.user.is_authenticated():
+        return HttpResponseRedirect(settings.LOGIN_URL+"?next=%s" % request.path)
+
     if request.method != 'POST':
         raise Http404
 
@@ -180,6 +196,9 @@ def knowledge_moderate(
 def knowledge_ask(request,
                   template='django_knowledge/ask.html',
                   Form=QuestionForm):
+
+    if settings.LOGIN_REQUIRED and not request.user.is_authenticated():
+        return HttpResponseRedirect(settings.LOGIN_URL+"?next=%s" % request.path)
 
     if request.method == 'POST':
         form = Form(request.user, request.POST)
