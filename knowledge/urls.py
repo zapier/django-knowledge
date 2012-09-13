@@ -5,13 +5,13 @@ urlpatterns = patterns('knowledge.views',
 
     url(r'^questions/$', 'knowledge_list', name='knowledge_list'),
 
-    url(r'^questions/(?P<category_slug>[a-z-]+)/$', 'knowledge_list',
+    url(r'^questions/(?P<category_slug>[a-z0-9-_]+)/$', 'knowledge_list',
         name='knowledge_list_category'),
 
     url(r'^questions/(?P<question_id>\d+)/$',
         'knowledge_thread', name='knowledge_thread_no_slug'),
 
-    url(r'^questions/(?P<question_id>\d+)/(?P<slug>[a-z0-9-]+)/$',
+    url(r'^questions/(?P<question_id>\d+)/(?P<slug>[a-z0-9-_]+)/$',
         'knowledge_thread', name='knowledge_thread'),
 
     url(r'^moderate/(?P<model>[a-z]+)/'
