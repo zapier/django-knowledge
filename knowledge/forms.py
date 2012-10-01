@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 from knowledge import settings
 from knowledge.models import Question, Response
 
-OPTIONAL_FIELDS = ['alert']
+OPTIONAL_FIELDS = ['alert', 'phone_number']
 
 
 __todo__ = """
@@ -54,6 +54,9 @@ def QuestionForm(user, *args, **kwargs):
                 if qf:
                     qf.widget = qf.hidden_widget()
                     qf.required = False
+
+        # honey pot!
+        phone_number = forms.CharField(required=False)
 
         def clean_user(self):
             return user
@@ -108,6 +111,9 @@ def ResponseForm(user, question, *args, **kwargs):
                 if qf:
                     qf.widget = qf.hidden_widget()
                     qf.required = False
+
+        # honey pot!
+        phone_number = forms.CharField(required=False)
 
         def clean_user(self):
             return user

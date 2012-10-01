@@ -4,7 +4,7 @@
   {% csrf_token %}
 
   {% for field in form.visible_fields %}
-    <div class="field-wrapper">
+    <div class="field-wrapper field-{{ field.html_name }}">
       <div class="field-label">
         <label for="id_{{ field.html_name }}">{{ field.label }}: {% if field.field.required %}<small><em class="quiet">({% trans "required" %})</em></small>{% endif %}</label>
         

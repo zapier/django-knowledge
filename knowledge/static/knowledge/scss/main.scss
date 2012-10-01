@@ -100,6 +100,10 @@
         .field-wrapper {
           padding-bottom:12px;
 
+          &.field-phone_number {
+            display:none;
+          }
+
           .field-label {
             label { font-size:14px; font-weight:600; }
             small { font-size:11px; }

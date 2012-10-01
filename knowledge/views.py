@@ -121,7 +121,8 @@ def knowledge_thread(request,
     if request.method == 'POST':
         form = Form(request.user, question, request.POST)
         if form and form.is_valid():
-            form.save()
+            if request.user.is_authenticated() or not form.cleaned_data['phone_number']:
+                form.save()
             return redirect(question.get_absolute_url())
     else:
         form = Form(request.user, question)
@@ -203,8 +204,11 @@ def knowledge_ask(request,
     if request.method == 'POST':
         form = Form(request.user, request.POST)
         if form and form.is_valid():
-            question = form.save()
-            return redirect(question.get_absolute_url())
+            if request.user.is_authenticated() or not form.cleaned_data['phone_number']:
+                question = form.save()
+                return redirect(question.get_absolute_url())
+            else:
+                return redirect('knowledge_index')
     else:
         form = Form(request.user)
 

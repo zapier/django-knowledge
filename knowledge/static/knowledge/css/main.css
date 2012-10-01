@@ -100,6 +100,8 @@
         background: #e7e7e7; }
       .dk-inner .dk-content .dk-widget form.dk-form .field-wrapper {
         padding-bottom: 12px; }
+        .dk-inner .dk-content .dk-widget form.dk-form .field-wrapper.field-phone_number {
+          display: none; }
         .dk-inner .dk-content .dk-widget form.dk-form .field-wrapper .field-label label {
           font-size: 14px;
           font-weight: 600; }
@@ -107,7 +109,7 @@
           font-size: 11px; }
         .dk-inner .dk-content .dk-widget form.dk-form .field-wrapper input, .dk-inner .dk-content .dk-widget form.dk-form .field-wrapper textarea {
           padding: 8px 1%;
-          font-size: 14px;
+          font-size: 12px;
           width: 96%;
           border: 1px solid #ccc; }
         .dk-inner .dk-content .dk-widget form.dk-form .field-wrapper input[type=checkbox] {
