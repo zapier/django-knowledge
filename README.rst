@@ -7,7 +7,7 @@ While we give you a generic design for free, you should just as easily be able
 to customize the look and feel of the app if you like.
 
 **django-knowledge** was developed internally for `Zapier <https://zapier.com/z/qO/>`_ 
-(see it live here `on our support page <https://zapier.com/z/3C/support/>`_. Or, check 
+(see it live here `on our support page <https://zapier.com/z/3C/support/>`_). Or, check 
 out a `plain, live demo <http://django-knowledge.org/>`_.
 
 
