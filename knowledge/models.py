@@ -76,6 +76,16 @@ class KnowledgeBase(models.Model):
     #### GENERIC GETTERS ####
     #########################
 
+    def truncate_username(self, username):
+        """
+        Admittedly a bit of a hack for nowzies.
+
+        Turns "bryan@zapier.com" into "brya ... .com"
+        """
+        if '@' in username and '.' in username: # assume email
+            return username[:4] + u' ... ' + username[-4:]
+        return username
+
     def get_name(self):
         """
         Get local name, then self.user's first/last, and finally
@@ -83,7 +93,7 @@ class KnowledgeBase(models.Model):
         """
         name = (self.name or u'{0} {1}'.format(
             self.user.first_name, self.user.last_name))
-        return name.strip() or self.user.username
+        return name.strip() or self.truncate_username(self.user.username)
 
     get_email = lambda s: s.email or s.user.email
     get_pair = lambda s: (s.get_name(), s.get_email())
