@@ -206,7 +206,7 @@ class Question(KnowledgeBase):
     def get_responses(self, user=None):
         user = user or self._requesting_user
         if user:
-            return [r for r in self.responses.all().select_related('user') if r.can_view(user)]
+            return [r for r in self.responses.all().select_related('user', 'question', 'question__user') if r.can_view(user)]
         else:
             return self.responses.all().select_related('user')
 
