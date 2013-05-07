@@ -82,7 +82,7 @@ class KnowledgeBase(models.Model):
         their username if all else fails.
         """
         name = (self.name or (self.user and (
-            u'{0} {1}'.format( self.user.first_name, self.user.last_name)\
+            u'{0} {1}'.format(self.user.first_name, self.user.last_name).strip()\
             or self.user.username
         )))
         return name.strip() or _("Anonymous")
