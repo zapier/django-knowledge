@@ -81,11 +81,13 @@ class KnowledgeBase(models.Model):
         Get local name, then self.user's first/last, and finally
         their username if all else fails.
         """
-        name = (self.name or u'{0} {1}'.format(
-            self.user.first_name, self.user.last_name))
-        return name.strip() or self.user.username
+        name = (self.name or (self.user and (
+            u'{0} {1}'.format( self.user.first_name, self.user.last_name)\
+            or self.user.username
+        )))
+        return name.strip() or _("Anonymous")
 
-    get_email = lambda s: s.email or s.user.email
+    get_email = lambda s: s.email or (s.user and s.user.email)
     get_pair = lambda s: (s.get_name(), s.get_email())
     get_user_or_pair = lambda s: s.user or s.get_pair()
 
@@ -120,6 +122,7 @@ class KnowledgeBase(models.Model):
         self.status = status
         if save:
             self.save()
+    switch.alters_data = True
 
     def public(self, save=True):
         self.switch('public', save)
