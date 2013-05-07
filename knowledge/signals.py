@@ -36,6 +36,7 @@ def send_alerts(target_dict, response=None, question=None, **kwargs):
         message_html = render_to_string(
             'django_knowledge/emails/message.html', context)
 
+        subject = u' '.join(line.strip() for line in subject.splitlines()).strip()
         msg = EmailMultiAlternatives(subject, message, to=[email])
         msg.attach_alternative(message_html, 'text/html')
         msg.send()

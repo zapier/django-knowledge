@@ -1,7 +1,9 @@
+{% load url from future %}
+
 {% if request.user.is_staff %}
   <div class="dk-mod-bar">
     {% for mod in allowed_mods %}
-    	<form method="post" action="{% url knowledge_moderate type node.id mod %}">{% csrf_token %}<input class="dk-label{% if mod in node.states %} dk-label-warning{% endif %}" type="submit" value="{{ mod }}" /></form>
+    	<form method="post" action="{% url "knowledge_moderate" type node.id mod %}">{% csrf_token %}<input class="dk-label{% if mod in node.states %} dk-label-warning{% endif %}" type="submit" value="{{ mod }}" /></form>
     {% endfor %}
   </div>
 {% endif %}

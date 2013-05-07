@@ -5,7 +5,7 @@
 
 {% if response %}
     {% blocktrans with url=response.question.url title=response.question.title domain=site.domain %}
-    We just wanted to let you know that a new response has been added to the question "{{ title }}". You can visit it here: {{ domain }}{{ url }}
+    We just wanted to let you know that a new response has been added to the question "{{ title }}". You can visit it here: {{ domain }}{{ url "}}"
     {% endblocktrans %}
 
     {{ response.body }}
@@ -15,7 +15,7 @@
 
 {% if question %}
     {% blocktrans with url=question.url title=question.title domain=site.domain %}
-    We just wanted to let you know that a new question has been added: "{{ title }}". You can visit it here: {{ domain }}{{ url }}
+    We just wanted to let you know that a new question has been added: "{{ title }}". You can visit it here: {{ domain }}{{ url "}}"
     {% endblocktrans %}
 
     {{ question.body }}

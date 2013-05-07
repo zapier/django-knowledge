@@ -1,6 +1,7 @@
 {% load i18n %}
+{% load url from future %}
 
 <div class="dk-roof">
-  <h2 class="primary"><a href="{% url knowledge_index %}">{% trans "Welcome to our Support Center." %}</a></h2>
+  <h2 class="primary"><a href="{% url "knowledge_index" %}">{% trans "Welcome to our Support Center." %}</a></h2>
   <h4>{% trans "Search for answers to your questions below, or ask your own." %}</h4>
 </div>

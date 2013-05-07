@@ -21,6 +21,7 @@ STATIC_URL = '/static/'
 INTERNAL_IPS = ('127.0.0.1',)
 
 SITE_ID = 1
+SECRET_KEY = 'lolz'
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
