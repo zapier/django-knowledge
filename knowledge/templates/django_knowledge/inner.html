@@ -1,6 +1,7 @@
 {% extends 'django_knowledge/base.html' %}
 
 {% load i18n %}
+{% load url from future %}
 
 {% block knowledge_inner %}
 
@@ -9,7 +10,7 @@
   {% include "django_knowledge/welcome.html" %}
 
   <div class="dk-search">
-    <form action="{% if category %}{% url knowledge_list_category category.slug %}{% else %}{% url knowledge_list %}{% endif %}" method="get">
+    <form action="{% if category %}{% url "knowledge_list_category" category.slug %}{% else %}{% url "knowledge_list" %}{% endif %}" method="get">
       <input class="question-search" {% if search %}value="{{ search|force_escape }}"{% else %}placeholder="{% trans "Start typing your question here." %}"{% endif %} type="text" name="title"/> <input value="Search" type="submit" class="submit-question-search" />
     </form>
     <div class="clear"></div>

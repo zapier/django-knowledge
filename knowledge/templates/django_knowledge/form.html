@@ -1,4 +1,5 @@
 {% load i18n %}
+{% load url from future %}
 
 <form {% if submit_url %}action="{{ submit_url }}"{% endif %} method="post" class="dk-form">
   {% csrf_token %}
