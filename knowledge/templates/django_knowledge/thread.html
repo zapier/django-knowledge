@@ -15,7 +15,7 @@
     <div class="the-author gravatar"><img src="{% get_gravatar question.get_email %}" alt="{{ question.get_name }} gravatar"></div>
     <div class="the-content gravatar">
       <h2>{{ question.title }}</h2>
-      <h5>{{ question.get_name }} <span class="quiet">
+      <h5>{% if request.user.is_staff %}{{ question.get_email }}{% else %}{{ question.get_name }}{% endif %} <span class="quiet">
         {% if question.user %}
           {% if question.user.is_staff %}&nbsp;<span class="dk-label dk-label-success">{% trans "staff" %}</span>
           {% else %}&nbsp;<span class="dk-label">{% trans "user" %}</span>{% endif %}
@@ -38,7 +38,7 @@
     <div class="dk-dialog">
       <div class="the-author gravatar smaller"><img src="{% get_gravatar response.get_email 40 %}" alt="{{ response.get_name }} gravatar"></div>
       <div class="the-content gravatar">
-        <h5>{{ response.get_name }} <span class="quiet">
+        <h5>{% if request.user.is_staff %}{{ response.get_email }}{% else %}{{ response.get_name }}{% endif %} <span class="quiet">
           {% if response.accepted %}&nbsp;<span class="dk-label dk-label-warning">{% trans "accepted answer" %}</span>{% endif %}
           {% if question.user == response.user %}&nbsp;<span class="dk-label dk-label-info">{% trans "poster" %}</span>{% endif %}
           {% if response.user %}
