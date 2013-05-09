@@ -1,7 +1,9 @@
 from knowledge import settings
 
+import django
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from django.conf import settings
 
 from knowledge.managers import QuestionManager, ResponseManager
 from knowledge.signals import knowledge_post_save
@@ -43,7 +45,7 @@ class KnowledgeBase(models.Model):
     added = models.DateTimeField(auto_now_add=True)
     lastchanged = models.DateTimeField(auto_now=True)
 
-    user = models.ForeignKey('auth.User', blank=True,
+    user = models.ForeignKey('auth.User' if django.VERSION < (1, 5, 0) else settings.AUTH_USER_MODEL, blank=True,
                              null=True, db_index=True)
     alert = models.BooleanField(default=settings.ALERTS,
         verbose_name=_('Alert'),
