@@ -1,15 +1,15 @@
-from django.conf.urls.defaults import patterns, url
+from django.conf.urls import patterns, url
 
 urlpatterns = patterns('knowledge.views',
     url(r'^$', 'knowledge_index', name='knowledge_index'),
 
     url(r'^questions/$', 'knowledge_list', name='knowledge_list'),
 
-    url(r'^questions/(?P<category_slug>[a-z0-9-_]+)/$', 'knowledge_list',
-        name='knowledge_list_category'),
-
     url(r'^questions/(?P<question_id>\d+)/$',
         'knowledge_thread', name='knowledge_thread_no_slug'),
+
+    url(r'^questions/(?P<category_slug>[a-z0-9-_]+)/$', 'knowledge_list',
+        name='knowledge_list_category'),
 
     url(r'^questions/(?P<question_id>\d+)/(?P<slug>[a-z0-9-_]+)/$',
         'knowledge_thread', name='knowledge_thread'),

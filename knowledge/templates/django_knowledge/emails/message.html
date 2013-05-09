@@ -1,13 +1,14 @@
 {% extends "django_knowledge/emails/base.html" %}
 
 {% load i18n %}
+{% load markup %}
 
 {% block content %}
     <p>{% blocktrans with name=name %}Hello {{ name }},{% endblocktrans %}</p>
 
     {% if response %}
         <p>{% blocktrans with url=response.question.url title=response.question.title domain=site.domain %}
-        We just wanted to let you know that a new response has been added to the question "{{ title }}". You can visit it here: <a href="{{ domain }}{{ url }}">{{ domain }}{{ url }}</a>.
+        We just wanted to let you know that a new response has been added to the question "{{ title }}". You can visit it here: <a href="{{ domain }}{{ url "}}"">{{ domain }}{{ url "}}</a">.
         {% endblocktrans %}</p>
 
         <div style="background:#f3f3f3;margin:8px 0;padding:12px 18px">
@@ -19,7 +20,7 @@
 
     {% if question %}
         <p>{% blocktrans with url=question.url title=question.title domain=site.domain %}
-        We just wanted to let you know that a new question has been added: "{{ title }}". You can visit it here: <a href="{{ domain }}{{ url }}">{{ domain }}{{ url }}</a>
+        We just wanted to let you know that a new question has been added: "{{ title }}". You can visit it here: <a href="{{ domain }}{{ url "}}"">{{ domain }}{{ url "}}</a">
         {% endblocktrans %}</p>
 
         <div style="background:#f3f3f3;margin:8px 0;padding:12px 18px">

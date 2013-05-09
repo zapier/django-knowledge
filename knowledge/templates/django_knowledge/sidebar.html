@@ -1,4 +1,5 @@
 {% load i18n %}
+{% load url from future %}
 
 {% if my_questions %}
 
@@ -20,7 +21,7 @@
 
 <ul>
   {% for category in categories %}
-    <li><a href="{% url knowledge_list_category category.slug %}">{{ category.title }}</a></li>
+    <li><a href="{% url "knowledge_list_category" category.slug %}">{{ category.title }}</a></li>
   {% endfor %}
 </ul>
 
@@ -30,6 +31,6 @@
 <hr />
 
 <ul>
-  <li><a href="{% url knowledge_ask %}">{% trans "Ask a question or give suggestion." %}</a></li>
-  <li><a href="{% url knowledge_index %}">{% trans "Return to homepage." %}</a></li>
+  <li><a href="{% url "knowledge_ask" %}">{% trans "Ask a question or give suggestion." %}</a></li>
+  <li><a href="{% url "knowledge_index" %}">{% trans "Return to homepage." %}</a></li>
 </ul>
