@@ -3,7 +3,6 @@ from knowledge import settings
 import django
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from django.conf import settings
 
 from knowledge.managers import QuestionManager, ResponseManager
 from knowledge.signals import knowledge_post_save
