@@ -1,3 +1,6 @@
+from django.conf import settings
+
+
 def paginate(iterable, per_page, page_num):
     """
         recipes = Recipe.objects.all()
