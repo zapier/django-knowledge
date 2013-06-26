@@ -1,3 +1,6 @@
+from django.conf import settings
+
+
 def paginate(iterable, per_page, page_num):
     """
         recipes = Recipe.objects.all()
@@ -45,3 +48,6 @@ def get_module(path):
                             ).format(mod_name, func_name))
 
     return func
+
+
+user_model_label = getattr(settings, 'AUTH_USER_MODEL', 'auth.User')
