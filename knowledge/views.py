@@ -52,7 +52,7 @@ def knowledge_index(request,
         'questions': questions,
         'my_questions': get_my_questions(request),
         'categories': Category.objects.all(),
-	'BASE_TEMPLATE' : settings.BASE_TEMPLATE,
+        'BASE_TEMPLATE' : settings.BASE_TEMPLATE,
     })
 
 
@@ -92,7 +92,7 @@ def knowledge_list(request,
         'category': category,
         'categories': Category.objects.all(),
         'form': Form(request.user, initial={'title': search}),  # prefill title
-	'BASE_TEMPLATE' : settings.BASE_TEMPLATE,
+        'BASE_TEMPLATE' : settings.BASE_TEMPLATE,
     })
 
 
@@ -137,7 +137,7 @@ def knowledge_thread(request,
         'allowed_mods': ALLOWED_MODS,
         'form': form,
         'categories': Category.objects.all(),
-	'BASE_TEMPLATE' : settings.BASE_TEMPLATE,
+        'BASE_TEMPLATE' : settings.BASE_TEMPLATE,
     })
 
 
@@ -220,5 +220,5 @@ def knowledge_ask(request,
         'my_questions': get_my_questions(request),
         'form': form,
         'categories': Category.objects.all(),
-	'BASE_TEMPLATE' : settings.BASE_TEMPLATE,
+        'BASE_TEMPLATE' : settings.BASE_TEMPLATE,
     })
