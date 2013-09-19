@@ -14,3 +14,5 @@ ALERTS_FUNCTION_PATH = getattr(settings, 'KNOWLEDGE_ALERTS_FUNCTION_PATH',
 
 # misc
 SLUG_URLS = getattr(settings, 'KNOWLEDGE_SLUG_URLS', True)
+
+BASE_TEMPLATE = getattr(settings, 'KNOWLEDGE_BASE_TEMPLATE', 'django_knowledge/base.html')
