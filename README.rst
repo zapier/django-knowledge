@@ -1,4 +1,5 @@
-*This project is no longer maintained. If you are interested in taking over the project, email [contact@zapier.com](mailto:contact@zapier.com).*
+*This project is no longer maintained. If you are interested in taking over the project, email `contact@zapier.com 
+<mailto:contact@zapier.com>`_.
 
 Welcome to django-knowledge!
 ============================
